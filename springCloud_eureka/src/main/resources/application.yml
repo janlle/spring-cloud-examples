@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: springCloud-eureka
+
+server:
+  port: 8762
+
+security:
+  basic:
+    enabled: false
+  user:
+    name: user              # 用户名
+    password: password123   # 用户密码
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZore: http://user:password123@localhost:8761/eureka
+  dashboard:    #首页是否课可以访问
+    enabled: true
+#    path: /x
+
+#  datacenter: cloud
+#  environment: product
+
+
+
+
+
+
