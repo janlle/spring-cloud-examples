@@ -1,0 +1,15 @@
+spring: 
+  application:
+    name: springCloud-provider-ribbon-prop
+    
+server:
+  port: 8103
+
+eureka:
+  client: 
+    service-url:
+      defaultZore: http://user:password123@localhost:8761/eureka
+      
+springCloud-provider: 
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
