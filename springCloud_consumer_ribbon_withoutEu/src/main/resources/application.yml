@@ -1,0 +1,22 @@
+spring: 
+  application:
+    name: springCloud-provider-ribbon-withoutEu
+    
+server:
+  port: 8104
+
+eureka:
+  client: 
+    service-url:
+      defaultZore: http://user:password123@localhost:8761/eureka
+ribbon:
+  eureka:
+   enabled: false
+   
+springCloud-provider:
+  ribbon:
+    listOfServers: localhost:8001
+    
+    
+    
+    

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="springCloud_consumer" />
+        <module name="springCloud_consumer_feign" />
+        <module name="springCloud_consumer_feign_cust" />
+        <module name="springCloud_consumer_feign_hystrix" />
+        <module name="springCloud_consumer_feign_hystrix_wo_hystrix" />
+        <module name="springCloud_consumer_ribbon" />
+        <module name="springCloud_consumer_ribbon_hystrix" />
+        <module name="springCloud_consumer_ribbon_hystrix_prop" />
+        <module name="springCloud_consumer_ribbon_prop" />
+        <module name="springCloud_consumer_ribbon_test" />
+        <module name="springCloud_consumer_ribbon_withoutEu" />
+        <module name="springCloud_eureka" />
+        <module name="springCloud_eureka_ha" />
+        <module name="springCloud_gateway_zuul" />
+        <module name="springCloud_provider" />
+        <module name="test" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="springCloud_consumer" target="1.8" />
+      <module name="springCloud_consumer_feign" target="1.8" />
+      <module name="springCloud_consumer_feign_cust" target="1.8" />
+      <module name="springCloud_consumer_feign_hystrix" target="1.8" />
+      <module name="springCloud_consumer_feign_hystrix_wo_hystrix" target="1.8" />
+      <module name="springCloud_consumer_ribbon" target="1.8" />
+      <module name="springCloud_consumer_ribbon_hystrix" target="1.8" />
+      <module name="springCloud_consumer_ribbon_hystrix_prop" target="1.8" />
+      <module name="springCloud_consumer_ribbon_prop" target="1.8" />
+      <module name="springCloud_consumer_ribbon_test" target="1.8" />
+      <module name="springCloud_consumer_ribbon_withoutEu" target="1.8" />
+      <module name="springCloud_eureka" target="1.8" />
+      <module name="springCloud_eureka_ha" target="1.8" />
+      <module name="springCloud_gateway_zuul" target="1.8" />
+      <module name="springCloud_parent" target="1.8" />
+      <module name="springCloud_provider" target="1.8" />
+      <module name="test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,13 @@
+spring: 
+  application:
+    name: springCloud-provider-ribbon-test
+    
+server:
+  port: 8107
+
+eureka:
+  client: 
+    service-url:
+      defaultZore: http://user:password123@localhost:8761/eureka
+      
+
