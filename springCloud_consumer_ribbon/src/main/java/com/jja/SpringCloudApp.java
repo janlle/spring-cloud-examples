@@ -31,8 +31,4 @@ public class SpringCloudApp {
 		return new RestTemplate();
 	}
 
-
-	
-	
-	
 }
