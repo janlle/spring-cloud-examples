@@ -36,7 +36,7 @@ public class UserController {
 	
 	@GetMapping("/getUser/{id}")
 	public Users getUser(@PathVariable("id")int id) {
-		System.out.println("B用户微服务getUser();");
+		System.out.println("D用户微服务getUser();");
 		Users user = new Users();
 		user.setId(id);
 		//user.setBirthday(new Date());
