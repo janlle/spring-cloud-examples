@@ -27,6 +27,8 @@ logging:
     com.jja: DEBUG
     
 spring:
+  application:
+    name: springCloud-provider
   jpa:
     generate-ddl: false
     show-sql: true
@@ -35,10 +37,6 @@ spring:
   jackson: 
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: UTC
-    
-  application:
-    name: springCloud-provider
-    
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/cloud
