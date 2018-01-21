@@ -5,11 +5,11 @@ spring:
 server:
   port: 8103
 
-eureka:
-  client: 
-    service-url:
-      defaultZore: http://user:password123@localhost:8761/eureka
-      
+#配置负载均衡的
 springCloud-provider: 
   ribbon:
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule      #负载均衡的规则
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://user:password123@localhost:8761/eureka

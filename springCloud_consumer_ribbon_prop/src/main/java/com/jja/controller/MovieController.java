@@ -34,10 +34,11 @@ public class MovieController {
 		ServiceInstance choose = loadBalancerClient.choose("springCloud-provider");
 		System.out.println("app1:"+choose.getHost()+"=="+choose.getPort()+"=="+choose.getServiceId());
 		
-		ServiceInstance choose2 = loadBalancerClient.choose("springCloud-provider3");
+		ServiceInstance choose2 = loadBalancerClient.choose("springCloud-provider2");
 		System.out.println("app2:"+choose2.getHost()+"=="+choose2.getPort()+"=="+choose2.getServiceId());
+		System.out.println("");
 		
-		return "1";
+		return "success";
 	}
 	
 	
