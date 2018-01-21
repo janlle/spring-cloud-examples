@@ -23,7 +23,7 @@ public class MovieController {
 	public Users getObj(@PathVariable("id")int id) {
 		System.out.println("访问到了");
 		//return restTemplate.getForObject("http://localhost:8001/getUser/"+id, Users.class);
-		return restTemplate.getForObject("http://springCloud-provider/getUser/"+id, Users.class);
+		return restTemplate.getForObject("http://user:password123@springCloud-provider/getUser/"+id, Users.class);
 	}
 	
 	@GetMapping("/test")
@@ -34,7 +34,7 @@ public class MovieController {
 		ServiceInstance choose2 = loadBalancerClient.choose("springCloud-provider3");
 		System.out.println("app2:"+choose2.getHost()+"=="+choose2.getPort()+"=="+choose2.getServiceId());
 		
-		return "1";
+		return "success";
 	}
 	
 	

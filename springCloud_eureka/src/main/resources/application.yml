@@ -3,11 +3,11 @@ spring:
     name: springCloud-eureka
 
 server:
-  port: 8762
+  port: 8761
 
 security:
   basic:
-    enabled: false
+    enabled: true
   user:
     name: user              # 用户名
     password: password123   # 用户密码
