@@ -1,5 +1,5 @@
 server:
-  port: 8002
+  port: 8004
   
 eureka:
   client:
@@ -14,7 +14,7 @@ eureka:
       zone: ABC
       ruolin: BBC
     lease-renewal-interval-in-seconds: 5
-    appname: USER-SERVICE-HAHA
+#    appname: USER-SERVICE-HAHA
 #    hostname: user
     
       
@@ -28,7 +28,7 @@ logging:
     
 spring:
   application:
-    name: springCloud-provider
+    name: springCloud-provider2
   jpa:
     generate-ddl: false
     show-sql: true

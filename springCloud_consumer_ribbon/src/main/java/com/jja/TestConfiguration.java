@@ -12,11 +12,12 @@ import com.netflix.loadbalancer.RandomRule;
 @ExcludeFromComponentScan
 public class TestConfiguration {
 	
-	@Autowired
-	IClientConfig clientConfig;
+//	@Autowired
+//	IClientConfig clientConfig;
 	
 	@Bean
 	public IRule ribbonRule(){
+		System.out.println("随机");
 		return new RandomRule();
 	}
 	
