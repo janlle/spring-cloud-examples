@@ -1,6 +1,6 @@
 spring: 
   application:
-    name: springCloud-provider-ribbon
+    name: springCloud-consumer-ribbon
     
 server:
   port: 8102
