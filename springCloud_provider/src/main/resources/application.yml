@@ -1,5 +1,5 @@
 server:
-  port: 8004
+  port: 8002
   
 eureka:
   client:
@@ -28,7 +28,7 @@ logging:
     
 spring:
   application:
-    name: springCloud-provider2
+    name: springCloud-provider
   jpa:
     generate-ddl: false
     show-sql: true
