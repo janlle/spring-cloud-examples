@@ -7,8 +7,10 @@ server:
 
 eureka:
   client: 
-    service-url:
-      defaultZore: http://user:password123@localhost:8761/eureka
+    serviceUrl:
+      defaultZone: http://user:password123@localhost:8761/eureka
+
+#脱离eureka使用
 ribbon:
   eureka:
    enabled: false
@@ -16,7 +18,5 @@ ribbon:
 springCloud-provider:
   ribbon:
     listOfServers: localhost:8001
-    
-    
     
     
