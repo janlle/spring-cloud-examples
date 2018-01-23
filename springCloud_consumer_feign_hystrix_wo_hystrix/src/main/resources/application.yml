@@ -8,6 +8,11 @@ spring:
 
 eureka: 
   client: 
-    service-url: 
-      defaultZore: http://user:password@localhost:8761/eureka
+    serviceUrl:
+      defaultZone: http://user:password123@localhost:8761/eureka
       
+feign:
+  hystrix:
+    enable: true
+
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000
