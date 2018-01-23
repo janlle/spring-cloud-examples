@@ -6,8 +6,10 @@ server:
   port: 8108
 
 eureka:
-  client: 
-    service-url:
-      defaultZore: http://user:password123@localhost:8761/eureka
-      
+  client:
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://user:password123@localhost:8761/eureka
+
 hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000
