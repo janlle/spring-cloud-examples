@@ -10,10 +10,8 @@ import com.jja.entity.Users;
 
 @FeignClient(name = "springCloud-provider",configuration = ConfigurationFei1.class, fallback = HystrixClientFallback1.class)
 public interface UserFeignClient1 {
-	
 	@RequestMapping(value="/getUser/{id}",method=RequestMethod.GET)
 	public Users getUser(@PathVariable("id")int id);
-	
 }
 
 

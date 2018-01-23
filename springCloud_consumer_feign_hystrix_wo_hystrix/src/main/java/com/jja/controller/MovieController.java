@@ -1,9 +1,7 @@
 package com.jja.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.jja.UserFeignClient1;
 import com.jja.entity.Users;
@@ -12,12 +10,14 @@ import com.jja.entity.Users;
 public class MovieController {
 	
 	@Autowired
-	private UserFeignClient1 userFeignClient;
+	private UserFeignClient1 userFeignClient1;
 	
-	@GetMapping("/getObj/{id}")
+	@RequestMapping(value="/getObj/{id}", method = RequestMethod.GET)
 	public Users getObj(@PathVariable("id")int id) {
-		Users user = userFeignClient.getUser(id);
+		Users user = userFeignClient1.getUser(id);
 		return user;
 	}
+
+
 	
 }
