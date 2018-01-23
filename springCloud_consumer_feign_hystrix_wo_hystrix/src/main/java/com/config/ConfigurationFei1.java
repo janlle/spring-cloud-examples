@@ -10,7 +10,7 @@ import feign.Logger;
  * @author ruolin create by 2017年11月19日上午7:41:03
  */
 @Configuration
-public class ConfigurationFei {
+public class ConfigurationFei1 {
 
 	@Bean
 	public Contract feignContract() {
