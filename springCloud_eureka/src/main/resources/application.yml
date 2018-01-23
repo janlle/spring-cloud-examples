@@ -1,7 +1,9 @@
 spring:
   application:
     name: springCloud-eureka
-
+  output:
+    ansi:
+      enabled: detect
 server:
   port: 8761
 
@@ -21,8 +23,8 @@ eureka:
     enabled: true
 #    path: /x
 
-#  datacenter: cloud
-#  environment: product
+  datacenter: cloud
+  environment: product
 
 
 

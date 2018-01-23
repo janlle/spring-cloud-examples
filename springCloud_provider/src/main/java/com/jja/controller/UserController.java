@@ -36,18 +36,18 @@ public class UserController {
 	
 	@GetMapping("/getUser/{id}")
 	public Users getUser(@PathVariable("id")int id) {
-		System.out.println("B用户微服务getUser();");
+		System.out.println("A用户微服务getUsAer();");
 		Users user = new Users();
 		user.setId(id);
 		//user.setBirthday(new Date());
 		user.setUsername("james");
-		user.setPassword("abcde");
+		user.setPassword("abwcde");
 		user.setSalary(12000);
 		return user;
 	}
 	
-	@PostMapping("/getPostUser")
-	public Users getPostUser(@RequestBody Users user) {
+	@PostMapping("/postUser")
+	public Users postUser(@RequestBody Users user) {
 		return user;
 	}
 	

@@ -11,11 +11,12 @@ import com.jja.entity.Users;
 
 @FeignClient("springCloud-provider")
 public interface UserFeignClient {
-	
+
+	//不支持getmapping和postmapping并且pathvariable的value属性必须填写
 	@RequestMapping(value="/getUser/{id}",method=RequestMethod.GET)
 	public Users getUser(@PathVariable("id")int id);
 	
-	@RequestMapping(value="/getPostUser",method=RequestMethod.POST)
-	public Users getPostUser(@RequestBody Users user);
+	@RequestMapping(value="/postUser",method=RequestMethod.POST)
+	public Users postUser(@RequestBody Users user);
 	
 }

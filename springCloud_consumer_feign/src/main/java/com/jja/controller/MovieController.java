@@ -26,7 +26,7 @@ public class MovieController {
 	
 	@GetMapping(value="/postUser")
 	public Users getPostUser(Users user){
-		return userFeignClient.getPostUser(user);
+		return userFeignClient.postUser(user);
 	}
 	
 }
