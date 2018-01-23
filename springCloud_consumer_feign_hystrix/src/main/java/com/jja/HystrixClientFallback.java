@@ -1,7 +1,9 @@
 package com.jja;
 
 import com.jja.entity.Users;
+import org.springframework.stereotype.Component;
 
+@Component
 public class HystrixClientFallback implements UserFeignClient {
 		@Override
 		public Users getUser(int id) {
