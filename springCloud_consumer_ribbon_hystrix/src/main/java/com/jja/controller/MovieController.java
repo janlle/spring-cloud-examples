@@ -19,12 +19,13 @@ public class MovieController {
 	@HystrixCommand(fallbackMethod = "findByIdFallback")
 	public Users getObj(@PathVariable("id")int id) {
 		System.out.println("访问到了");
-		return restTemplate.getForObject("http://springCloud-provider/getUser/"+id, Users.class);
+		return restTemplate.getForObject("http://user:password123@springCloud-provider/getUser/"+id, Users.class);
 	}
 	
 	public Users findByIdFallback(int id){
 		Users user = new Users();
 		user.setId(12);
+		user.setUsername("默认名称");
 		return user;
 	}
 	
