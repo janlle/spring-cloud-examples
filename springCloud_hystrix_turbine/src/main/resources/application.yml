@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: springCloud_hystrix_turbine
+server:
+  port: 8767
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://user:password123@localhost:8761/eureka
+turbine:
+  aggregator:
+    clusterConfig: MICROSOFT-CONSUMER-MOVIE-RIBBON-WITH-HYSTRIX
+  appConfig: microsoft-consumer-movie-ribbon-with-hystrix

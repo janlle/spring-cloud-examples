@@ -2,13 +2,12 @@ package com.jja;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+import org.springframework.cloud.netflix.turbine.EnableTurbine;
 
-@EnableZuulProxy
+@EnableTurbine
 @SpringBootApplication
-public class EurekaApp {
+public class TurbineApp {
 	public static void main(String[] args) {
-		SpringApplication.run(EurekaApp.class, args);
-		
+		SpringApplication.run(TurbineApp.class, args);
 	}
 }
