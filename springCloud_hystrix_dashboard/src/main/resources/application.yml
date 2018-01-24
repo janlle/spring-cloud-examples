@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: springCloud_hystrix_dashboard
+server:
+  port: 8766
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://user:password123@localhost:8761/eureka
+  dashboard:    #首页是否课可以访问
+    enabled: true
+

@@ -12,18 +12,9 @@ eureka:
   instance:
     prefer-ip-address: true
 
-#脱离eureka使用zull
-ribbon:
-  eureka:
-    enabled: false
 
 zuul:
   routes:
     abc:
       path: /user-url/**
-      serviceId: springcloud-provider
-
-
-springcloud-provider:
-  ribbon:
-    listOfService: http://localhost:8001,http://localhost:8002
+      url: http://localhost:8001/

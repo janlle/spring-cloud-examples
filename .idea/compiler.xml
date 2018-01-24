@@ -21,6 +21,9 @@
         <module name="springCloud_eureka" />
         <module name="springCloud_eureka_ha" />
         <module name="springCloud_gateway_zuul" />
+        <module name="springCloud_gateway_zuul_reg_exp" />
+        <module name="springCloud_hystrix_dashboard" />
+        <module name="springCloud_hystrix_turbine" />
         <module name="springCloud_provider" />
         <module name="test" />
       </profile>
@@ -41,6 +44,9 @@
       <module name="springCloud_eureka" target="1.8" />
       <module name="springCloud_eureka_ha" target="1.8" />
       <module name="springCloud_gateway_zuul" target="1.8" />
+      <module name="springCloud_gateway_zuul_reg_exp" target="1.8" />
+      <module name="springCloud_hystrix_dashboard" target="1.8" />
+      <module name="springCloud_hystrix_turbine" target="1.8" />
       <module name="springCloud_parent" target="1.8" />
       <module name="springCloud_provider" target="1.8" />
       <module name="test" target="1.8" />
