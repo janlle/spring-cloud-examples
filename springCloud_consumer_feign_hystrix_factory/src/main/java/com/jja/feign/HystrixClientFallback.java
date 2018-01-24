@@ -1,4 +1,4 @@
-package com.jja;
+package com.jja.feign;
 
 import com.jja.entity.Users;
 import org.springframework.stereotype.Component;

@@ -16,9 +16,10 @@ public class ConfigurationFei1 {
 	public Contract feignContract() {
 		return new feign.Contract.Default();
 	}
-	
+
 	@Bean
-    Logger.Level feignLoggerLevel() {
-        return Logger.Level.FULL;
-    }
+	Logger.Level feignLoggerLevel() {
+		return Logger.Level.FULL;
+	}
+
 }

@@ -24,6 +24,9 @@
 		<module>springCloud_consumer_ribbon_withoutEu</module>
 		<module>springCloud_consumer_feign_hystrix_wo_hystrix</module>
 		<module>springCloud_gateway_zuul</module>
+		<module>springCloud_consumer_feign_hystrix_factory</module>
+		
+		
 	</modules>
 
 	<parent>

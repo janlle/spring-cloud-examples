@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/springCloud_consumer_feign/springCloud_consumer_feign.iml" filepath="$PROJECT_DIR$/springCloud_consumer_feign/springCloud_consumer_feign.iml" />
       <module fileurl="file://$PROJECT_DIR$/springCloud_consumer_feign_cust/springCloud_consumer_feign_cust.iml" filepath="$PROJECT_DIR$/springCloud_consumer_feign_cust/springCloud_consumer_feign_cust.iml" />
       <module fileurl="file://$PROJECT_DIR$/springCloud_consumer_feign_hystrix/springCloud_consumer_feign_hystrix.iml" filepath="$PROJECT_DIR$/springCloud_consumer_feign_hystrix/springCloud_consumer_feign_hystrix.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springCloud_consumer_feign_hystrix_factory/springCloud_consumer_feign_hystrix_factory.iml" filepath="$PROJECT_DIR$/springCloud_consumer_feign_hystrix_factory/springCloud_consumer_feign_hystrix_factory.iml" />
       <module fileurl="file://$PROJECT_DIR$/springCloud_consumer_feign_hystrix_wo_hystrix/springCloud_consumer_feign_hystrix_wo_hystrix.iml" filepath="$PROJECT_DIR$/springCloud_consumer_feign_hystrix_wo_hystrix/springCloud_consumer_feign_hystrix_wo_hystrix.iml" />
       <module fileurl="file://$PROJECT_DIR$/springCloud_consumer_ribbon/springCloud_consumer_ribbon.iml" filepath="$PROJECT_DIR$/springCloud_consumer_ribbon/springCloud_consumer_ribbon.iml" />
       <module fileurl="file://$PROJECT_DIR$/springCloud_consumer_ribbon_hystrix/springCloud_consumer_ribbon_hystrix.iml" filepath="$PROJECT_DIR$/springCloud_consumer_ribbon_hystrix/springCloud_consumer_ribbon_hystrix.iml" />
