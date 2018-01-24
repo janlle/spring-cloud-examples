@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.jja.entity.Users;
 
-@FeignClient(name = "springCloud-provider", fallback = HystrixClientFallback.class, fallbackFactory = HystrixClientFactory.class)
+@FeignClient(name = "springCloud-provider", /*fallback = HystrixClientFallback.class,*/ fallbackFactory = HystrixClientFactory.class)
 public interface UserFeignClient {
 	
 	@RequestMapping(value="/getUser/{id}",method=RequestMethod.GET)

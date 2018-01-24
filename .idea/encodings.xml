@@ -17,6 +17,9 @@
     <file url="file://$PROJECT_DIR$/springCloud_eureka" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springCloud_eureka_ha" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springCloud_gateway_zuul" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springCloud_gateway_zuul_reg_exp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springCloud_hystrix_dashboard" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springCloud_hystrix_turbine" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springCloud_provider" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/test" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />

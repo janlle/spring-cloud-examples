@@ -25,6 +25,9 @@
 		<module>springCloud_consumer_feign_hystrix_wo_hystrix</module>
 		<module>springCloud_gateway_zuul</module>
 		<module>springCloud_consumer_feign_hystrix_factory</module>
+		<module>springCloud_hystrix_dashboard</module>
+		<module>springCloud_hystrix_turbine</module>
+		<module>springCloud_gateway_zuul_reg_exp</module>
 		
 		
 	</modules>

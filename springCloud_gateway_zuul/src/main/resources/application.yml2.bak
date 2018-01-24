@@ -12,18 +12,14 @@ eureka:
   instance:
     prefer-ip-address: true
 
-#脱离eureka使用zull
-ribbon:
-  eureka:
-    enabled: false
 
 zuul:
+  #忽略反向代理服务（自定义配置的服务除外）
+#  ignoredServices: '*'
+#  ignoredServices: springcloud-provider-ribbon-hystrix
+
+  #自定义服务名称
   routes:
     abc:
-      path: /user-url/**
+      path: /user-path/**
       serviceId: springcloud-provider
-
-
-springcloud-provider:
-  ribbon:
-    listOfService: http://localhost:8001,http://localhost:8002
