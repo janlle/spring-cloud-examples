@@ -10,6 +10,7 @@
         <module name="springCloud_consumer_feign" />
         <module name="springCloud_consumer_feign_cust" />
         <module name="springCloud_consumer_feign_hystrix" />
+        <module name="springCloud_consumer_feign_hystrix_factory" />
         <module name="springCloud_consumer_feign_hystrix_wo_hystrix" />
         <module name="springCloud_consumer_ribbon" />
         <module name="springCloud_consumer_ribbon_hystrix" />
@@ -29,6 +30,7 @@
       <module name="springCloud_consumer_feign" target="1.8" />
       <module name="springCloud_consumer_feign_cust" target="1.8" />
       <module name="springCloud_consumer_feign_hystrix" target="1.8" />
+      <module name="springCloud_consumer_feign_hystrix_factory" target="1.8" />
       <module name="springCloud_consumer_feign_hystrix_wo_hystrix" target="1.8" />
       <module name="springCloud_consumer_ribbon" target="1.8" />
       <module name="springCloud_consumer_ribbon_hystrix" target="1.8" />

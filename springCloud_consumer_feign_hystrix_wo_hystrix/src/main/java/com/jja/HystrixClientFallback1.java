@@ -9,7 +9,7 @@ public class HystrixClientFallback1 implements UserFeignClient1 {
 		public Users getUser(int id) {
 			Users user = new Users();
 			user.setId(0);
-			System.out.println("默认姓名1");
+			user.setUsername("默认姓名");
 			return user;
 		}
 	}
