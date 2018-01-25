@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/springCloud_config_server/springCloud_config_server.iml" filepath="$PROJECT_DIR$/springCloud_config_server/springCloud_config_server.iml" />
       <module fileurl="file://$PROJECT_DIR$/springCloud_consumer/springCloud_consumer.iml" filepath="$PROJECT_DIR$/springCloud_consumer/springCloud_consumer.iml" />
       <module fileurl="file://$PROJECT_DIR$/springCloud_consumer_feign/springCloud_consumer_feign.iml" filepath="$PROJECT_DIR$/springCloud_consumer_feign/springCloud_consumer_feign.iml" />
       <module fileurl="file://$PROJECT_DIR$/springCloud_consumer_feign_cust/springCloud_consumer_feign_cust.iml" filepath="$PROJECT_DIR$/springCloud_consumer_feign_cust/springCloud_consumer_feign_cust.iml" />
@@ -16,6 +17,7 @@
       <module fileurl="file://$PROJECT_DIR$/springCloud_consumer_ribbon_withoutEu/springCloud_consumer_ribbon_withoutEu.iml" filepath="$PROJECT_DIR$/springCloud_consumer_ribbon_withoutEu/springCloud_consumer_ribbon_withoutEu.iml" />
       <module fileurl="file://$PROJECT_DIR$/springCloud_eureka/springCloud_eureka.iml" filepath="$PROJECT_DIR$/springCloud_eureka/springCloud_eureka.iml" />
       <module fileurl="file://$PROJECT_DIR$/springCloud_eureka_ha/springCloud_eureka_ha.iml" filepath="$PROJECT_DIR$/springCloud_eureka_ha/springCloud_eureka_ha.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springCloud_file_upload/springCloud_file_upload.iml" filepath="$PROJECT_DIR$/springCloud_file_upload/springCloud_file_upload.iml" />
       <module fileurl="file://$PROJECT_DIR$/springCloud_gateway_zuul/springCloud_gateway_zuul.iml" filepath="$PROJECT_DIR$/springCloud_gateway_zuul/springCloud_gateway_zuul.iml" />
       <module fileurl="file://$PROJECT_DIR$/springCloud_gateway_zuul_reg_exp/springCloud_gateway_zuul_reg_exp.iml" filepath="$PROJECT_DIR$/springCloud_gateway_zuul_reg_exp/springCloud_gateway_zuul_reg_exp.iml" />
       <module fileurl="file://$PROJECT_DIR$/springCloud_hystrix_dashboard/springCloud_hystrix_dashboard.iml" filepath="$PROJECT_DIR$/springCloud_hystrix_dashboard/springCloud_hystrix_dashboard.iml" />
