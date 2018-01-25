@@ -28,6 +28,8 @@
 		<module>springCloud_hystrix_dashboard</module>
 		<module>springCloud_hystrix_turbine</module>
 		<module>springCloud_gateway_zuul_reg_exp</module>
+		<module>springCloud_file_upload</module>
+		<module>springCloud_config_server</module>
 		
 		
 	</modules>
