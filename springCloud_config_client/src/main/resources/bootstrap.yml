@@ -1,0 +1,9 @@
+spring:
+#指的是springconfigserver的名称如果没有默认找到application.yml中的配置
+  application:
+      name: foobar
+  cloud:
+    config:
+      uri: http://localhost:9000
+      profile: dev
+      label: master

@@ -30,6 +30,7 @@
 		<module>springCloud_gateway_zuul_reg_exp</module>
 		<module>springCloud_file_upload</module>
 		<module>springCloud_config_server</module>
+		<module>springCloud_config_client</module>
 		
 		
 	</modules>
