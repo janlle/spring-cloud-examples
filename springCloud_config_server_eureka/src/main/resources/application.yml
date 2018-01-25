@@ -1,0 +1,17 @@
+server:
+  port: 9001
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://user:password123@localhost:8761/eureka
+spring:
+  application:
+    name: springCloud-config-server-eureka
+  cloud:
+      config:
+        server:
+          git:
+            uri: https://gitee.com/thethink/config_repo
