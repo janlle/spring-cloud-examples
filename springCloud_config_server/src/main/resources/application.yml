@@ -1,11 +1,14 @@
 server:
   port: 9000
+
 spring:
-  application:
-      name: springCloud-config-server
   cloud:
     config:
       server:
-#https://gitee.com/thethink/config_repo.git
         git:
-          uri: https://gitee.com/thethink/config_repo
+          uri: https://gitee.com/thethink/config_repo      # 公用
+          repos:
+            simple: https://gitee.com/thethink/simple
+            special:
+              pattern: special*/dev*,special*/test*
+              uri: https://gitee.com/thethink/special
