@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="springCloud_bus" />
         <module name="springCloud_config_client" />
         <module name="springCloud_config_server" />
         <module name="springCloud_config_server_eureka" />
@@ -34,6 +35,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="springCloud_bus" target="1.8" />
       <module name="springCloud_config_client" target="1.8" />
       <module name="springCloud_config_server" target="1.8" />
       <module name="springCloud_config_server_eureka" target="1.8" />
