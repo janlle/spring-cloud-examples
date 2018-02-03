@@ -2,6 +2,7 @@
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springCloud_bus" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springCloud_config_client" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springCloud_config_server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springCloud_config_server_eureka" charset="UTF-8" />
