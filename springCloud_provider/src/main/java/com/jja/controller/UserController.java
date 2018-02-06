@@ -40,8 +40,8 @@ public class UserController {
 		Users user = new Users();
 		user.setId(id);
 		//user.setBirthday(new Date());
-		user.setUsername("james");
-		user.setPassword("abwcde");
+		user.setUsername("user");
+		user.setPassword("userpassword");
 		user.setSalary(12000);
 		return user;
 	}

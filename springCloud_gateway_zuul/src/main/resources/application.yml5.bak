@@ -12,13 +12,11 @@ eureka:
   instance:
     prefer-ip-address: true
 
-
+#访问网关的前缀
 zuul:
-  #自定义服务名称
-  routes:
-    abc:
-      path: /user/**
-      serviceId: springcloud-provider
-    def:
-      path: /consumer/**
-      serviceId: springCloud-consumer-ribbon
+  prefix: /api
+  strip-prefix: false
+logging:
+  level:
+    com.netflix: debug
+
