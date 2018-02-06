@@ -34,7 +34,9 @@
 		<module>springCloud_config_client</module>
 		<module>springCloud_config_server_security</module>
 		<module>springCloud_config_server_eureka</module>
+		<module>springCloud_gateway_zuul_fallback</module>
 		<module>springCloud_bus</module>
+		<module>springCloud_sidecar</module>
 		
 		
 	</modules>
