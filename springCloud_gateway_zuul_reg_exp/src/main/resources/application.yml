@@ -1,6 +1,6 @@
 spring:
   application:
-    name: springCloud-gateway-zuul
+    name: springCloud-gateway-zuul-reg-exp
 
 server:
   port: 8111
@@ -9,6 +9,4 @@ eureka:
   client: 
     service-url: 
       defaultZone: http://user:password123@localhost:8761/eureka
-  instance:
-    prefer-ip-address: true
 
