@@ -8,7 +8,7 @@ eureka:
     prefer-ip-address: true
 spring:
   application:
-    name: microservice-file-upload
+    name: springcloud-file-upload
   http:
     multipart:
       max-file-size: 2000Mb      # Max file size，默认1M
