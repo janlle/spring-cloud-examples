@@ -28,7 +28,7 @@ logging:
     
 spring:
   application:
-    name: springCloud-provider-v1
+    name: springCloud-provider
   jpa:
     generate-ddl: false
     show-sql: true
