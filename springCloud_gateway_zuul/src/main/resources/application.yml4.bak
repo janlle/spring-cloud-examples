@@ -9,15 +9,17 @@ eureka:
   client: 
     service-url: 
       defaultZone: http://user:password123@localhost:8761/eureka
-  instance:
-    prefer-ip-address: true
-
 
 zuul:
-  #忽略反向代理服务（自定义配置的服务除外）
-#  ignoredServices: '*'
-  ignoredServices: springcloud-provider-ribbon-hystrix
-
-  #自定义服务名称
   routes:
-    springcloud-provider: /user/**
+    abc:
+      path: /user/**
+      serviceId: springcloud-provider
+
+springcloud-provider:
+  ribbon:
+    listOfServers: http://localhost:8001,http://localhost:8002
+
+ribbon:
+  eureka:
+    enabled: false
