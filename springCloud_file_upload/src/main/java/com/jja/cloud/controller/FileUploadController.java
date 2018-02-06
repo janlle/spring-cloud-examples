@@ -15,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileUploadController {
   /**
    * 上传文件
-   * 测试方法：
    * 有界面的测试：http://localhost:8050/index.html
    * 使用命令：curl -F "file=@文件全名" localhost:8050/upload
    * ps.该示例比较简单，没有做IO异常、文件大小、文件非空等处理
@@ -30,4 +29,6 @@ public class FileUploadController {
     FileCopyUtils.copy(bytes, fileToSave);
     return fileToSave.getAbsolutePath();
   }
+
+
 }
