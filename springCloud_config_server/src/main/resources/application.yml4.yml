@@ -8,5 +8,7 @@ spring:
       server:
         git:
           uri: https://gitee.com/thethink/config_repo
-encrypt:
-  key: foo
+          search-paths:
+            - foo
+            - bar
+          clone-on-start: true #在启动的时候就会下载

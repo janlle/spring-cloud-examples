@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/springCloud_bus/springCloud_bus.iml" filepath="$PROJECT_DIR$/springCloud_bus/springCloud_bus.iml" />
       <module fileurl="file://$PROJECT_DIR$/springCloud_config_client/springCloud_config_client.iml" filepath="$PROJECT_DIR$/springCloud_config_client/springCloud_config_client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springCloud_config_client_eureka/springCloud_config_client_eureka.iml" filepath="$PROJECT_DIR$/springCloud_config_client_eureka/springCloud_config_client_eureka.iml" />
       <module fileurl="file://$PROJECT_DIR$/springCloud_config_server/springCloud_config_server.iml" filepath="$PROJECT_DIR$/springCloud_config_server/springCloud_config_server.iml" />
       <module fileurl="file://$PROJECT_DIR$/springCloud_config_server_eureka/springCloud_config_server_eureka.iml" filepath="$PROJECT_DIR$/springCloud_config_server_eureka/springCloud_config_server_eureka.iml" />
       <module fileurl="file://$PROJECT_DIR$/springCloud_config_server_security/springCloud_config_server_security.iml" filepath="$PROJECT_DIR$/springCloud_config_server_security/springCloud_config_server_security.iml" />
@@ -23,11 +24,14 @@
       <module fileurl="file://$PROJECT_DIR$/springCloud_eureka_ha/springCloud_eureka_ha.iml" filepath="$PROJECT_DIR$/springCloud_eureka_ha/springCloud_eureka_ha.iml" />
       <module fileurl="file://$PROJECT_DIR$/springCloud_file_upload/springCloud_file_upload.iml" filepath="$PROJECT_DIR$/springCloud_file_upload/springCloud_file_upload.iml" />
       <module fileurl="file://$PROJECT_DIR$/springCloud_gateway_zuul/springCloud_gateway_zuul.iml" filepath="$PROJECT_DIR$/springCloud_gateway_zuul/springCloud_gateway_zuul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springCloud_gateway_zuul_fallback/springCloud_gateway_zuul_fallback.iml" filepath="$PROJECT_DIR$/springCloud_gateway_zuul_fallback/springCloud_gateway_zuul_fallback.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springCloud_gateway_zuul_filter/springCloud_gateway_zuul_filter.iml" filepath="$PROJECT_DIR$/springCloud_gateway_zuul_filter/springCloud_gateway_zuul_filter.iml" />
       <module fileurl="file://$PROJECT_DIR$/springCloud_gateway_zuul_reg_exp/springCloud_gateway_zuul_reg_exp.iml" filepath="$PROJECT_DIR$/springCloud_gateway_zuul_reg_exp/springCloud_gateway_zuul_reg_exp.iml" />
       <module fileurl="file://$PROJECT_DIR$/springCloud_hystrix_dashboard/springCloud_hystrix_dashboard.iml" filepath="$PROJECT_DIR$/springCloud_hystrix_dashboard/springCloud_hystrix_dashboard.iml" />
       <module fileurl="file://$PROJECT_DIR$/springCloud_hystrix_turbine/springCloud_hystrix_turbine.iml" filepath="$PROJECT_DIR$/springCloud_hystrix_turbine/springCloud_hystrix_turbine.iml" />
       <module fileurl="file://$PROJECT_DIR$/springCloud_parent.iml" filepath="$PROJECT_DIR$/springCloud_parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/springCloud_provider/springCloud_provider.iml" filepath="$PROJECT_DIR$/springCloud_provider/springCloud_provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springCloud_sidecar/springCloud_sidecar.iml" filepath="$PROJECT_DIR$/springCloud_sidecar/springCloud_sidecar.iml" />
       <module fileurl="file://$PROJECT_DIR$/test/test.iml" filepath="$PROJECT_DIR$/test/test.iml" />
     </modules>
   </component>

@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="springCloud_bus" />
         <module name="springCloud_config_client" />
+        <module name="springCloud_config_client_eureka" />
         <module name="springCloud_config_server" />
         <module name="springCloud_config_server_eureka" />
         <module name="springCloud_config_server_security" />
@@ -27,16 +28,20 @@
         <module name="springCloud_eureka_ha" />
         <module name="springCloud_file_upload" />
         <module name="springCloud_gateway_zuul" />
+        <module name="springCloud_gateway_zuul_fallback" />
+        <module name="springCloud_gateway_zuul_filter" />
         <module name="springCloud_gateway_zuul_reg_exp" />
         <module name="springCloud_hystrix_dashboard" />
         <module name="springCloud_hystrix_turbine" />
         <module name="springCloud_provider" />
+        <module name="springCloud_sidecar" />
         <module name="test" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="springCloud_bus" target="1.8" />
       <module name="springCloud_config_client" target="1.8" />
+      <module name="springCloud_config_client_eureka" target="1.8" />
       <module name="springCloud_config_server" target="1.8" />
       <module name="springCloud_config_server_eureka" target="1.8" />
       <module name="springCloud_config_server_security" target="1.8" />
@@ -56,11 +61,15 @@
       <module name="springCloud_eureka_ha" target="1.8" />
       <module name="springCloud_file_upload" target="1.8" />
       <module name="springCloud_gateway_zuul" target="1.8" />
+      <module name="springCloud_gateway_zuul (1)" target="1.8" />
+      <module name="springCloud_gateway_zuul_fallback" target="1.8" />
+      <module name="springCloud_gateway_zuul_filter" target="1.8" />
       <module name="springCloud_gateway_zuul_reg_exp" target="1.8" />
       <module name="springCloud_hystrix_dashboard" target="1.8" />
       <module name="springCloud_hystrix_turbine" target="1.8" />
       <module name="springCloud_parent" target="1.8" />
       <module name="springCloud_provider" target="1.8" />
+      <module name="springCloud_sidecar" target="1.8" />
       <module name="test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
