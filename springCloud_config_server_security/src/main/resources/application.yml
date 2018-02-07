@@ -6,7 +6,7 @@ security:
     enabled: true
   user:
     name: user              # 用户名
-    password: password      # 用户密码
+    password: password123    # 用户密码
 spring:
   cloud:
     config:
