@@ -37,6 +37,8 @@
 		<module>springCloud_gateway_zuul_fallback</module>
 		<module>springCloud_bus</module>
 		<module>springCloud_sidecar</module>
+		<module>springCloud_gateway_zuul_filter</module>
+		<module>springCloud_config_client_eureka</module>
 		
 		
 	</modules>

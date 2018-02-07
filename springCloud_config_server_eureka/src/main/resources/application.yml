@@ -3,13 +3,11 @@ server:
 
 eureka:
   client:
-    healthcheck:
-      enabled: true
     serviceUrl:
       defaultZone: http://user:password123@localhost:8761/eureka
 spring:
   application:
-    name: springCloud-config-server-eureka
+    name: foobar
   cloud:
       config:
         server:
