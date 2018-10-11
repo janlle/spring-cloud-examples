@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: springCloud-gateway-zuul
+
+server:
+  port: 8111
+  
+eureka: 
+  client: 
+    service-url: 
+      defaultZone: http://user:password123@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+zuul:
+  routes:
+    abc:
+      path: /abc-url/**
+      url: http://localhost:8001/
+    def:
+      path: /def-url/**
+      url: http://localhost:8102/

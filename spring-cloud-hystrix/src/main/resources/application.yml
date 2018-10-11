@@ -1,0 +1,43 @@
+server:
+  port: 8109
+
+spring:
+  application:
+    name: spring-cloud-config-hystrix
+eureka:
+  client: 
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+#新版本中需要独立设置开启feign对hystrix的支持，旧版本中默认开启对hystrix支持
+feign:
+  hystrix:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      # 修改访问路径  2.0之前默认是/   2.0默认是 /actuator  可以通过这个属性值修改
+#      base-path: /
+      exposure:
+        # 开放所有页面节点  默认只开启了health、info两个节点
+        include: "*"
+#  server:
+#    port: 9999
+
+# 配置hystrix
+hystrix:
+  threadpool:
+    default:
+      coreSize: 10  #线程池核心线程数
+  command:
+    #IService#hello(): 设置某一个接口 default: 设置全部接口
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000 #超时时间
+      circuitBreaker:
+        requestVolumeThreshold: 3  #当在配置时间窗口内达到此数量后，进行短路。默认20个
+        sleepWindowInMilliseconds: 5  #短路多久以后开始尝试是否恢复，默认5s
+        errorThresholdPercentage: 50%  #出错百分比阈值，当达到此阈值后，开始短路。默认50%

@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: spring-cloud-dashboard
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  dashboard:    #首页是否可以访问
+    enabled: true
+management:
+#  server:
+#    servlet:
+#      context-path: /
+  endpoints:
+    web:
+      exposure:
+        include: "*"

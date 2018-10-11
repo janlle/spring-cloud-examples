@@ -1,0 +1,36 @@
+server:
+  port: 10001
+zuul:
+  routes:
+    provider:
+      path: /provider/**
+      serviceId: spring-cloud-provider
+  ignored-patterns:
+    - /list
+  #访问网关的前缀
+  prefix: /api
+  #去掉前缀默认为true
+  strip-prefix: false
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    config:
+      disconver:
+        enable: true
+        service-id: api-gateway
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+#hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+#ribbon:
+#  ConnectTimeout: 3000
+#  ReadTimeout: 60000
+
+
+
+
+
+

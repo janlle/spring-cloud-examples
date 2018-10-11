@@ -1,0 +1,14 @@
+server:
+  port: 9000
+spring:
+  application:
+      name: springCloud-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/thethink/config_repo
+          search-paths:
+            - foo
+            - bar
+          clone-on-start: true #在启动的时候就会下载

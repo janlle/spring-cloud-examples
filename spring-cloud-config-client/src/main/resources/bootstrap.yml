@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: spring-cloud-config-client
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: spring-cloud-config-server-bus
+#        service-id: spring-cloud-config-server
+      profile: pro
+      label: dev
+#      uri: http://localhost:9000
+#      name:
+#      username: user
+#      password: password
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: cloud
+    password: cloud
+    virtual-host: /cloud

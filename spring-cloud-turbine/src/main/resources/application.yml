@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: spring-cloud-hystrix-turbine
+server:
+  port: 8767
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+turbine:
+  aggregator:
+    clusterConfig: RIBBON-WITH-HYSTRIX
+  appConfig: ribbon-with-hystrix
