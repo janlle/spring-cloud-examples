@@ -19,7 +19,6 @@
     <modules>
         <module>spring-cloud-user</module>
         <module>spring-cloud-eureka</module>
-        <module>spring-cloud-user</module>
         <module>spring-cloud-feign</module>
         <module>spring-cloud-ribbon</module>
         <module>spring-cloud-ribbon-hystrix</module>
@@ -80,6 +79,7 @@
 
     <build>
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -108,6 +108,7 @@
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
     </build>
 
@@ -120,6 +121,7 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
+
         <repository>
             <id>spring-milestones</id>
             <name>Spring Milestones</name>
@@ -129,6 +131,9 @@
             </snapshots>
         </repository>
     </repositories>
+
+
+
     <pluginRepositories>
         <pluginRepository>
             <id>spring-snapshots</id>
@@ -138,6 +143,7 @@
                 <enabled>true</enabled>
             </snapshots>
         </pluginRepository>
+
         <pluginRepository>
             <id>spring-milestones</id>
             <name>Spring Milestones</name>
@@ -147,4 +153,5 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
+
 </project>
