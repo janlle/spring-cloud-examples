@@ -1,7 +1,8 @@
 package com.andy.admin;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * <p>
@@ -9,8 +10,8 @@ import org.springframework.cloud.client.SpringCloudApplication;
  * @author Leone
  * @since 2018-10-11
  **/
-
-@SpringCloudApplication
+@EnableDiscoveryClient
+@SpringBootApplication
 public class AdminClientApplication {
 
     public static void main(String[] args) {
