@@ -1,0 +1,12 @@
+server:
+  port: 9000
+spring:
+  application:
+      name: spring-cloud-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/thethink/config_repo
+          username: thethink
+          password: rlgitee90

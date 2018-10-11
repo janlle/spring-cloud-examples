@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: spring-cloud-zuul
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+#spirngboot2.0以后需要设置这个配置来访问actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

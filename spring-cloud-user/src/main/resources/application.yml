@@ -1,0 +1,46 @@
+server:
+  port: 8001
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    #  instance:
+    #    ip-address: localhost
+    #    instance-id: ${spring.application.name}:${server.port}
+
+    metadata-map:       #自定义元数据
+      zone: ABC
+      ruolin: BBC
+    lease-renewal-interval-in-seconds: 5
+    prefer-ip-address: true
+    appname: USER-SERVICE
+    hostname: localhost
+    status-page-url-path: /health
+    namespace: eureka
+logging:
+  level:
+    root: INFO
+    org.hibernate: DEBUG
+    org.hibernate.type.description.sql.BasicBinder: TRACE
+    com.andy: TRACE
+
+spring:
+  application:
+    name: spring-cloud-provider
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: UTC
+
+# spring boot 2.x actuator 的配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /monitor
+  endpoint:
+    health:
+      show-details: always

@@ -1,0 +1,20 @@
+server:
+  port: 8101
+
+spring:
+  application:
+    name: spring-cloud-order
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    appname: MICRO-SERVICE-CONSUMER
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /monitor
