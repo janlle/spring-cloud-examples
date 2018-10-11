@@ -1,0 +1,25 @@
+server:
+  port: 9000
+spring:
+  application:
+      name: spring-cloud-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/janlle/config_repo.git
+#          username: thethink
+#          password: xxxyyy
+          basedir: D:\tmp\config
+#          uri: ${user.dir}\spring-cloud-config-server\src\main\resources\configs
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka
+
+#encrypt:
+#  key: foo
+management:
+  endpoints:
+    web:
+      expose: "*"

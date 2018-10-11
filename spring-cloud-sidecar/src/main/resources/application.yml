@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: springCloud-sidecar
+
+server:
+  port: 8120
+  
+eureka: 
+  client: 
+    service-url: 
+      defaultZone: http://user:password123@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+
+#通过设置这个属性可以访问这个url  http://localhost:8111/routes
+management:
+  security:
+    enabled: false
+
+sidecar:
+  port: 8001
+  health-uri: http://localhost:8001/health.json
+
+
+
+

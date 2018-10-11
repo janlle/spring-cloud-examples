@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: springCloud-gateway-zuul-fallback
+
+server:
+  port: 8112
+  
+eureka: 
+  client: 
+    service-url: 
+      defaultZone: http://user:password123@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+
+#通过设置这个属性可以访问这个url  http://localhost:8111/routes
+management:
+  security:
+    enabled: false
+

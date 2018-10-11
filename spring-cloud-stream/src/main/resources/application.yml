@@ -1,0 +1,28 @@
+server:
+  port: 8121
+
+spring:
+  application:
+    name: spring-cloud-stream
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: cloud
+    password: cloud
+    virtual-host: /cloud
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: sink-channel
+
+eureka:
+  client: 
+    service-url: 
+      defaultZone: http://localhost:8761/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
