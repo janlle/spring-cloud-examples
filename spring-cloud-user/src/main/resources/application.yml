@@ -10,7 +10,8 @@ eureka:
     #  instance:
     #    ip-address: localhost
     #    instance-id: ${spring.application.name}:${server.port}
-
+    registry-fetch-interval-seconds: 10
+  instance:
     metadata-map:       #自定义元数据
       zone: ABC
       ruolin: BBC
