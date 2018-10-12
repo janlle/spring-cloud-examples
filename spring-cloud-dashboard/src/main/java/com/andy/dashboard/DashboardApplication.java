@@ -10,21 +10,35 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * <p>
+ *
+ * @author Leone
+ * @since 2018-10-12
+ **/
 @RestController
 @EnableHystrix
 @EnableHystrixDashboard
 @SpringCloudApplication
-public class DashboardApp {
+public class DashboardApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DashboardApp.class, args);
+        SpringApplication.run(DashboardApplication.class, args);
+    }
+
+
+    @Bean
+    public HystrixMetricsStreamServlet hystrixMetricsStreamServlet(){
+        return new HystrixMetricsStreamServlet();
     }
 
     @Bean
-    public ServletRegistrationBean getServlet() {
-        HystrixMetricsStreamServlet streamServlet = new HystrixMetricsStreamServlet();
-        ServletRegistrationBean registrationBean = new ServletRegistrationBean(streamServlet);
+    public ServletRegistrationBean registration(HystrixMetricsStreamServlet servlet){
+        ServletRegistrationBean registrationBean = new ServletRegistrationBean();
+        registrationBean.setServlet(servlet);
+        //是否启用该registrationBean
         registrationBean.setLoadOnStartup(1);
+        registrationBean.setEnabled(true);
         registrationBean.addUrlMappings("/hystrix.stream");
         registrationBean.setName("HystrixMetricsStreamServlet");
         return registrationBean;

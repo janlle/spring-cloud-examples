@@ -1,20 +1,23 @@
+server:
+  port: 8888
+
 spring:
   application:
     name: spring-cloud-dashboard
 
 eureka:
   client:
-    register-with-eureka: false
-    fetch-registry: false
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-  dashboard:    #首页是否可以访问
-    enabled: true
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
 management:
-#  server:
-#    servlet:
-#      context-path: /
   endpoints:
     web:
       exposure:
         include: "*"
+      base-path: /monitor
+  endpoint:
+    health:
+      show-details: always
