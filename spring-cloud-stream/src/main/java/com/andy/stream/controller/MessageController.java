@@ -12,7 +12,7 @@ import java.util.Date;
 
 /**
  * @author Leone
- * @since 2018-06-23 12:59
+ * @since 2018-06-23
  **/
 @Slf4j
 @RestController
