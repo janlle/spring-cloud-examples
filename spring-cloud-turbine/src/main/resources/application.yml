@@ -1,6 +1,6 @@
 spring:
   application:
-    name: spring-cloud-hystrix-turbine
+    name: spring-cloud-turbine
 server:
   port: 8767
 
