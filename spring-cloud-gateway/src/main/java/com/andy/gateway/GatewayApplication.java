@@ -5,11 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author Leone
- * @since 2018-06-21 22:23
+ * @since 2018-06-21
  **/
 @SpringBootApplication
-public class GatewayApp {
+public class GatewayApplication {
     public static void main(String[] args) {
-        SpringApplication.run(GatewayApp.class, args);
+        SpringApplication.run(GatewayApplication.class, args);
     }
 }
