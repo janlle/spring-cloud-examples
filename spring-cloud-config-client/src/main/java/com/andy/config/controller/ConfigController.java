@@ -1,4 +1,4 @@
-package com.andy.order.config.controller;
+package com.andy.config.controller;
 
 
 import lombok.extern.slf4j.Slf4j;
