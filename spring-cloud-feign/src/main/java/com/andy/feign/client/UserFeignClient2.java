@@ -10,7 +10,7 @@ import org.springframework.cloud.openfeign.FeignClient;
  * @author Leone
  * @since 2017-11-13
  **/
-@FeignClient(name = "spring-cloud-provider", configuration = ConfigurationFeign1.class)
+@FeignClient(name = "spring-cloud-user", configuration = ConfigurationFeign1.class)
 public interface UserFeignClient2 {
 
     @RequestLine("GET /user/{userId}")
