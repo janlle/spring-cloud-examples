@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author Leone
  * @since 2018-03-13
  **/
-@FeignClient("spring-cloud-provider")
+@FeignClient("spring-cloud-user")
 public interface UserFeignClient {
 
 //	不支持getMapping和postMapping并且pathVariable的value属性必须填写

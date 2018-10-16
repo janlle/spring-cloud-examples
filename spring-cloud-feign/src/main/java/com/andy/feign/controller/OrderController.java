@@ -21,6 +21,12 @@ public class OrderController {
     @Autowired
     private UserFeignClient userFeignClient;
 
+    @Autowired
+    private UserFeignClient1 userFeignClient1;
+
+    @Autowired
+    private UserFeignClient2 userFeignClient2;
+
     @GetMapping("/user/{id}")
     public User user(@PathVariable("id") int id) {
         User user = userFeignClient.user(id);
@@ -31,12 +37,6 @@ public class OrderController {
     public User user(@RequestBody User user) {
         return userFeignClient.user(user);
     }
-
-    @Autowired
-    private UserFeignClient1 userFeignClient1;
-
-    @Autowired
-    private UserFeignClient2 userFeignClient2;
 
 
     @GetMapping("/users/{id}")
