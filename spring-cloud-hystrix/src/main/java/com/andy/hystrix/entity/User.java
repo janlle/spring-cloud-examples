@@ -5,6 +5,12 @@ import lombok.Data;
 
 import java.util.Date;
 
+/**
+ * <p>
+ *
+ * @author Leone
+ * @since 2018-02-16
+ **/
 @Data
 @ApiModel
 public class User {
