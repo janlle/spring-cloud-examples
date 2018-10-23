@@ -1,4 +1,4 @@
-package com.andy.cloud.controller;
+package com.andy.upload.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
