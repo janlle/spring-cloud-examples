@@ -4,10 +4,6 @@ spring:
   output:
     ansi:
       enabled: detect
-  security:
-    user:
-      name: user
-      password: password
 server:
   port: 8761
 
@@ -17,55 +13,5 @@ eureka:
     fetch-registry: false
     service-url:
       defaultZone: http://localhost:8761/eureka
-  dashboard:    #首页是否课可以访问
+  dashboard:
     enabled: true
-  instance:
-#    path: /x
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-#datacenter: cloud
-#environment: product
-
-
-# eureka 高可用
-
----
-spring:
-  profiles: peer1
-server:
-  port: 8761
-eureka:
-  instance:
-    hostname: peer1
-  client:
-    serviceUrl:
-      defaultZone: http://peer2:8762/eureka/,http://peer3:8763/eureka/
-
-
----
-spring:
-  profiles: peer2
-server:
-  port: 8762
-eureka:
-  instance:
-    hostname: peer2
-  client:
-    serviceUrl:
-      defaultZone: http://peer1:8761/eureka/,http://peer3:8763/eureka/
-
-
----
-spring:
-  profiles: peer3
-server:
-  port: 8763
-eureka:
-  instance:
-    hostname: peer3
-  client:
-    serviceUrl:
-      defaultZone: http://peer1:8761/eureka/,http://peer2:8762/eureka/
