@@ -37,6 +37,8 @@
         <module>spring-cloud-stream</module>
         <module>spring-cloud-admin-server</module>
         <module>spring-cloud-admin-client</module>
+        <module>spring-cloud-sleuth</module>
+        <module>spring-cloud-consul</module>
     </modules>
 
     <!--<dependencyManagement>-->
