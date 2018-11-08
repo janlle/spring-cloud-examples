@@ -3,7 +3,10 @@ package com.andy.feign.controller;
 import com.andy.feign.client.UserFeignClient;
 import com.andy.feign.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author Leone
@@ -22,8 +25,8 @@ public class OrderController {
 //    @Autowired
 //    private UserFeignClient2 userFeignClient2;
 
-    @GetMapping("/user/list")
-    public User list() {
+    @GetMapping(value = "/user/list", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public List<User> list() {
         return userFeignClient.list();
     }
 

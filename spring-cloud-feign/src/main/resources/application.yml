@@ -11,5 +11,5 @@ eureka:
   instance:
     appname: feign
 ribbon:
-  eureka:
+  eager-load:
     enabled: false
