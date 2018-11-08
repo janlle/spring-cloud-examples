@@ -5,17 +5,14 @@ import com.andy.feign.client.UserFeignClient1;
 import com.andy.feign.client.UserFeignClient2;
 import com.andy.feign.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author Leone
  * @since 2017-10-22
  **/
 @RestController
+@RequestMapping("/feign")
 public class OrderController {
 
     @Autowired
@@ -33,7 +30,7 @@ public class OrderController {
         return user;
     }
 
-    @PostMapping(value = "/user")
+    @PostMapping("/user")
     public User user(@RequestBody User user) {
         return userFeignClient.user(user);
     }
@@ -41,8 +38,7 @@ public class OrderController {
 
     @GetMapping("/users/{id}")
     public User get(@PathVariable("id") int id) {
-        User user = userFeignClient2.user(id);
-        return user;
+        return userFeignClient2.user(id);
     }
 
     @PostMapping("/users")

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: spring-cloud-eureka
+    name: eureka
   output:
     ansi:
       enabled: detect
