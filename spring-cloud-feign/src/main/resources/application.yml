@@ -10,3 +10,6 @@ eureka:
       defaultZone: http://localhost:8761/eureka
   instance:
     appname: feign
+ribbon:
+  eureka:
+    enabled: false
