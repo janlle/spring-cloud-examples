@@ -1,6 +1,5 @@
 package com.andy.feign.entity;
 
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 import java.util.Date;
@@ -10,7 +9,6 @@ import java.util.Date;
  * @since 2018-02-13
  **/
 @Data
-@ApiModel
 public class User {
 
     private Integer userId;
