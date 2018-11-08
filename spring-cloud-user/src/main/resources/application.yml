@@ -1,6 +1,5 @@
 server:
   port: 8001
-
 eureka:
   client:
     service-url:
@@ -23,10 +22,6 @@ eureka:
 spring:
   application:
     name: spring-cloud-user
-  jackson:
-    date-format: yyyy-MM-dd HH:mm:ss
-    time-zone: UTC
-
 # spring boot 2.x actuator 的配置
 management:
   endpoints:
