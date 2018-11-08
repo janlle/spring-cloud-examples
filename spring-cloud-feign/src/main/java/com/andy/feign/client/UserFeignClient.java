@@ -1,8 +1,9 @@
 package com.andy.feign.client;
 
 import com.andy.feign.entity.User;
+import feign.Param;
+import feign.RequestLine;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,10 +22,14 @@ public interface UserFeignClient {
 //	@RequestMapping(value="/postUser",method=RequestMethod.POST)
 //	User postUser(@RequestBody User user);
 
-	@RequestMapping(value = "/user/{userId}", method = RequestMethod.GET)
-    User user(@PathVariable("userId")Integer userId);
+    @RequestLine("GET /user/{id}")
+    User user(@Param("id") Integer id);
 
-	@RequestMapping(value = "/user", method = RequestMethod.POST)
+    @RequestLine("GET /user/list")
+    User list();
+
+    @RequestLine("POST /user")
     User user(@RequestBody User user);
+
 
 }

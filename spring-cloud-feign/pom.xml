@@ -70,7 +70,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.0.3.RELEASE</version>
                 <configuration>
-                    <mainClass>com.andy.FeignApplication</mainClass>
+                    <mainClass>com.andy.feign.FeignApplication</mainClass>
                     <layout>ZIP</layout>
                 </configuration>
                 <executions>

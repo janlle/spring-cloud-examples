@@ -1,15 +1,21 @@
-package com.andy.user.entity;
+package com.andy.feign.entity;
 
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;
 
+/**
+ * <p>
+ *
+ * @author Leone
+ * @since 2017-11-08
+ **/
 @Slf4j
 public class EntityFactory {
 
     private Random random = new Random();
 
-    private static Map<Integer, User> userMap = new HashMap<>();
+    private static Map<Integer, User> userMap;
 
     static {
         for (int i = 0; i < 100; i++) {

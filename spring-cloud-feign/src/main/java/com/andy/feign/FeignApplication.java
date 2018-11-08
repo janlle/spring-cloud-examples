@@ -1,4 +1,4 @@
-package com.andy;
+package com.andy.feign;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
