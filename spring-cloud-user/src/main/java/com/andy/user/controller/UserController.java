@@ -5,13 +5,13 @@ import com.andy.user.entity.User;
 import com.andy.user.pojo.UserEditVO;
 import com.andy.user.pojo.UserVO;
 import com.andy.user.service.UserService;
-import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -61,21 +61,29 @@ public class UserController {
 
     @ApiOperation("列表")
     @GetMapping("/list")
-    public List<User> list() {
+    public List<User> list(@RequestHeader HttpHeaders headers) {
+        log.info("request header:{}", headers.get("name-Type"));
+        log.info("request header:{}", headers.get("User-Agent"));
+        log.info("request header:{}", headers.get("Accept"));
+        headers.getAccessControlAllowHeaders().forEach(System.out::println);
         log.info("user service list");
         return EntityFactory.getUsers(10);
     }
 
     @ApiOperation("获取某个")
-    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public User find(@PathVariable("id") Long id) {
+    @GetMapping("/{id}")
+    public User find(@PathVariable("id") Long id, @RequestHeader HttpHeaders headers) {
+        log.info("request header:{}", headers.get("name-Type"));
+        log.info("request header:{}", headers.get("a"));
+        log.info("request header:{}", headers.get("b"));
+        log.info("request header:{}", headers.get("c"));
         log.info("user service find");
         return EntityFactory.getUser(id);
     }
 
     @ApiOperation("删除")
-    @DeleteMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public void delete(Long userId) {
+    @DeleteMapping
+    public void delete(@RequestParam("userId") Long userId) {
         log.info("user service delete");
         userService.deleted(userId);
     }
