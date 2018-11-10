@@ -3,6 +3,12 @@ package com.andy.user.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * <p> 
+ *
+ * @author Leone
+ * @since 2017-11-09
+ **/
 public class User implements Serializable {
 
     private Long userId;
