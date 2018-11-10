@@ -9,11 +9,11 @@ public class EntityFactory {
 
     private Random random = new Random();
 
-    private static Map<Integer, User> userMap = new HashMap<>();
+    private static Map<Long, User> userMap = new HashMap<>();
 
     static {
-        for (int i = 0; i < 100; i++) {
-            userMap.put(i, new User((long) i, "jack", getNum(12), "hello " + getNum(6), 18, new Date(), false));
+        for (long i = 0; i < 100; i++) {
+            userMap.put(i, new User(i, "jack", getNum(12), "hello " + getNum(6), 18, new Date(), false));
         }
     }
 
@@ -40,7 +40,7 @@ public class EntityFactory {
         return new User(Long.valueOf(getNum(6)), "andy", getNum(12), "hello my friend i am a boy " + getNum(6), 18, new Date(), false);
     }
 
-    public static User getUser(Integer userId) {
+    public static User getUser(Long userId) {
         return userMap.get(userId);
     }
 

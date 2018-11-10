@@ -21,7 +21,7 @@ eureka:
 
 spring:
   application:
-    name: spring-cloud-user
+    name: user
 # spring boot 2.x actuator 的配置
 management:
   endpoints:
