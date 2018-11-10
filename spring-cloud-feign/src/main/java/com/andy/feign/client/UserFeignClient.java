@@ -1,5 +1,6 @@
 package com.andy.feign.client;
 
+import com.andy.feign.config.FeignConfiguration1;
 import com.andy.feign.entity.User;
 import com.andy.feign.pojo.UserAddVO;
 import com.andy.feign.pojo.UserEditVO;
@@ -16,7 +17,7 @@ import java.util.Map;
  * @author Leone
  * @since 2018-03-13
  **/
-@FeignClient(value = "user"/*, url = "http://127.0.0.1/user"*/)
+@FeignClient(value = "user"/*, url = "http://127.0.0.1/user"*//*, configuration = FeignConfiguration1.class*/)
 public interface UserFeignClient {
 
     @RequestLine("GET /user/{id}")
