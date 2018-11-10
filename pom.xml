@@ -35,6 +35,7 @@
         <module>spring-cloud-config-client</module>
         <module>spring-cloud-config-server-bus</module>
         <module>spring-cloud-stream</module>
+        <module>spring-cloud-order</module>
         <module>spring-cloud-admin-server</module>
         <module>spring-cloud-admin-client</module>
         <module>spring-cloud-sleuth</module>

@@ -22,6 +22,12 @@ eureka:
 spring:
   application:
     name: user
+  servlet:
+    multipart:
+      max-file-size: 120MB
+      max-request-size: 20MB
+
+
 # spring boot 2.x actuator 的配置
 management:
   endpoints:
