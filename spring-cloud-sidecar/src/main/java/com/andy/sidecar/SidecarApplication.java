@@ -1,4 +1,4 @@
-package com.andy.order.config;
+package com.andy.sidecar;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,8 +6,8 @@ import org.springframework.cloud.netflix.sidecar.EnableSidecar;
 
 @EnableSidecar
 @SpringBootApplication
-public class SidecarApp {
+public class SidecarApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(SidecarApp.class, args);
+		SpringApplication.run(SidecarApplication.class, args);
 	}
 }

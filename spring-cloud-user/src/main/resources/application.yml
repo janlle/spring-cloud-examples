@@ -38,3 +38,7 @@ management:
   endpoint:
     health:
       show-details: always
+
+
+swagger:
+  show: true
