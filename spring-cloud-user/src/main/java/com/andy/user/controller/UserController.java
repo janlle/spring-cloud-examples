@@ -11,14 +11,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.MediaType;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -99,5 +98,25 @@ public class UserController {
         }
 
     }
+
+    /**
+     * 上传文件
+     * 有界面的测试：http://localhost:8050/index.html
+     * 使用命令：curl -F "file=@文件全名" localhost:8050/upload
+     * ps.该示例比较简单，没有做IO异常、文件大小、文件非空等处理
+     *
+     * @param file 待上传的文件
+     * @return 文件在服务器上的绝对路径
+     * @throws IOException IO异常
+     */
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    public @ResponseBody
+    String handleFileUpload(@RequestParam MultipartFile file) throws IOException {
+        byte[] bytes = file.getBytes();
+        File fileToSave = new File(Objects.requireNonNull(file.getOriginalFilename()));
+        FileCopyUtils.copy(bytes, fileToSave);
+        return fileToSave.getAbsolutePath();
+    }
+
 
 }

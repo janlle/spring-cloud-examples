@@ -9,14 +9,14 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * @author Leone
- * @since 2017-11-22 22:39
+ * @since 2017-11-22
  **/
 @RibbonClient(value = "spring-cloud-provider")
 @SpringCloudApplication
-public class SpringCloudApp {
+public class RibbonHystrixApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringCloudApp.class, args);
+		SpringApplication.run(RibbonHystrixApplication.class, args);
 	}
 	
 	@Bean
