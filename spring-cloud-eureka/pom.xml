@@ -43,15 +43,14 @@
     </dependencies>
 
     <build>
-        <finalName>spring-docker</finalName>
+        <finalName>eureka-service</finalName>
         <plugins>
-
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.0.0</version>
                 <configuration>
-                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                    <imageName>${docker.image.prefix}/${project.build.finalName}</imageName>
                     <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
                     <dockerDirectory>src/main/docker</dockerDirectory>
                     <baseImage>java</baseImage>

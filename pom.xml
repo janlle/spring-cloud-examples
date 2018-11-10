@@ -24,10 +24,8 @@
         <module>spring-cloud-ribbon-hystrix</module>
         <module>spring-cloud-hystrix</module>
         <module>spring-cloud-zuul</module>
-        <module>spring-cloud-zuul-fallback</module>
         <module>spring-cloud-dashboard</module>
         <module>spring-cloud-turbine</module>
-        <module>spring-cloud-file-upload</module>
         <module>spring-cloud-gateway</module>
         <module>spring-cloud-bus</module>
         <module>spring-cloud-sidecar</module>

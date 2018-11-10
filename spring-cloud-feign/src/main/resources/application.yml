@@ -9,7 +9,7 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
   instance:
-    appname: feign
+    appname: feign-service
 ribbon:
   eager-load:
     enabled: false
