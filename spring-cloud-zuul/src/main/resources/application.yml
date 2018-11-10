@@ -1,36 +1,39 @@
 server:
-  port: 10001
+  port: 10000
+
+  #Demo1的路由配置
+  #  zuul.routes.demo1.path=/**/demo1/**
+  #  zuul.routes.demo1.serviceId=reborn-demo1-server
+  #  zuul.routes.demo1.sensitiveHeaders="*"
+
 zuul:
   routes:
-    provider:
-      path: /provider/**
-      serviceId: spring-cloud-provider
-  ignored-patterns:
-    - /list
+    user:
+      path: /**
+      serviceId: user
+      sensitiveHeaders: Cookie,Set-Cookie,Authorization
+#      url: http://127.0.0.1:8001
+#  ignored-patterns:
+#    - /list
   #访问网关的前缀
   prefix: /api
-  #去掉前缀默认为true
-  strip-prefix: false
+  #去掉前缀为true默认false
+  strip-prefix: true
+
 spring:
   application:
-    name: api-gateway
-  cloud:
-    config:
-      disconver:
-        enable: true
-        service-id: api-gateway
+    name: gateway
+
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
-
+  instance:
+    appname: zuul-service
 #hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
 #ribbon:
 #  ConnectTimeout: 3000
 #  ReadTimeout: 60000
-
-
-
 
 
 
