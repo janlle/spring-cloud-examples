@@ -7,17 +7,20 @@ import com.andy.user.pojo.UserVO;
 import com.andy.user.service.UserService;
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.MediaType;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
-import java.util.Objects;
 
 
 /**
@@ -27,6 +30,7 @@ import java.util.Objects;
  * @since 2018-03-10
  **/
 @Slf4j
+@Api(tags = "用户模块")
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -40,12 +44,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/instance")
-    public String serviceUrl() {
-        InstanceInfo instance = eurekaClient.getNextServerFromEureka("USER-SERVICE", false);
-        return instance.getHomePageUrl();
-    }
+//    @ApiOperation("详情")
+//    @GetMapping("/instance")
+//    public String serviceUrl() {
+//        InstanceInfo instance = eurekaClient.getNextServerFromEureka("USER-SERVICE", false);
+//        return instance.getHomePageUrl();
+//    }
 
+    @ApiOperation("info")
     @GetMapping("/info")
     public List<String> serviceInfo() {
         log.info("user service-A");
@@ -53,36 +59,44 @@ public class UserController {
         return discoveryClient.getServices();
     }
 
+    @ApiOperation("列表")
     @GetMapping("/list")
     public List<User> list() {
+        log.info("user service list");
         return EntityFactory.getUsers(10);
     }
 
+    @ApiOperation("获取某个")
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public User user(@PathVariable("id") Long id) {
+    public User find(@PathVariable("id") Long id) {
+        log.info("user service find");
         return EntityFactory.getUser(id);
     }
 
+    @ApiOperation("删除")
     @DeleteMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public void delete(Long userId) {
         log.info("user service delete");
         userService.deleted(userId);
     }
 
+    @ApiOperation("更新")
     @PutMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public UserVO update(@RequestBody UserEditVO user) {
-        log.info("user service put");
+        log.info("user service update");
         return userService.update(user);
     }
 
+    @ApiOperation("保存")
     @PostMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public UserVO save(@RequestBody UserVO user) {
-        log.info("user service post");
+        log.info("user service save");
         return userService.save(user);
     }
 
+    @ApiOperation("文件上传")
     @PostMapping("/upload")
-    public void upload(MultipartFile file) throws IOException {
+    public String upload(MultipartFile file) throws IOException {
         if (null != file) {
             String fileName = file.getOriginalFilename();
             log.info("fileName:{}", fileName);
@@ -95,8 +109,9 @@ public class UserController {
             }
             outputStream.close();
             inputStream.close();
+            return fileName;
         }
-
+        return "error";
     }
 
     /**
@@ -109,14 +124,14 @@ public class UserController {
      * @return 文件在服务器上的绝对路径
      * @throws IOException IO异常
      */
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    /*@PostMapping("/upload")
     public @ResponseBody
     String handleFileUpload(@RequestParam MultipartFile file) throws IOException {
         byte[] bytes = file.getBytes();
         File fileToSave = new File(Objects.requireNonNull(file.getOriginalFilename()));
         FileCopyUtils.copy(bytes, fileToSave);
         return fileToSave.getAbsolutePath();
-    }
+    }*/
 
 
 }
