@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  * @since 2017-11-13
  **/
 @Configuration
-public class ConfigurationFeign2 {
+public class FeignConfiguration2 {
 
     @Bean
     public BasicAuthRequestInterceptor basicAuthRequestInterceptor() {

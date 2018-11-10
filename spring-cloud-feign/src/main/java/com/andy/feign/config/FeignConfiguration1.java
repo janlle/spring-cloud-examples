@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  * @since 2017-11-19
  **/
 @Configuration
-public class ConfigurationFeign1 {
+public class FeignConfiguration1 {
 
     @Bean
     public Contract feignContract() {
