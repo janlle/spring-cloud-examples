@@ -2,7 +2,7 @@ server:
   port: 8105
 spring:
   application:
-    name: feign
+    name: mc-feign
 
 eureka:
   client: 

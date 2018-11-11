@@ -1,19 +1,16 @@
 package com.andy.hystrix.controller;
 
-import com.andy.hystrix.config.UserFeignClient1;
-import com.andy.hystrix.config.UserFeignClient2;
+//import com.andy.hystrix.config.UserFeignClient;
 import com.andy.hystrix.entity.EntityFactory;
 import com.andy.hystrix.entity.User;
 import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Date;
 import java.util.Random;
 
 /**
@@ -25,11 +22,8 @@ import java.util.Random;
 @DefaultProperties(defaultFallback = "defaultFallback")
 public class HystrixController {
 
-    @Autowired
-    private UserFeignClient1 userFeignClient1;
-
-    @Autowired
-    private UserFeignClient2 userFeignClient2;
+//    @Autowired
+//    private UserFeignClient userFeignClient;
 
     @Autowired
     private RestTemplate restTemplate;
@@ -45,27 +39,24 @@ public class HystrixController {
 //                    @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "2"), //若干10s一个窗口内失败三次, 则达到触发熔断的最少请求量
 //                    @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "30000") //断路30s后尝试执行, 默认为5s
 //            })
-    @GetMapping("/user/{userId}")
-    public User user(@PathVariable("userId") Integer userId) throws Exception {
-//        Thread.sleep(2000);
-        User user = userFeignClient2.user(userId);
-        return user;
-//        return new User(2, new Date(), "aaa", "bb", 22000.00);
-    }
-
-    public User fallbackMethod(Integer userId) {
-        log.info("服务降级");
-        return EntityFactory.getUser();
-    }
-
-    public User defaultFallbackMethod(Integer userId) {
-        log.info("服务降级");
-        return EntityFactory.getUser();
-    }
-
-    @GetMapping("/user")
-    public User find() {
-        return restTemplate.getForObject("http://spring-cloud-provider/user/" + new Random().nextInt(100), User.class);
-    }
+//    @GetMapping("/user/{userId}")
+//    public User user(@PathVariable("userId") Long userId) throws Exception {
+//        return userFeignClient.find(userId);
+//    }
+//
+//    public User fallbackMethod(Integer userId) {
+//        log.info("服务降级");
+//        return EntityFactory.getUser();
+//    }
+//
+//    public User defaultFallbackMethod(Integer userId) {
+//        log.info("服务降级");
+//        return EntityFactory.getUser();
+//    }
+//
+//    @GetMapping("/user")
+//    public User find() {
+//        return restTemplate.getForObject("http://user/user/" + new Random().nextInt(100), User.class);
+//    }
 
 }

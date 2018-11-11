@@ -22,7 +22,7 @@ zuul:
 
 spring:
   application:
-    name: gateway
+    name: mc-gateway
 
 eureka:
   client:
