@@ -3,39 +3,42 @@ server:
 
 spring:
   application:
-    name: spring-cloud-config-hystrix
+    name: hystrix-service
 eureka:
   client: 
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
+  instance:
+    appname: hystrix
 
-#新版本中需要独立设置开启feign对hystrix的支持，旧版本中默认开启对hystrix支持
+# 新版本中需要独立设置开启feign对hystrix的支持，旧版本中默认开启对hystrix支持
 feign:
   hystrix:
     enabled: true
-
+#
 management:
   endpoints:
     web:
       exposure:
-        # 开放所有页面节点  默认只开启了health、info两个节点
         include: "*"
-#  server:
-#    port: 9999
 
 # 配置hystrix
-hystrix:
-  threadpool:
-    default:
-      coreSize: 10  #线程池核心线程数
-  command:
-    #IService#hello(): 设置某一个接口 default: 设置全部接口
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 1000 #超时时间
-      circuitBreaker:
-        requestVolumeThreshold: 3  #当在配置时间窗口内达到此数量后，进行短路。默认20个
-        sleepWindowInMilliseconds: 5  #短路多久以后开始尝试是否恢复，默认5s
-        errorThresholdPercentage: 50%  #出错百分比阈值，当达到此阈值后，开始短路。默认50%
+#hystrix:
+#  threadpool:
+#    default:
+#      coreSize: 10  #线程池核心线程数
+#  metrics:
+#    polling-interval-ms: 2000
+#    enabled: true
+#  command:
+#    #IService#hello(): 设置某一个接口 default: 设置全部接口
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 1000 #超时时间
+#      circuitBreaker:
+#        requestVolumeThreshold: 3  #当在配置时间窗口内达到此数量后，进行短路。默认20个
+#        sleepWindowInMilliseconds: 5  #短路多久以后开始尝试是否恢复，默认5s
+#        errorThresholdPercentage: 50%  #出错百分比阈值，当达到此阈值后，开始短路。默认50%
+hystrix
