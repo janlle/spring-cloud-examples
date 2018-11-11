@@ -1,10 +1,12 @@
 package com.andy.hystrix.controller;
 
-import com.andy.hystrix.entity.User;
 import com.andy.hystrix.config.UserFeignClient1;
 import com.andy.hystrix.config.UserFeignClient2;
+import com.andy.hystrix.entity.EntityFactory;
+import com.andy.hystrix.entity.User;
 import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +23,7 @@ import java.util.Random;
 @Slf4j
 @RestController
 @DefaultProperties(defaultFallback = "defaultFallback")
-public class OrderController {
+public class HystrixController {
 
     @Autowired
     private UserFeignClient1 userFeignClient1;
@@ -32,7 +34,7 @@ public class OrderController {
     @Autowired
     private RestTemplate restTemplate;
 
-//    @HystrixCommand(
+    //    @HystrixCommand(
 //            fallbackMethod = "fallbackMethod",
 //            threadPoolProperties = {
 //                    @HystrixProperty(name = "coreSize", value = "10"),//10个核心线程池,超过20个的队列外的请求被拒绝; 当一切都是正常的时候，线程池一般仅会有1到2个线程激活来提供服务
@@ -53,16 +55,16 @@ public class OrderController {
 
     public User fallbackMethod(Integer userId) {
         log.info("服务降级");
-        return new User(12, new Date(), "james", "password", "15687793324");
+        return EntityFactory.getUser();
     }
 
     public User defaultFallbackMethod(Integer userId) {
         log.info("服务降级");
-        return new User(12, new Date(), "james", "password", "15687793324");
+        return EntityFactory.getUser();
     }
 
     @GetMapping("/user")
-    public User one() {
+    public User find() {
         return restTemplate.getForObject("http://spring-cloud-provider/user/" + new Random().nextInt(100), User.class);
     }
 
