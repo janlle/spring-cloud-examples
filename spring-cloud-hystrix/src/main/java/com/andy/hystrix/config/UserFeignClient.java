@@ -21,7 +21,7 @@ import java.util.Map;
  * @author Leone
  * @since 2018-02-16
  **/
-@FeignClient(value = "user"/*, url = "http://127.0.0.1", fallbackFactory = HystrixClientFallbackFactory.class*/)
+@FeignClient(value = "mc-user", url = "http://127.0.0.1:8001"/*, fallbackFactory = HystrixClientFallbackFactory.class*/)
 public interface UserFeignClient {
 
     @RequestLine("GET /user/{id}")

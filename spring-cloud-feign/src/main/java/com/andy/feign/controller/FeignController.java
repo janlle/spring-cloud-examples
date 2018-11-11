@@ -27,12 +27,6 @@ public class FeignController {
     @Autowired
     private UserFeignClient userFeignClient;
 
-//    @Autowired
-//    private UserFeignClient1 userFeignClient1;
-//
-//    @Autowired
-//    private UserFeignClient2 userFeignClient2;
-
     @GetMapping(value = "/user/list", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public List<User> list() {
         return userFeignClient.list();
