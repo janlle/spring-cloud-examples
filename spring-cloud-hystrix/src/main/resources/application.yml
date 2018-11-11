@@ -3,13 +3,13 @@ server:
 
 spring:
   application:
-    name: hystrix-service
+    name: mc-hystrix
 eureka:
   client: 
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://39.108.125.41:8761/eureka
   instance:
-    appname: hystrix
+    appname: hystrix-service
 
 # 新版本中需要独立设置开启feign对hystrix的支持，旧版本中默认开启对hystrix支持
 feign:
@@ -41,4 +41,3 @@ management:
 #        requestVolumeThreshold: 3  #当在配置时间窗口内达到此数量后，进行短路。默认20个
 #        sleepWindowInMilliseconds: 5  #短路多久以后开始尝试是否恢复，默认5s
 #        errorThresholdPercentage: 50%  #出错百分比阈值，当达到此阈值后，开始短路。默认50%
-hystrix

@@ -4,7 +4,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://39.108.125.41:8761/eureka
-      instance:
+#      instance:
         # 获取实例的ip地址
 #        ip-address: 127.0.0.1
         # 此实例注册到eureka服务端的唯一的实例ID,其组成为${spring.application.name}:${spring.application.instance_id:${random.value}}
@@ -24,7 +24,7 @@ eureka:
 
 spring:
   application:
-    name: user
+    name: mc-user
   servlet:
     multipart:
       max-file-size: 120MB
