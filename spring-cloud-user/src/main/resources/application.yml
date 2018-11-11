@@ -3,18 +3,21 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
-    #  instance:
-    #    ip-address: localhost
-    #    instance-id: ${spring.application.name}:${server.port}
+      defaultZone: http://39.108.125.41:8761/eureka
+      instance:
+        # 获取实例的ip地址
+#        ip-address: 127.0.0.1
+        # 此实例注册到eureka服务端的唯一的实例ID,其组成为${spring.application.name}:${spring.application.instance_id:${random.value}}
+#        instance-id: ${spring.application.name}:${server.port}
     registry-fetch-interval-seconds: 10
   instance:
-    metadata-map:       #自定义元数据
+    # 自定义元数据
+    metadata-map:
       zone: ABC
-      ruolin: BBC
+      test: BBC
     lease-renewal-interval-in-seconds: 5
     prefer-ip-address: true
-    appname: USER-SERVICE
+    appname: user-service
     hostname: localhost
     status-page-url-path: /health
     namespace: eureka
@@ -27,7 +30,6 @@ spring:
       max-file-size: 120MB
       max-request-size: 20MB
 
-
 # spring boot 2.x actuator 的配置
 management:
   endpoints:
@@ -38,7 +40,6 @@ management:
   endpoint:
     health:
       show-details: always
-
 
 swagger:
   show: true
