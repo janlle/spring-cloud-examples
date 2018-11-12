@@ -17,7 +17,7 @@ import java.util.Map;
  * @author Leone
  * @since 2018-03-13
  **/
-@FeignClient(value = "user"/*, url = "http://127.0.0.1/user"*//*, configuration = FeignConfiguration1.class*/)
+@FeignClient(value = "mc-user"/*, url = "http://127.0.0.1/user"*//*, configuration = FeignConfiguration1.class*/)
 public interface UserFeignClient {
 
     @RequestLine("GET /user/{id}")
