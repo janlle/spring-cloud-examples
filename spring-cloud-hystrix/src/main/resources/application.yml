@@ -15,29 +15,34 @@ eureka:
 feign:
   hystrix:
     enabled: true
-#
+
+# spring boot 2.x actuator 的配置
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+      base-path: /monitor
+  endpoint:
+    health:
+      show-details: always
 
 # 配置hystrix
-#hystrix:
-#  threadpool:
-#    default:
-#      coreSize: 10  #线程池核心线程数
-#  metrics:
-#    polling-interval-ms: 2000
-#    enabled: true
-#  command:
-#    #IService#hello(): 设置某一个接口 default: 设置全部接口
-#    default:
-#      execution:
-#        isolation:
-#          thread:
-#            timeoutInMilliseconds: 1000 #超时时间
-#      circuitBreaker:
-#        requestVolumeThreshold: 3  #当在配置时间窗口内达到此数量后，进行短路。默认20个
-#        sleepWindowInMilliseconds: 5  #短路多久以后开始尝试是否恢复，默认5s
-#        errorThresholdPercentage: 50%  #出错百分比阈值，当达到此阈值后，开始短路。默认50%
+hystrix:
+  threadpool:
+    default:
+      coreSize: 10  #线程池核心线程数
+  metrics:
+    polling-interval-ms: 2000
+    enabled: true
+  command:
+    #IService#hello(): 设置某一个接口 default: 设置全部接口
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000 #超时时间
+      circuitBreaker:
+        requestVolumeThreshold: 3  #当在配置时间窗口内达到此数量后，进行短路。默认20个
+        sleepWindowInMilliseconds: 5  #短路多久以后开始尝试是否恢复，默认5s
+        errorThresholdPercentage: 50%  #出错百分比阈值，当达到此阈值后，开始短路。默认50%
