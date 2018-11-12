@@ -2,22 +2,14 @@ package com.andy.hystrix.controller;
 
 //import com.andy.hystrix.config.UserFeignClient;
 
-import com.andy.hystrix.config.UserFeignClient;
 import com.andy.hystrix.entity.User;
-import com.andy.hystrix.pojo.UserAddVO;
-import com.andy.hystrix.pojo.UserEditVO;
-import com.andy.hystrix.pojo.UserVO;
-import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
+import com.andy.hystrix.service.RibbonService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author Leone
@@ -25,14 +17,12 @@ import java.util.Map;
  **/
 @Slf4j
 @RestController
+@RequestMapping("/hystrix")
 //@DefaultProperties(defaultFallback = "defaultFallback")
 public class HystrixController {
 
-//    @Autowired
-//    private UserFeignClient userFeignClient;
-
     @Autowired
-    private RestTemplate restTemplate;
+    private RibbonService ribbonService;
 
     //    @HystrixCommand(
 //            fallbackMethod = "fallbackMethod",
@@ -50,54 +40,10 @@ public class HystrixController {
 //        return userFeignClient.find(userId);
 //    }
 //
-//    public User fallbackMethod(Integer userId) {
-//        log.info("服务降级");
-//        return EntityFactory.getUser();
-//    }
-//
-//    public User defaultFallbackMethod(Integer userId) {
-//        log.info("服务降级");
-//        return EntityFactory.getUser();
-//    }
-//
-//    @GetMapping("/user")
-//    public User find() {
-//        return restTemplate.getForObject("http://user/user/" + new Random().nextInt(100), User.class);
-//    }
-
-//    @GetMapping(value = "/user/list", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-//    public List<User> list() {
-//        return userFeignClient.list();
-//    }
-//
-//    @GetMapping("/user/{id}")
-//    public User user(@PathVariable("id") Long id) {
-//
-//        return userFeignClient.find(id);
-//    }
-//
-//    @PutMapping("/user")
-//    public UserVO update(@RequestBody UserEditVO user) {
-//        return userFeignClient.update(user);
-//    }
-//
-//    @PostMapping("/user")
-//    public UserVO save(@RequestBody UserAddVO user) {
-//        return userFeignClient.save(user);
-//    }
-//
-//    @DeleteMapping("/user")
-//    public void delete(@RequestParam("userId") Long userId) {
-//        log.info("user feign delete");
-//        Map<String, Long> param = new HashMap<>();
-//        param.put("userId", userId);
-//        userFeignClient.delete(param);
-//    }
-//
-//    @PostMapping("/user/upload")
-//    public String upload(MultipartFile file) {
-//        return userFeignClient.upload(file);
-//    }
+    @GetMapping("/user/{userId}")
+    public User fallbackMethod(@PathVariable("userId") Long userId) {
+        return ribbonService.find(userId);
+    }
 
 
 }
