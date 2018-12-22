@@ -1,23 +1,25 @@
 server:
-  port: 8005
+  port: 10000
 
 spring:
   application:
-    name: user-service
+    name: gateway-service
   cloud:
-    consul:
-      host: 192.168.1.204
-      port: 8500
-      discovery:
-        ip-address: ${HOST_ADDRESS:localhost}
-        port: ${SERVER_PORT:${server.port}}
-        healthCheckPath: /health
-        healthCheckInterval: 15s
-        instance-id: user-${server.port}
-        service-name: user
     gateway:
       routes:
       - id: header_route
-        uri: http://example.org
+        uri: http://baidu.com
         predicates:
         - Header=X-Request-Id, \d+
+        - Path=/spring-cloud
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    registry-fetch-interval-seconds: 10
+  instance:
+    lease-renewal-interval-in-seconds: 5
+    prefer-ip-address: true
+    appname: MICRO-SERVICE-GATEWAY
+    status-page-url-path: /health
