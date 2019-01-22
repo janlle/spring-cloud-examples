@@ -39,7 +39,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-//    @ApiOperation("详情")
 //    @GetMapping("/instance")
 //    public String serviceUrl() {
 //        InstanceInfo instance = eurekaClient.getNextServerFromEureka("USER-SERVICE", false);
