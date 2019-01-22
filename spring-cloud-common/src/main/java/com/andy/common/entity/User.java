@@ -1,4 +1,4 @@
-package com.andy.user.entity;
+package com.andy.common.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -10,6 +10,8 @@ import java.util.Date;
  * @since 2017-11-09
  **/
 public class User implements Serializable {
+
+    private static final long serialVersionUID = -8654229598582165411L;
 
     private Long userId;
 
@@ -31,15 +33,6 @@ public class User implements Serializable {
     @Override
     public User clone() throws CloneNotSupportedException {
         return (User) super.clone();
-    }
-
-    public User(String account, String password, String description, Integer age, Date createTime, Boolean deleted) {
-        this.account = account;
-        this.password = password;
-        this.description = description;
-        this.age = age;
-        this.createTime = createTime;
-        this.deleted = deleted;
     }
 
     public User(Long userId, String account, String password, String description, Integer age, Date createTime, Boolean deleted) {

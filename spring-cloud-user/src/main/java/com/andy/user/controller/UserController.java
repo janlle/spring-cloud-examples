@@ -1,9 +1,9 @@
 package com.andy.user.controller;
 
-import com.andy.user.entity.EntityFactory;
-import com.andy.user.entity.User;
-import com.andy.user.pojo.UserEditVO;
-import com.andy.user.pojo.UserVO;
+import com.andy.common.entity.User;
+import com.andy.common.utils.EntityFactory;
+import com.andy.common.beans.user.UserEditVO;
+import com.andy.common.beans.user.UserVO;
 import com.andy.user.service.UserService;
 import com.netflix.discovery.EurekaClient;
 import io.swagger.annotations.Api;
@@ -61,16 +61,16 @@ public class UserController {
 
     @ApiOperation("列表")
     @GetMapping("/list")
-    public List<User> list(@RequestHeader HttpHeaders headers) {
+    public List<UserVO> list(@RequestHeader HttpHeaders headers) {
         log.info("request header:{}", headers.get("name-Type"));
         log.info("request header:{}", headers.get("User-Agent"));
         log.info("request header:{}", headers.get("Accept"));
         headers.getAccessControlAllowHeaders().forEach(System.out::println);
         log.info("user service list");
-        return EntityFactory.getUsers(10);
+        return userService.list();
     }
 
-    @ApiOperation("获取某个")
+    @ApiOperation("根据id查找")
     @GetMapping("/{id}")
     public User find(@PathVariable("id") Long id, @RequestHeader HttpHeaders headers) {
         log.info("request header:{}", headers.get("name-Type"));
@@ -85,7 +85,7 @@ public class UserController {
     @DeleteMapping
     public void delete(@RequestParam("userId") Long userId) {
         log.info("user service delete");
-        userService.deleted(userId);
+        userService.delete(userId);
     }
 
     @ApiOperation("更新")

@@ -3,12 +3,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://39.108.125.41:8761/eureka
-#      instance:
-        # 获取实例的ip地址
-#        ip-address: 127.0.0.1
-        # 此实例注册到eureka服务端的唯一的实例ID,其组成为${spring.application.name}:${spring.application.instance_id:${random.value}}
-#        instance-id: ${spring.application.name}:${server.port}
+      defaultZone: http://localhost:8761/eureka
     registry-fetch-interval-seconds: 10
   instance:
     # 自定义元数据
@@ -21,6 +16,10 @@ eureka:
     hostname: localhost
     status-page-url-path: /health
     namespace: eureka
+    # 此实例注册到eureka服务端的唯一的实例ID,其组成为${spring.application.name}:${spring.application.instance_id}:${random.value}}
+    instance-id: ${spring.application.name}:${random.value}}
+    # 获取实例的ip地址
+    ip-address: 127.0.0.1
 
 spring:
   application:

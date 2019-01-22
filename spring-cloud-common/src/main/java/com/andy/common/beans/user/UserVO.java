@@ -1,4 +1,6 @@
-package com.andy.user.pojo;
+package com.andy.common.beans.user;
+
+import java.util.Date;
 
 /**
  * <p>
@@ -6,17 +8,18 @@ package com.andy.user.pojo;
  * @author Leone
  * @since 2018-11-09
  **/
-public class UserEditVO {
+public class UserVO {
 
     private Long userId;
 
     private String account;
 
-    private String password;
+    private Date createTime;
 
     private String description;
 
     private Integer age;
+
 
     public Long getUserId() {
         return userId;
@@ -34,12 +37,12 @@ public class UserEditVO {
         this.account = account;
     }
 
-    public String getPassword() {
-        return password;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public String getDescription() {
