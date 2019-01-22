@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: 9001
 eureka:
   client:
     service-url:
@@ -16,8 +16,8 @@ eureka:
     hostname: localhost
     status-page-url-path: /health
     namespace: eureka
-    # 此实例注册到eureka服务端的唯一的实例ID,其组成为${spring.application.name}:${spring.application.instance_id}:${random.value}}
-    instance-id: ${spring.application.name}:${random.value}}
+    # 此实例注册到eureka服务端的唯一的实例ID,其组成为${spring.application.name}:${spring.application.instance_id}:${random.value}
+    instance-id: ${spring.application.name}:${server.port}
     # 获取实例的ip地址
     ip-address: 127.0.0.1
 
@@ -39,6 +39,3 @@ management:
   endpoint:
     health:
       show-details: always
-
-swagger:
-  show: true
