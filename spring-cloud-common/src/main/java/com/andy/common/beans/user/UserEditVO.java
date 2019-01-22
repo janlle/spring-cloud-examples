@@ -1,4 +1,4 @@
-package com.andy.user.pojo;
+package com.andy.common.beans.user;
 
 /**
  * <p>
@@ -6,7 +6,9 @@ package com.andy.user.pojo;
  * @author Leone
  * @since 2018-11-09
  **/
-public class UserVO {
+public class UserEditVO {
+
+    private Long userId;
 
     private String account;
 
@@ -15,6 +17,14 @@ public class UserVO {
     private String description;
 
     private Integer age;
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
     public String getAccount() {
         return account;

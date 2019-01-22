@@ -1,4 +1,4 @@
-package com.andy.user.pojo;
+package com.andy.common.beans.user;
 
 /**
  * <p>

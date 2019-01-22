@@ -1,7 +1,9 @@
 package com.andy.user.service;
 
-import com.andy.user.pojo.UserEditVO;
-import com.andy.user.pojo.UserVO;
+import com.andy.common.beans.user.UserEditVO;
+import com.andy.common.beans.user.UserVO;
+
+import java.util.List;
 
 /**
  * <p>
@@ -11,9 +13,13 @@ import com.andy.user.pojo.UserVO;
  **/
 public interface UserService {
 
-    void deleted(Long userId);
+    Integer delete(Long userId);
 
     UserVO update(UserEditVO user);
 
     UserVO save(UserVO user);
+
+    UserVO findOne(Long userId);
+
+    List<UserVO> list();
 }

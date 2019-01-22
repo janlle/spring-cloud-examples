@@ -1,13 +1,9 @@
 package com.andy.user.controller;
 
-import com.andy.user.entity.EntityFactory;
-import com.andy.user.entity.User;
-import com.andy.user.pojo.UserEditVO;
-import com.andy.user.pojo.UserVO;
+import com.andy.common.beans.user.UserEditVO;
+import com.andy.common.beans.user.UserVO;
 import com.andy.user.service.UserService;
 import com.netflix.discovery.EurekaClient;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -30,7 +26,6 @@ import java.util.List;
  * @since 2018-03-10
  **/
 @Slf4j
-@Api(tags = "用户模块")
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -51,7 +46,6 @@ public class UserController {
 //        return instance.getHomePageUrl();
 //    }
 
-    @ApiOperation("info")
     @GetMapping("/info")
     public List<String> serviceInfo() {
         log.info("user service-A");
@@ -59,57 +53,61 @@ public class UserController {
         return discoveryClient.getServices();
     }
 
-    @ApiOperation("列表")
     @GetMapping("/list")
-    public List<User> list(@RequestHeader HttpHeaders headers) {
+    public List<UserVO> list(@RequestHeader HttpHeaders headers) {
         log.info("request header:{}", headers.get("name-Type"));
         log.info("request header:{}", headers.get("User-Agent"));
         log.info("request header:{}", headers.get("Accept"));
         headers.getAccessControlAllowHeaders().forEach(System.out::println);
         log.info("user service list");
-        return EntityFactory.getUsers(10);
+        return userService.list();
     }
 
-    @ApiOperation("获取某个")
-    @GetMapping("/{id}")
-    public User find(@PathVariable("id") Long id, @RequestHeader HttpHeaders headers) {
+    @GetMapping("/{userId}")
+    public UserVO findOne(@PathVariable("userId") Long userId, @RequestHeader HttpHeaders headers) {
         log.info("request header:{}", headers.get("name-Type"));
         log.info("request header:{}", headers.get("a"));
         log.info("request header:{}", headers.get("b"));
         log.info("request header:{}", headers.get("c"));
-        log.info("user service find");
-        return EntityFactory.getUser(id);
+        log.info("user service findOne");
+        return userService.findOne(userId);
     }
 
-    @ApiOperation("删除")
     @DeleteMapping
     public void delete(@RequestParam("userId") Long userId) {
         log.info("user service delete");
-        userService.deleted(userId);
+        userService.delete(userId);
     }
 
-    @ApiOperation("更新")
     @PutMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public UserVO update(@RequestBody UserEditVO user) {
         log.info("user service update");
         return userService.update(user);
     }
 
-    @ApiOperation("保存")
     @PostMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public UserVO save(@RequestBody UserVO user) {
         log.info("user service save");
         return userService.save(user);
     }
 
-    @ApiOperation("文件上传")
+
+    /**
+     * 上传文件
+     * 有界面的测试：http://localhost:9001/index.html
+     * 使用命令：curl -F "file=@文件全名" localhost:9001/user/upload
+     *
+     * @param file 待上传的文件
+     * @return 文件在服务器上的绝对路径
+     * @throws IOException IO异常
+     */
     @PostMapping("/upload")
     public String upload(MultipartFile file) throws IOException {
         if (null != file) {
             String fileName = file.getOriginalFilename();
             log.info("fileName:{}", fileName);
             InputStream inputStream = file.getInputStream();
-            OutputStream outputStream = new FileOutputStream("d://" + fileName);
+            OutputStream outputStream = new FileOutputStream("E:/tmp/upload/" + fileName);
             int len;
             byte[] bytes = new byte[1024];
             while ((len = inputStream.read(bytes)) != -1) {
@@ -121,25 +119,5 @@ public class UserController {
         }
         return "error";
     }
-
-    /**
-     * 上传文件
-     * 有界面的测试：http://localhost:8050/index.html
-     * 使用命令：curl -F "file=@文件全名" localhost:8050/upload
-     * ps.该示例比较简单，没有做IO异常、文件大小、文件非空等处理
-     *
-     * @param file 待上传的文件
-     * @return 文件在服务器上的绝对路径
-     * @throws IOException IO异常
-     */
-    /*@PostMapping("/upload")
-    public @ResponseBody
-    String handleFileUpload(@RequestParam MultipartFile file) throws IOException {
-        byte[] bytes = file.getBytes();
-        File fileToSave = new File(Objects.requireNonNull(file.getOriginalFilename()));
-        FileCopyUtils.copy(bytes, fileToSave);
-        return fileToSave.getAbsolutePath();
-    }*/
-
 
 }
