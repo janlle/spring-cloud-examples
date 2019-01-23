@@ -17,3 +17,7 @@ eureka:
     enabled: true
   instance:
     appname: eureka-service
+  server:
+    # 本地调试环境下关闭自我保护机制
+    enableSelfPreservation: false
+
