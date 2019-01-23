@@ -1,5 +1,5 @@
 server:
-  port: 8101
+  port: 9002
 
 spring:
   application:
@@ -11,9 +11,7 @@ eureka:
       defaultZone: http://localhost:8761/eureka
   instance:
     appname: order-service
-    # 此实例注册到eureka服务端的唯一的实例ID,其组成为${spring.application.name}:${spring.application.instance_id}:${random.value}}
-    instance-id: ${spring.application.name}:${random.value}}
-    # 获取实例的ip地址
+    instance-id: ${spring.application.name}:${server.port}
     ip-address: 127.0.0.1
 
 management:

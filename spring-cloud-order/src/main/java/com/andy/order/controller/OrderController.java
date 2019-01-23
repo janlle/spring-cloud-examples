@@ -23,7 +23,7 @@ import java.util.List;
  **/
 @Slf4j
 @RestController
-@RequestMapping("/api/order")
+@RequestMapping("/order")
 public class OrderController {
 
     @Autowired
@@ -40,7 +40,7 @@ public class OrderController {
         return orderService.findOne(orderId);
     }
 
-    @GetMapping(value = "/list", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+    @GetMapping(value = "/list/{userId}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public List<OrderVO> list(@PathVariable("userId") Long userId) {
         return orderService.list(userId);
     }

@@ -25,6 +25,7 @@ import java.util.stream.Collectors;
 @Service
 public class OrderService {
 
+    private String userUrl = "http://localhost:9001/user/";
 
     @Autowired
     private RestTemplate restTemplate;
@@ -38,7 +39,7 @@ public class OrderService {
      */
     public OrderVO findOne(Long orderId) {
         Order order = EntityFactory.getOrder(orderId);
-        String url = "http://localhost:8001/api/user/" + order.getUserId();
+        String url = userUrl + order.getUserId();
         UserVO user = restTemplate.getForObject(url, UserVO.class);
         log.info("get: -> {} result: -> {}", url, user);
         if (ObjectUtils.isEmpty(user)) {
@@ -57,7 +58,7 @@ public class OrderService {
      * @return
      */
     public List<OrderVO> list(Long userId) {
-        String url = "http://localhost:8001/api/user/" + userId;
+        String url = userUrl + userId;
         /*ParameterizedTypeReference<List<User>> typeRef = new ParameterizedTypeReference<List<User>>() {
         };
 
@@ -72,7 +73,7 @@ public class OrderService {
         List<Order> orders = EntityFactory.getOrderList(userId);
         return orders.stream().map(e -> {
             OrderVO vo = new OrderVO();
-            BeanUtils.copyProperties(user, vo);
+            BeanUtils.copyProperties(e, vo);
             vo.setUserAccount(user.getAccount());
             vo.setUserAge(user.getAge());
             vo.setUserDescription(user.getDescription());
