@@ -1,4 +1,4 @@
-package com.andy.controller;
+package com.andy.goods.controller;
 
 import com.andy.common.beans.user.UserVO;
 import lombok.extern.slf4j.Slf4j;
