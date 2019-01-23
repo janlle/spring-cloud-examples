@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: gateway-service
+    name: mc-gateway
   cloud:
     gateway:
       routes:
@@ -11,15 +11,18 @@ spring:
         uri: http://baidu.com
         predicates:
         - Header=X-Request-Id, \d+
-        - Path=/spring-cloud
+        - Path=/spring-cloud/**
+      - id: user
+        uri: http://localhost:9001
+        predicates:
+        - Path=/user/**
+
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
-    registry-fetch-interval-seconds: 10
   instance:
-    lease-renewal-interval-in-seconds: 5
     prefer-ip-address: true
-    appname: MICRO-SERVICE-GATEWAY
+    appname: gateway-service
     status-page-url-path: /health
