@@ -16,4 +16,4 @@ zuul:
 #  ignoredServices: spring-cloud-provider-ribbon-hystrix
   #自定义服务名称
   routes:
-    springcloud-provider: /user/**
+    spring-cloud-provider: /user/**

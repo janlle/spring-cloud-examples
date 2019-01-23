@@ -1,6 +1,6 @@
 spring:
   application:
-    name: spring-cloud-zuul
+    name: zuul-service
 
 eureka:
   client:

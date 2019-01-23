@@ -14,9 +14,9 @@ import org.springframework.stereotype.Component;
  * @since 2018-02-09
  **/
 @Component
-public class PostFilter extends ZuulFilter {
+public class PostZuulFilter extends ZuulFilter {
 
-    private static Logger log = LoggerFactory.getLogger(PostFilter.class);
+    private static final Logger log = LoggerFactory.getLogger(PostZuulFilter.class);
 
     /**
      * 后置过滤器
@@ -29,13 +29,13 @@ public class PostFilter extends ZuulFilter {
     }
 
     /**
-     * 优先级，数字越大，优先级越低
+     * filter 执行的优先级，数字越大，优先级越低
      *
      * @return
      */
     @Override
     public int filterOrder() {
-        return FilterConstants.PRE_DECORATION_FILTER_ORDER - 3;
+        return FilterConstants.PRE_DECORATION_FILTER_ORDER + 2;
     }
 
     /**
@@ -48,13 +48,16 @@ public class PostFilter extends ZuulFilter {
         return true;
     }
 
+
+    /**
+     * 主要的处理逻辑的地方，我们做权限控制、日志等都是在这里
+     *
+     * @return
+     */
     @Override
     public Object run() {
         RequestContext ctx = RequestContext.getCurrentContext();
-        log.info("进入post过滤器");
-        System.out.println(ctx.getResponseBody());
-        ctx.setResponseBody("post后置数据");
-//        int i = 1 / 0;
+        log.info("post filter run... response: {}", ctx.getResponseBody());
         return null;
     }
 

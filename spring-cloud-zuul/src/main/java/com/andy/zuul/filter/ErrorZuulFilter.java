@@ -14,39 +14,46 @@ import org.springframework.stereotype.Component;
  * @since 2018-02-09
  **/
 @Component
-public class ErrorFilter extends ZuulFilter {
+public class ErrorZuulFilter extends ZuulFilter {
 
-    private static Logger log = LoggerFactory.getLogger(ErrorFilter.class);
+    private static final Logger log = LoggerFactory.getLogger(PostZuulFilter.class);
 
+
+    /**
+     * 异常过滤器
+     * @return
+     */
     @Override
     public String filterType() {
-        //异常过滤器
         return FilterConstants.ERROR_TYPE;
     }
 
     @Override
     public int filterOrder() {
-        //优先级，数字越大，优先级越低
-        return 0;
+        // 优先级，数字越大，优先级越低
+        return FilterConstants.SEND_ERROR_FILTER_ORDER;
     }
 
+    /**
+     * 是否执行该过滤器，true 代表需要执行
+     *
+     * @return
+     */
     @Override
     public boolean shouldFilter() {
-        //是否执行该过滤器，true代表需要过滤
         return true;
     }
 
+    /**
+     * 主要的处理逻辑的地方，我们做权限控制、日志等都是在这里
+     *
+     * @return
+     */
     @Override
     public Object run() {
         RequestContext ctx = RequestContext.getCurrentContext();
-
-        log.info("进入异常过滤器");
-
-        System.out.println(ctx.getResponseBody());
-
         ctx.setResponseBody("出现异常");
-
+        log.info("error filter run:{}", ctx.getResponseBody());
         return null;
-
     }
 }

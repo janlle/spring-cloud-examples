@@ -1,28 +1,9 @@
 server:
   port: 10000
 
-  #Demo1的路由配置
-  #  zuul.routes.demo1.path=/**/demo1/**
-  #  zuul.routes.demo1.serviceId=reborn-demo1-server
-  #  zuul.routes.demo1.sensitiveHeaders="*"
-
-zuul:
-  routes:
-    user:
-      path: /**
-      serviceId: user
-      sensitiveHeaders: Cookie,Set-Cookie,Authorization
-#      url: http://127.0.0.1:8001
-#  ignored-patterns:
-#    - /list
-  #访问网关的前缀
-  prefix: /api
-  #去掉前缀为true默认false
-  strip-prefix: true
-
 spring:
   application:
-    name: mc-gateway
+    name: mc-zuul
 
 eureka:
   client:
@@ -30,10 +11,35 @@ eureka:
       defaultZone: http://localhost:8761/eureka
   instance:
     appname: zuul-service
-#hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
-#ribbon:
-#  ConnectTimeout: 3000
-#  ReadTimeout: 60000
+    instance-id: ${spring.application.name}:${server.port}
+    ip-address: 127.0.0.1
+
+zuul:
+   ignored-patterns:
+   - /**/page/**
+   # 访问 zuul 的前缀
+   prefix: /api
+   # 去掉前缀为 false 默认 true
+   strip-prefix: true
+   # 忽略那些服务
+   ignored-services: mc-user
+   routes:
+     user:
+       path: /api-user/**
+       url: http://127.0.0.1:9001
+       sensitiveHeaders: Cookie,Set-Cookie,Authorization
+     mc-order:
+       path: /api-order/**
+       serviceId: mc-order
+     goods:
+       path: /api-goods/**
+       serviceId: mc-goods
 
 
+ribbon:
+  eureka:
+    enabled: true
 
+#mc-user:
+#  ribbon:
+#    listOfServers: http://localhost:9001
