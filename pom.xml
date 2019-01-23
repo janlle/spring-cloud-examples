@@ -39,6 +39,8 @@
         <module>spring-cloud-sleuth</module>
         <module>spring-cloud-consul</module>
         <module>spring-cloud-zookeeper</module>
+        <module>spring-cloud-common</module>
+        <module>spring-cloud-goods</module>
     </modules>
 
     <!--<dependencyManagement>-->
