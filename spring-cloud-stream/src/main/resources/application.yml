@@ -1,5 +1,7 @@
 server:
-  port: 8121
+  port: 8081
+  servlet:
+    path: /
 
 spring:
   application:
@@ -13,8 +15,23 @@ spring:
   cloud:
     stream:
       bindings:
-        input:
-          destination: sink-channel
+        input1:
+          destination: wdtest1
+          content-type: application/json
+          group: g1
+        input2:
+          destination: wdtest2
+          content-type: application/json
+          group: g1
+        input3:
+          destination: wdtest3
+          content-type: application/json
+          group: g1
+        input4:
+          destination: wdtest4
+          content-type: application/json
+          group: g1
+
 
 eureka:
   client: 

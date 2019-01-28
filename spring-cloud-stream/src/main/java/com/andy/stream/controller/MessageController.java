@@ -1,7 +1,6 @@
 package com.andy.stream.controller;
 
-import com.andy.stream.message.StreamClient;
-import com.netflix.discovery.converters.Auto;
+import com.andy.stream.message.Source;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.support.MessageBuilder;
@@ -19,12 +18,12 @@ import java.util.Date;
 public class MessageController {
 
     @Autowired
-    private StreamClient streamClient;
+    private Source source;
 
     @GetMapping("/send")
     public void process() {
         String message = "now" + new Date();
-        streamClient.output().send(MessageBuilder.withPayload(message).build());
+        source.output1().send(MessageBuilder.withPayload(message).build());
     }
 
 
