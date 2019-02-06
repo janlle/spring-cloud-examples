@@ -61,6 +61,4 @@ public class RoutingZuulFilter extends ZuulFilter {
         return FilterConstants.ROUTE_TYPE;
     }
 
-
-
 }
