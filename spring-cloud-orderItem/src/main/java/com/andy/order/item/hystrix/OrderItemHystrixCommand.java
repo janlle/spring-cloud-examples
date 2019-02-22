@@ -1,4 +1,4 @@
-package com.andy.goods.hystrix;
+package com.andy.order.item.hystrix;
 
 import com.netflix.hystrix.HystrixCommand;
 
@@ -10,10 +10,10 @@ import java.util.concurrent.Future;
  * @author leone
  * @since 2019-02-22
  **/
-public class GoodsHystrixCommand extends HystrixCommand<String> {
+public class OrderItemHystrixCommand extends HystrixCommand<String> {
 
 
-    protected GoodsHystrixCommand(Setter setter) {
+    protected OrderItemHystrixCommand(Setter setter) {
         super(setter);
     }
 

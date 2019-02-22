@@ -1,4 +1,4 @@
-package com.andy.goods;
+package com.andy.order.item;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
@@ -10,8 +10,8 @@ import org.springframework.cloud.client.SpringCloudApplication;
  * @since 2018-03-10
  **/
 @SpringCloudApplication
-public class GoodsApplication {
+public class OrderItemApplication {
     public static void main(String[] args) {
-        SpringApplication.run(GoodsApplication.class, args);
+        SpringApplication.run(OrderItemApplication.class, args);
     }
 }

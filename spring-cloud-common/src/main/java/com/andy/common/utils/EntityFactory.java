@@ -2,6 +2,7 @@ package com.andy.common.utils;
 
 import com.andy.common.entity.Goods;
 import com.andy.common.entity.Order;
+import com.andy.common.entity.OrderItem;
 import com.andy.common.entity.User;
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,6 +20,7 @@ public class EntityFactory {
 
     private static List<Goods> goodsList = new ArrayList<>();
 
+    private static List<OrderItem> orderItemList = new ArrayList<>();
 
     static {
         for (long i = 0; i < 100; i++) {
@@ -27,6 +29,9 @@ public class EntityFactory {
             orderList.add(new Order(i, i, random.nextInt(1000) + 200, "Chicken and fish", 1 + RandomValue.getNum(15), date, date, false));
             orderList.add(new Order(i, i, random.nextInt(100) + 200, "some apple and orange", 1 + RandomValue.getNum(15), date, date, false));
             goodsList.add(new Goods(i, RandomValue.getGoods(), random.nextInt(10000), "http://image.taobao.com/picture/" + i, random.nextInt(1000), date, false));
+            orderItemList.add(new OrderItem(i, i, i, RandomValue.getGoods(), random.nextInt(1000), "http://image.taobao.com/picture/" + i, random.nextInt(10) + 1, date));
+            orderItemList.add(new OrderItem(i, i, i, RandomValue.getGoods(), random.nextInt(1000), "http://image.taobao.com/picture/" + i, random.nextInt(10) + 1, date));
+            orderItemList.add(new OrderItem(i, i, i, RandomValue.getGoods(), random.nextInt(1000), "http://image.taobao.com/picture/" + i, random.nextInt(10) + 1, date));
         }
     }
 
@@ -89,6 +94,16 @@ public class EntityFactory {
 
     public static Goods getGoods(Long goodsId) {
         return goodsList.stream().filter(e -> e.getGoodsId().equals(goodsId)).collect(Collectors.toList()).get(0);
+    }
+
+
+    public static List<OrderItem> getOrderItemList(Long orderItemId) {
+        return orderItemList.stream().filter(e -> e.getGoodsId().equals(orderItemId)).collect(Collectors.toList());
+    }
+
+
+    public static OrderItem getOrderItem(Long orderItemId) {
+        return orderItemList.stream().filter(e -> e.getGoodsId().equals(orderItemId)).collect(Collectors.toList()).get(0);
     }
 
 }
