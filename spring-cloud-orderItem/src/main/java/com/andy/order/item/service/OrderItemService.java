@@ -29,11 +29,21 @@ public class OrderItemService {
      * @param orderId
      * @return
      */
+    @HystrixCommand(fallbackMethod = "findOneFallback")
     public OrderItemVO findOne(Long orderId) {
+        if (random.nextBoolean()) {
+            int i = 10 / 0;
+        }
+        log.info("findOne {}", orderId);
         OrderItem orderItem = EntityFactory.getOrderItem(orderId);
         OrderItemVO vo = new OrderItemVO();
         BeanUtils.copyProperties(orderItem, vo);
         return vo;
+    }
+
+    public OrderItemVO findOneFallback(Long orderId) {
+        log.error("findOneFallback {}", orderId);
+        return new OrderItemVO();
     }
 
 
@@ -46,7 +56,7 @@ public class OrderItemService {
         if (random.nextBoolean()) {
             int i = 10 / 0;
         }
-
+        log.info("findByOrderId orderId: {}", orderId);
         return EntityFactory.getOrderItemList(orderId).stream().map(e -> {
             OrderItemVO vo = new OrderItemVO();
             BeanUtils.copyProperties(e, vo);
@@ -58,5 +68,19 @@ public class OrderItemService {
         log.error("findByOrderIdFallback orderId: {}", orderId);
         return Collections.emptyList();
     }
+
+
+    @HystrixCommand(fallbackMethod = "deleteFallback")
+    public void delete(Long orderId) {
+        log.info("delete orderId: ", orderId);
+        if (random.nextBoolean()) {
+            int i = 10 / 0;
+        }
+    }
+
+    public void deleteFallback(Long orderId) {
+        log.error("delete fallback orderId: ", orderId);
+    }
+
 
 }

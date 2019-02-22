@@ -34,8 +34,8 @@ public class OrderItemController {
     }
 
     @DeleteMapping
-    public void delete(@RequestParam("goodsId") Long goodsId) {
-        log.info("user service delete");
+    public void delete(@RequestParam("orderId") Long orderId) {
+        orderItemService.delete(orderId);
     }
 
 
