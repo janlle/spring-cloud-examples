@@ -27,11 +27,12 @@ public class EntityFactory {
             Date date = new Date(new Date().getTime() - (random.nextInt(1000000) + 1000000));
             userList.add(new User(i, RandomValue.randomUsername(), RandomValue.getStr(16), RandomValue.getMessage(), RandomValue.random.nextInt(50) + 10, date, false));
             orderList.add(new Order(i, i, random.nextInt(1000) + 200, "Chicken and fish", 1 + RandomValue.getNum(15), date, date, false));
-            orderList.add(new Order(i, i, random.nextInt(100) + 200, "some apple and orange", 1 + RandomValue.getNum(15), date, date, false));
-            goodsList.add(new Goods(i, RandomValue.getGoods(), random.nextInt(10000), "http://image.taobao.com/picture/" + i, random.nextInt(1000), date, false));
-            orderItemList.add(new OrderItem(i, i, i, RandomValue.getGoods(), random.nextInt(1000), "http://image.taobao.com/picture/" + i, random.nextInt(10) + 1, date));
-            orderItemList.add(new OrderItem(i, i, i, RandomValue.getGoods(), random.nextInt(1000), "http://image.taobao.com/picture/" + i, random.nextInt(10) + 1, date));
-            orderItemList.add(new OrderItem(i, i, i, RandomValue.getGoods(), random.nextInt(1000), "http://image.taobao.com/picture/" + i, random.nextInt(10) + 1, date));
+            orderList.add(new Order(100 + i, i, random.nextInt(100) + 200, "some apple and orange", 1 + RandomValue.getNum(15), date, date, false));
+            goodsList.add(new Goods(i, RandomValue.getGoods(), random.nextInt(10000), "http://image.taobao.com/picture/"+UUID.randomUUID().toString().replace("-","")+ ".jpg", random.nextInt(1000), date, false));
+
+            orderItemList.add(new OrderItem(i, i, i, RandomValue.getGoods(), random.nextInt(1000), "http://image.taobao.com/picture/"+UUID.randomUUID().toString().replace("-","")+ ".jpg", random.nextInt(10) + 1, date));
+            orderItemList.add(new OrderItem(100 + i, i, i, RandomValue.getGoods(), random.nextInt(1000), "http://image.taobao.com/picture/"+UUID.randomUUID().toString().replace("-","")+ ".jpg", random.nextInt(10) + 1, date));
+            orderItemList.add(new OrderItem(200 + i, i, 100 + i, RandomValue.getGoods(), random.nextInt(1000), "http://image.taobao.com/picture/"+UUID.randomUUID().toString().replace("-","")+ ".jpg", random.nextInt(10) + 1, date));
         }
     }
 

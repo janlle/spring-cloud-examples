@@ -1,6 +1,7 @@
 package com.andy.common.beans.order;
 
 import com.andy.common.beans.goods.GoodsVO;
+import com.andy.common.beans.order.item.OrderItemVO;
 
 import java.util.Date;
 import java.util.List;
@@ -33,14 +34,14 @@ public class OrderVO {
 
     private String userDescription;
 
-    private List<GoodsVO> goodsVOList;
+    private List<OrderItemVO> orderItemList;
 
-    public List<GoodsVO> getGoodsVOList() {
-        return goodsVOList;
+    public List<OrderItemVO> getOrderItemList() {
+        return orderItemList;
     }
 
-    public void setGoodsVOList(List<GoodsVO> goodsVOList) {
-        this.goodsVOList = goodsVOList;
+    public void setOrderItemList(List<OrderItemVO> orderItemList) {
+        this.orderItemList = orderItemList;
     }
 
     public Long getOrderId() {

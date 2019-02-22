@@ -1,7 +1,7 @@
 package com.andy.order.service;
 
-import com.andy.common.beans.goods.GoodsVO;
 import com.andy.common.beans.order.OrderVO;
+import com.andy.common.beans.order.item.OrderItemVO;
 import com.andy.common.beans.user.UserVO;
 import com.andy.common.entity.Order;
 import com.andy.common.utils.EntityFactory;
@@ -13,7 +13,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -28,7 +31,7 @@ public class OrderService {
 
     private String userUrl = "http://localhost:9001/user/";
 
-    private String goodsUrl = "http://localhost:9003/goods/";
+    private String orderItemUrl = "http://localhost:9003/orderItem/";
 
     @Autowired
     private RestTemplate restTemplate;
@@ -54,9 +57,14 @@ public class OrderService {
         vo.setUserAge(user.getAge());
         vo.setUserDescription(user.getDescription());
 
-        List<GoodsVO> voList = restTemplate.getForObject(goodsUrl + order.getOrderId(), List.class);
+        OrderItemVO[] orderItems = restTemplate.getForObject(orderItemUrl + order.getOrderId(), OrderItemVO[].class);
+        log.info("get: -> {} result: -> {}", orderItemUrl + order.getOrderId(), orderItems);
 
-        vo.setGoodsVOList(null);
+        if (Objects.isNull(orderItems)) {
+            vo.setOrderItemList(Collections.emptyList());
+        } else {
+            vo.setOrderItemList(Arrays.asList(orderItems));
+        }
         return vo;
     }
 
@@ -68,7 +76,6 @@ public class OrderService {
         String url = userUrl + userId;
         /*ParameterizedTypeReference<List<User>> typeRef = new ParameterizedTypeReference<List<User>>() {
         };
-
         List<UserVO> users = restTemplate.exchange(url, HttpMethod.GET, null, new ParameterizedTypeReference<List<UserVO>>() {
         }).getBody();*/
 
