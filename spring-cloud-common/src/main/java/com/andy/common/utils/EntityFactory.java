@@ -1,5 +1,6 @@
 package com.andy.common.utils;
 
+import com.andy.common.entity.Goods;
 import com.andy.common.entity.Order;
 import com.andy.common.entity.User;
 import lombok.extern.slf4j.Slf4j;
@@ -16,13 +17,16 @@ public class EntityFactory {
 
     private static List<Order> orderList = new LinkedList<>();
 
+    private static List<Goods> goodsList = new ArrayList<>();
+
 
     static {
         for (long i = 0; i < 100; i++) {
             Date date = new Date(new Date().getTime() - (random.nextInt(1000000) + 1000000));
-            userList.add(new User(i, RandomValue.getName(), RandomValue.getStr(16), RandomValue.getMessage(), RandomValue.random.nextInt(50) + 10, date, false));
+            userList.add(new User(i, RandomValue.randomUsername(), RandomValue.getStr(16), RandomValue.getMessage(), RandomValue.random.nextInt(50) + 10, date, false));
             orderList.add(new Order(i, i, random.nextInt(1000) + 200, "Chicken and fish", 1 + RandomValue.getNum(15), date, date, false));
             orderList.add(new Order(i, i, random.nextInt(100) + 200, "some apple and orange", 1 + RandomValue.getNum(15), date, date, false));
+            goodsList.add(new Goods(i, RandomValue.getGoods(), random.nextInt(10000), "http://image.taobao.com/picture/" + i, random.nextInt(1000), date, false));
         }
     }
 
@@ -40,7 +44,7 @@ public class EntityFactory {
             return Collections.emptyList();
         }
         for (long i = 0; i < count; i++) {
-            userList.add(new User(i, RandomValue.getName(), RandomValue.getStr(16), RandomValue.getMessage(), RandomValue.random.nextInt(50) + 10, new Date(), false));
+            userList.add(new User(i, RandomValue.randomUsername(), RandomValue.getStr(16), RandomValue.getMessage(), RandomValue.random.nextInt(50) + 10, new Date(), false));
         }
         return userList;
     }
@@ -50,7 +54,7 @@ public class EntityFactory {
      * @return
      */
     public static User getUser() {
-        return new User(RandomValue.random.nextLong(), RandomValue.getName(), RandomValue.getStr(16), RandomValue.getMessage(), RandomValue.random.nextInt(50) + 10, new Date(), false);
+        return new User(RandomValue.random.nextLong(), RandomValue.randomUsername(), RandomValue.getStr(16), RandomValue.getMessage(), RandomValue.random.nextInt(50) + 10, new Date(), false);
     }
 
     /**
@@ -76,6 +80,15 @@ public class EntityFactory {
 
     public static Order getOrder(Long orderId) {
         return orderList.stream().filter(e -> e.getUserId().equals(orderId)).collect(Collectors.toList()).get(0);
+    }
+
+    public static List<Goods> getGoodsList() {
+        return goodsList;
+    }
+
+
+    public static Goods getGoods(Long goodsId) {
+        return goodsList.stream().filter(e -> e.getGoodsId().equals(goodsId)).collect(Collectors.toList()).get(0);
     }
 
 }

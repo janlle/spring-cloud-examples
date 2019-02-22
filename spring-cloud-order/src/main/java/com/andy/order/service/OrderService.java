@@ -1,5 +1,6 @@
 package com.andy.order.service;
 
+import com.andy.common.beans.goods.GoodsVO;
 import com.andy.common.beans.order.OrderVO;
 import com.andy.common.beans.user.UserVO;
 import com.andy.common.entity.Order;
@@ -27,6 +28,8 @@ public class OrderService {
 
     private String userUrl = "http://localhost:9001/user/";
 
+    private String goodsUrl = "http://localhost:9003/goods/";
+
     @Autowired
     private RestTemplate restTemplate;
 
@@ -50,6 +53,10 @@ public class OrderService {
         vo.setUserAccount(user.getAccount());
         vo.setUserAge(user.getAge());
         vo.setUserDescription(user.getDescription());
+
+        List<GoodsVO> voList = restTemplate.getForObject(goodsUrl + order.getOrderId(), List.class);
+
+        vo.setGoodsVOList(null);
         return vo;
     }
 

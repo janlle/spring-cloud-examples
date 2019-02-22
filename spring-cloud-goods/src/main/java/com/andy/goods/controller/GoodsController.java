@@ -1,12 +1,14 @@
 package com.andy.goods.controller;
 
-import com.andy.common.beans.user.UserVO;
+import com.andy.common.beans.goods.GoodsVO;
+import com.andy.goods.service.GoodsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
+import javax.annotation.Resource;
 import java.util.List;
+
 /**
  * <p>
  *
@@ -18,18 +20,21 @@ import java.util.List;
 @RequestMapping("/goods")
 public class GoodsController {
 
+    @Resource
+    private GoodsService goodsService;
+
     @GetMapping("/list")
-    public List<UserVO> list(@RequestHeader HttpHeaders headers) {
-        return Collections.emptyList();
+    public List<GoodsVO> list(@RequestHeader HttpHeaders headers) {
+        return goodsService.findAll();
     }
 
     @GetMapping("/{goodsId}")
-    public UserVO findOne(@PathVariable("userId") Long userId, @RequestHeader HttpHeaders headers) {
-        return new UserVO();
+    public GoodsVO findOne(@PathVariable("goodsId") Long goodsId, @RequestHeader HttpHeaders headers) {
+        return goodsService.findOne(goodsId);
     }
 
     @DeleteMapping
-    public void delete(@RequestParam("goodsId") Long userId) {
+    public void delete(@RequestParam("goodsId") Long goodsId) {
         log.info("user service delete");
     }
 

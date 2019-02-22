@@ -1,6 +1,9 @@
 package com.andy.common.beans.order;
 
+import com.andy.common.beans.goods.GoodsVO;
+
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -29,6 +32,16 @@ public class OrderVO {
     private Integer userAge;
 
     private String userDescription;
+
+    private List<GoodsVO> goodsVOList;
+
+    public List<GoodsVO> getGoodsVOList() {
+        return goodsVOList;
+    }
+
+    public void setGoodsVOList(List<GoodsVO> goodsVOList) {
+        this.goodsVOList = goodsVOList;
+    }
 
     public Long getOrderId() {
         return orderId;
