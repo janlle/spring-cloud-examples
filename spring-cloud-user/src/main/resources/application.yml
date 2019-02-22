@@ -35,7 +35,7 @@ management:
     web:
       exposure:
         include: "*"
-      base-path: /monitor
-  endpoint:
+      base-path: /actuator
     health:
       show-details: always
+

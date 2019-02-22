@@ -1,4 +1,4 @@
-package com.andy.order.config;
+package com.andy.config;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

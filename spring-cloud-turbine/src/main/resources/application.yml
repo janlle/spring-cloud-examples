@@ -1,14 +1,29 @@
 spring:
   application:
-    name: spring-cloud-turbine
+    name: mc-turbine
 server:
-  port: 8767
+  port: 9999
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
+  instance:
+    appname: turbine-service
+    instance-id: ${spring.application.name}:${server.port}
+    ip-address: 127.0.0.1
 turbine:
   aggregator:
-    clusterConfig: RIBBON-WITH-HYSTRIX
-  appConfig: ribbon-with-hystrix
+    cluster-config: default
+  app-config: user-service,orderItem-service,order-service
+  cluster-name-expression: new String("default")
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: always

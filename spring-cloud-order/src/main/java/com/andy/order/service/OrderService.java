@@ -5,6 +5,7 @@ import com.andy.common.beans.order.item.OrderItemVO;
 import com.andy.common.beans.user.UserVO;
 import com.andy.common.entity.Order;
 import com.andy.common.utils.EntityFactory;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,7 @@ public class OrderService {
      * @param orderId
      * @return
      */
+    @HystrixCommand(fallbackMethod = "findOneFallback")
     public OrderVO findOne(Long orderId) {
         Order order = EntityFactory.getOrder(orderId);
         String url = userUrl + order.getUserId();
@@ -66,6 +68,12 @@ public class OrderService {
             vo.setOrderItemList(Arrays.asList(orderItems));
         }
         return vo;
+    }
+
+
+    public OrderVO findOneFallback(Long orderId) {
+        log.error("findOneFallback orderId: {}", orderId);
+        return new OrderVO();
     }
 
     /**

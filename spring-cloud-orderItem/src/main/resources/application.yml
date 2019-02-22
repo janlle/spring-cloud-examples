@@ -21,4 +21,4 @@ management:
     web:
       exposure:
         include: "*"
-      base-path: /monitor
+      base-path: /actuator
