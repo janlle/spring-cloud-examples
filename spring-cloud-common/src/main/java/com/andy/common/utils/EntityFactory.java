@@ -25,14 +25,14 @@ public class EntityFactory {
     static {
         for (long i = 0; i < 100; i++) {
             Date date = new Date(new Date().getTime() - (random.nextInt(1000000) + 1000000));
-            userList.add(new User(i, RandomValue.randomUsername(), RandomValue.getStr(16), RandomValue.getMessage(), RandomValue.random.nextInt(50) + 10, date, false));
-            orderList.add(new Order(i, i, random.nextInt(1000) + 200, "Chicken and fish", 1 + RandomValue.getNum(15), date, date, false));
-            orderList.add(new Order(100 + i, i, random.nextInt(100) + 200, "some apple and orange", 1 + RandomValue.getNum(15), date, date, false));
-            goodsList.add(new Goods(i, RandomValue.getGoods(), random.nextInt(10000), "http://image.taobao.com/picture/"+UUID.randomUUID().toString().replace("-","")+ ".jpg", random.nextInt(1000), date, false));
+            userList.add(new User(i, RandomValue.randomUsername(), RandomValue.randomStr(16), RandomValue.randomMessage(), RandomValue.random.nextInt(50) + 10, date, false));
+            orderList.add(new Order(i, i, random.nextInt(1000) + 200, "Chicken and fish", 1 + RandomValue.randomNum(15), date, date, false));
+            orderList.add(new Order(100 + i, i, random.nextInt(100) + 200, "some apple and orange", 1 + RandomValue.randomNum(15), date, date, false));
+            goodsList.add(new Goods(i, RandomValue.randomGoods(), random.nextInt(10000), "http://image.taobao.com/picture/"+UUID.randomUUID().toString().replace("-","")+ ".jpg", random.nextInt(1000), date, false));
 
-            orderItemList.add(new OrderItem(i, i, i, RandomValue.getGoods(), random.nextInt(1000), "http://image.taobao.com/picture/"+UUID.randomUUID().toString().replace("-","")+ ".jpg", random.nextInt(10) + 1, date));
-            orderItemList.add(new OrderItem(100 + i, i, i, RandomValue.getGoods(), random.nextInt(1000), "http://image.taobao.com/picture/"+UUID.randomUUID().toString().replace("-","")+ ".jpg", random.nextInt(10) + 1, date));
-            orderItemList.add(new OrderItem(200 + i, i, 100 + i, RandomValue.getGoods(), random.nextInt(1000), "http://image.taobao.com/picture/"+UUID.randomUUID().toString().replace("-","")+ ".jpg", random.nextInt(10) + 1, date));
+            orderItemList.add(new OrderItem(i, i, i, RandomValue.randomGoods(), random.nextInt(1000), "http://image.taobao.com/picture/"+UUID.randomUUID().toString().replace("-","")+ ".jpg", random.nextInt(10) + 1, date));
+            orderItemList.add(new OrderItem(100 + i, i, i, RandomValue.randomGoods(), random.nextInt(1000), "http://image.taobao.com/picture/"+UUID.randomUUID().toString().replace("-","")+ ".jpg", random.nextInt(10) + 1, date));
+            orderItemList.add(new OrderItem(200 + i, i, 100 + i, RandomValue.randomGoods(), random.nextInt(1000), "http://image.taobao.com/picture/"+UUID.randomUUID().toString().replace("-","")+ ".jpg", random.nextInt(10) + 1, date));
         }
     }
 
@@ -50,7 +50,7 @@ public class EntityFactory {
             return Collections.emptyList();
         }
         for (long i = 0; i < count; i++) {
-            userList.add(new User(i, RandomValue.randomUsername(), RandomValue.getStr(16), RandomValue.getMessage(), RandomValue.random.nextInt(50) + 10, new Date(), false));
+            userList.add(new User(i, RandomValue.randomUsername(), RandomValue.randomStr(16), RandomValue.randomMessage(), RandomValue.random.nextInt(50) + 10, new Date(), false));
         }
         return userList;
     }
@@ -60,7 +60,7 @@ public class EntityFactory {
      * @return
      */
     public static User getUser() {
-        return new User(RandomValue.random.nextLong(), RandomValue.randomUsername(), RandomValue.getStr(16), RandomValue.getMessage(), RandomValue.random.nextInt(50) + 10, new Date(), false);
+        return new User(RandomValue.random.nextLong(), RandomValue.randomUsername(), RandomValue.randomStr(16), RandomValue.randomMessage(), RandomValue.random.nextInt(50) + 10, new Date(), false);
     }
 
     /**
