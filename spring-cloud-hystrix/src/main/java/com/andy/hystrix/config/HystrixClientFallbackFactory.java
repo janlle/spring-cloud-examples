@@ -1,9 +1,5 @@
 package com.andy.hystrix.config;
 
-import com.andy.hystrix.entity.User;
-import com.andy.hystrix.pojo.UserAddVO;
-import com.andy.hystrix.pojo.UserEditVO;
-import com.andy.hystrix.pojo.UserVO;
 import feign.hystrix.FallbackFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

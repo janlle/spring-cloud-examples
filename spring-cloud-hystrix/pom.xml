@@ -16,7 +16,7 @@
             <dependency>
                 <groupId>io.spring.platform</groupId>
                 <artifactId>platform-bom</artifactId>
-                <version>Cairo-SR5</version>
+                <version>Cairo-SR6</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -54,6 +54,17 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.andy</groupId>
+            <artifactId>spring-cloud-common</artifactId>
+            <version>1.0.6.RELEASE</version>
         </dependency>
 
     </dependencies>

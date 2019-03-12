@@ -2,7 +2,7 @@ package com.andy.hystrix.controller;
 
 //import com.andy.hystrix.config.UserFeignClient;
 
-import com.andy.hystrix.entity.User;
+import com.andy.common.entity.User;
 import com.andy.hystrix.service.RibbonService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

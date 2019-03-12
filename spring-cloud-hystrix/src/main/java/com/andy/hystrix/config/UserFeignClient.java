@@ -1,9 +1,5 @@
 package com.andy.hystrix.config;
 
-import com.andy.hystrix.entity.User;
-import com.andy.hystrix.pojo.UserAddVO;
-import com.andy.hystrix.pojo.UserEditVO;
-import com.andy.hystrix.pojo.UserVO;
 import feign.*;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
