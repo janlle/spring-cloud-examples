@@ -4,7 +4,7 @@ import com.netflix.hystrix.*;
 import org.junit.Test;
 
 /**
- * <p>
+ * <p> 断路器demo
  *
  * @author leone
  * @since 2019-03-12
@@ -18,7 +18,8 @@ public class CircuitBreakerTest {
             .withGroupKey(HystrixCommandGroupKey.Factory.asKey("circuitBreakerTestGroup"))
             .andCommandKey(HystrixCommandKey.Factory.asKey("circuitBreakerTestCommand"))
             .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("circuitBreakerTestPool"))
-            .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter().withCoreSize(10)) // 配置线程池
+            .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
+                    .withCoreSize(10)) // 配置线程池
             .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
                     .withCircuitBreakerEnabled(true)
                     .withCircuitBreakerRequestVolumeThreshold(10)
@@ -29,10 +30,10 @@ public class CircuitBreakerTest {
         @Override
         protected Object run() throws Exception {
             if (num % 2 == 0) {
-                return num + "";
+                return String.valueOf(num);
             } else {
                 int j = 0;
-                // 死循环模拟超时
+                // 死循环模拟调用超时
                 while (true) {
                     j++;
                 }
@@ -41,8 +42,9 @@ public class CircuitBreakerTest {
 
         @Override
         protected Object getFallback() {
-            return "CircuitBreaker fallback:" + num;
+            return "CircuitBreaker fallback: " + num;
         }
+
     };
 
 

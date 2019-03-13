@@ -14,20 +14,20 @@ import org.slf4j.LoggerFactory;
  * @author leone
  * @since 2019-03-12
  **/
-public class CommandHelloFailureTest extends HystrixCommand<String> {
+public class CommandFailureTest extends HystrixCommand<String> {
 
-    private static final Logger logger = LoggerFactory.getLogger(CommandHelloFailureTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(CommandFailureTest.class);
 
     private final String name;
 
-    public CommandHelloFailureTest(String name) {
+    public CommandFailureTest(String name) {
         super(HystrixCommandGroupKey.Factory.asKey("ExampleGroup"));
         this.name = name;
     }
 
     @Override
     protected String run() throws Exception {
-        logger.error("run thread " + Thread.currentThread().getName());
+        logger.error("current thread is " + Thread.currentThread().getName());
         throw new RuntimeException("this command always fails");
     }
 
@@ -41,7 +41,7 @@ public class CommandHelloFailureTest extends HystrixCommand<String> {
     public static class UnitTest {
         @Test
         public void testSynchronous() throws Exception {
-            HystrixCommand<String> hystrixCommand = new CommandHelloFailureTest("world");
+            HystrixCommand<String> hystrixCommand = new CommandFailureTest("world");
             String result = hystrixCommand.execute();
             System.out.println(result);
         }
