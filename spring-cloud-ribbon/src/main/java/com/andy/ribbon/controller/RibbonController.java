@@ -1,5 +1,6 @@
 package com.andy.ribbon.controller;
 
+import com.andy.common.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -9,15 +10,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.andy.ribbon.entity.User;
-
 /**
  * @author Leone
  * @since 2018-12-21
  **/
 @Slf4j
 @RestController
-public class OrderController {
+public class RibbonController {
 
     @Autowired
     private RestTemplate restTemplate;
@@ -29,7 +28,7 @@ public class OrderController {
     public User order(@PathVariable("id") int id) {
         log.info("[访问到订单微服务，访问用户微服务获取用户信息]");
 //        return restTemplate.getForObject("http://localhost:8001/user/" + id, Users.class);
-        return restTemplate.getForObject("http://spring-cloud-provider/user/" + id, User.class);
+        return restTemplate.getForObject("http://mc-user/user/" + id, User.class);
     }
 
     @GetMapping("/other")
@@ -49,7 +48,6 @@ public class OrderController {
         log.info("[get->{}],:return->{}",url, result);
         return result;
     }
-
 
     @GetMapping(value="/rule", produces = "application/json;charset=UTF-8")
     public String ribbonRule(){

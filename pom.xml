@@ -41,6 +41,7 @@
         <module>spring-cloud-zookeeper</module>
         <module>spring-cloud-common</module>
         <module>spring-cloud-orderItem</module>
+        <module>spring-cloud-hystrix-feign</module>
     </modules>
 
     <!--<dependencyManagement>-->
