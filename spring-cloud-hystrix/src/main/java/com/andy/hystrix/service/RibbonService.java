@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Random;
+
 /**
  * <p>
  *
@@ -17,10 +19,16 @@ import org.springframework.web.client.RestTemplate;
 public class RibbonService {
 
     @Autowired
+    private Random random;
+
+    @Autowired
     private RestTemplate restTemplate;
 
     @HystrixCommand(fallbackMethod = "simpleFallback")
     public User find(Long userId) {
+        if (random.nextBoolean()) {
+            int i = 1 / 0;
+        }
         return restTemplate.getForObject("http://mc-user/user/" + userId, User.class);
     }
 
