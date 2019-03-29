@@ -5,46 +5,54 @@ import com.andy.common.beans.user.UserEditVO;
 import com.andy.common.beans.user.UserVO;
 import com.andy.common.entity.User;
 import com.andy.hystrix.feign.UserFeign;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * <p>
  *
  * @author leone
- * @since 2019-03-29
+ * @since 2018-02-13
  **/
+@Slf4j
+@Component
 public class UserFeignFallback implements UserFeign {
 
     @Override
     public User find(Long id) {
-        return null;
+        log.info("UserFeignFallback: {} find", id);
+        return new User(1L, "default", "123456", "good man", 18, new Date(), false);
     }
 
     @Override
     public List<User> list() {
-        return null;
+        log.info("UserFeignFallback list");
+        return Collections.singletonList(new User(1L, "default", "123456", "good man", 18, new Date(), false));
     }
 
     @Override
     public UserVO update(UserEditVO user) {
-        return null;
+        log.info("UserFeignFallback update");
+        return new UserVO();
     }
 
     @Override
     public UserVO save(UserAddVO user) {
-        return null;
+        log.info("UserFeignFallback save");
+        return new UserVO();
     }
 
     @Override
     public void delete(Map<String, Long> query) {
-
+        log.info("UserFeignFallback delete");
     }
 
     @Override
     public String upload(MultipartFile file) {
-        return null;
+        log.info("UserFeignFallback");
+        return "fallback";
     }
 }
