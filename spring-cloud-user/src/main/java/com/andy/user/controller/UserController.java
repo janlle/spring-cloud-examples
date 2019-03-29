@@ -6,6 +6,7 @@ import com.andy.user.service.UserService;
 import com.netflix.discovery.EurekaClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -39,6 +40,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Value("${server.port}")
+    private String port;
+
 //    @GetMapping("/instance")
 //    public String serviceUrl() {
 //        InstanceInfo instance = eurekaClient.getNextServerFromEureka("USER-SERVICE", false);
@@ -47,8 +51,7 @@ public class UserController {
 
     @GetMapping("/info")
     public List<String> serviceInfo() {
-        log.info("user service-A");
-//		log.info("user service-B");
+        log.info("user service port: {}", port);
         return discoveryClient.getServices();
     }
 
@@ -58,35 +61,35 @@ public class UserController {
         log.info("request header:{}", headers.get("User-Agent"));
         log.info("request header:{}", headers.get("Accept"));
         headers.getAccessControlAllowHeaders().forEach(System.out::println);
-        log.info("user service list");
+        log.info("user service list port: {}", port);
         return userService.list();
     }
 
     @GetMapping("/{userId}")
     public UserVO findOne(@PathVariable("userId") Long userId, @RequestHeader HttpHeaders headers) {
-        log.info("request header:{}", headers.get("name-Type"));
-        log.info("request header:{}", headers.get("a"));
-        log.info("request header:{}", headers.get("b"));
-        log.info("request header:{}", headers.get("c"));
-        log.info("user service findOne");
+        //log.info("request header:{}", headers.get("name-Type"));
+        //log.info("request header:{}", headers.get("a"));
+        //log.info("request header:{}", headers.get("b"));
+        //log.info("request header:{}", headers.get("c"));
+        log.info("user service findOne port: {}", port);
         return userService.findOne(userId);
     }
 
     @DeleteMapping
     public void delete(@RequestParam("userId") Long userId) {
-        log.info("user service delete");
+        log.info("user service delete port: {}", port);
         userService.delete(userId);
     }
 
     @PutMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public UserVO update(@RequestBody UserEditVO user) {
-        log.info("user service update");
+        log.info("user service update port: {}", port);
         return userService.update(user);
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public UserVO save(@RequestBody UserVO user) {
-        log.info("user service save");
+        log.info("user service save: {}", port);
         return userService.save(user);
     }
 
@@ -104,7 +107,7 @@ public class UserController {
     public String upload(MultipartFile file) throws IOException {
         if (null != file) {
             String fileName = file.getOriginalFilename();
-            log.info("fileName:{}", fileName);
+            log.info("fileName:{} port: {}", fileName, port);
             InputStream inputStream = file.getInputStream();
             OutputStream outputStream = new FileOutputStream("E:/tmp/upload/" + fileName);
             int len;

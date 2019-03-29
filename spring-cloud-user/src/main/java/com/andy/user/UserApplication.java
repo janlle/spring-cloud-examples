@@ -5,6 +5,8 @@ import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import java.util.Arrays;
+
 
 /**
  * <p> 生产者 服务提供者 上游服务
@@ -17,6 +19,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringCloudApplication
 public class UserApplication {
     public static void main(String[] args) {
+        if (args.length > 0) {
+            System.out.println(Arrays.toString(args));
+        }
         SpringApplication.run(UserApplication.class, args);
     }
 }
