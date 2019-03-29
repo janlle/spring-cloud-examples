@@ -10,13 +10,12 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 /**
- * <p> hystrix 示例 使用命令模式封装依赖逻辑
- * 运行结果: run()方法在不同的线程下执行
+ * hystrix 资源隔离：线程池隔离
  *
  * @author leone
  * @since 2019-03-12
  **/
-public class HelloWorldCommandTest extends HystrixCommand<String> {
+public class ThreadPoolCommandTest extends HystrixCommand<String> {
 
     private final String name;
 
@@ -25,7 +24,7 @@ public class HelloWorldCommandTest extends HystrixCommand<String> {
      *
      * @param name
      */
-    public HelloWorldCommandTest(String name) {
+    public ThreadPoolCommandTest(String name) {
         super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("ExampleGroup"))
                 .andCommandKey(HystrixCommandKey.Factory.asKey("ExampleCommand"))
                 .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("ExampleThreadPool"))
@@ -42,13 +41,13 @@ public class HelloWorldCommandTest extends HystrixCommand<String> {
     //调用实例
     public static void main(String[] args) throws Exception {
         // 每个Command对象不可以重复调用，否则报错:This instance can only be executed once. Please instantiate a new instance.
-        HelloWorldCommandTest command = new HelloWorldCommandTest("Synchronous-hystrix");
+        ThreadPoolCommandTest command = new ThreadPoolCommandTest("Synchronous-hystrix");
 
         // 使用execute()同步调用代码,效果等同于:helloWorldCommandTest.queue().get();
         String result = command.execute();
         System.out.println("result: " + result);
 
-        command = new HelloWorldCommandTest("Asynchronous-hystrix");
+        command = new ThreadPoolCommandTest("Asynchronous-hystrix");
 
         // 异步调用,可自由控制获取结果时机
         Future<String> future = command.queue();

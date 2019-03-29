@@ -4,7 +4,7 @@ import com.netflix.hystrix.*;
 import org.junit.Test;
 
 /**
- * <p> 断路器demo
+ * <p> 断路器
  *
  * @author leone
  * @since 2019-03-12
@@ -40,13 +40,13 @@ public class CircuitBreakerTest {
             }
         }
 
+
         @Override
         protected Object getFallback() {
             return "CircuitBreaker fallback: " + num;
         }
 
     };
-
 
     @Test
     public void circuitBreakerTest() throws Exception {
@@ -57,8 +57,6 @@ public class CircuitBreakerTest {
             String result = (String) circuitBreakerTest.hystrixCommand.execute();
             System.out.println(result);
         }
-
     }
-
 
 }

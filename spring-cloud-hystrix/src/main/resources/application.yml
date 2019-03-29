@@ -31,7 +31,7 @@ management:
 hystrix:
   threadpool:
     default:
-      coreSize: 10  #线程池核心线程数
+      core-size: 10  #线程池核心线程数
   metrics:
     polling-interval-ms: 2000
     enabled: true

@@ -24,8 +24,8 @@ public class RibbonService {
         return restTemplate.getForObject("http://mc-user/user/" + userId, User.class);
     }
 
-
     public User simpleFallback(Long userId) {
         return EntityFactory.getUser(1L);
     }
+
 }

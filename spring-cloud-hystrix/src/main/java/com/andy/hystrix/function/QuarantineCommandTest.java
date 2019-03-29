@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.concurrent.Future;
 
 /**
- * <p> 资源隔离
+ * <p> 资源隔离：线程池隔离
  *
  * @author leone
  * @since 2019-03-13
