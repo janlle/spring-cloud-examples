@@ -1,10 +1,13 @@
-package com.andy.hystrix.config;
+package com.andy.hystrix.feign;
 
 import com.andy.common.beans.user.UserAddVO;
 import com.andy.common.beans.user.UserEditVO;
 import com.andy.common.beans.user.UserVO;
 import com.andy.common.entity.User;
-import feign.*;
+import feign.Headers;
+import feign.Param;
+import feign.QueryMap;
+import feign.RequestLine;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,7 +22,7 @@ import java.util.Map;
  * @since 2018-02-16
  **/
 @FeignClient(value = "mc-user"/*, url = "http://127.0.0.1/user"*//*, configuration = FeignConfiguration1.class*/)
-public interface UserFeignClient {
+public interface UserFeign {
 
     @RequestLine("GET /user/{id}")
     User find(@Param("id") Long id);

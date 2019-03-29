@@ -6,7 +6,6 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
@@ -17,7 +16,6 @@ import org.springframework.web.client.RestTemplate;
  * @since 2018-02-11
  **/
 @EnableHystrix
-@EnableFeignClients
 @SpringCloudApplication
 public class HystrixApplication {
 
@@ -26,9 +24,9 @@ public class HystrixApplication {
     }
 
     @Bean
-    public ServletRegistrationBean getServlet() {
+    public ServletRegistrationBean<HystrixMetricsStreamServlet> getServlet() {
         HystrixMetricsStreamServlet streamServlet = new HystrixMetricsStreamServlet();
-        ServletRegistrationBean registrationBean = new ServletRegistrationBean(streamServlet);
+        ServletRegistrationBean<HystrixMetricsStreamServlet> registrationBean = new ServletRegistrationBean<>(streamServlet);
         registrationBean.setLoadOnStartup(1);
         registrationBean.addUrlMappings("/hystrix.stream");
         registrationBean.setName("HystrixMetricsStreamServlet");
