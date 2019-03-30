@@ -5,25 +5,26 @@ spring:
   cloud:
     config:
       # 对应config server中配置文件的 {label}
-      label: dev
+      label: master
       # 访问config server的地址
-      uri: http://localhost:9111
+      uri: http://localhost:8080
       # 对应config server中配置文件的 {profile}
       profile: test
-
       # username: user
       # password: password
-#      discovery:
-#        # 表示使用服务发现组件中提供的Config Server，默认是false
-#        # 开启通过服务发现组件访问Config Server的功能
-#        enabled: true
-#        #指定Config Server在服务发现组件中的serviceId 默认是configserver
-#        service-id: service-config
+      discovery:
+        # 表示使用服务发现组件中提供的Config Server，默认是false
+        # 开启通过服务发现组件访问Config Server的功能
+        enabled: true
+        #指定Config Server在服务发现组件中的serviceId
+        service-id: mc-config-server
+      enabled: true
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    appname: service-config-client
+    instance-id: ${spring.application.name}:${server.port}
 
-#  rabbitmq:
-#    host: localhost
-#    port: 5672
-#    username: cloud
-#    password: cloud
-#    virtual-host: /cloud
