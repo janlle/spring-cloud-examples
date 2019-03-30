@@ -1,10 +1,10 @@
 package com.andy.feign.controller;
 
+import com.andy.common.beans.user.UserAddVO;
+import com.andy.common.beans.user.UserEditVO;
+import com.andy.common.beans.user.UserVO;
+import com.andy.common.entity.User;
 import com.andy.feign.client.UserFeignClient;
-import com.andy.feign.entity.User;
-import com.andy.feign.pojo.UserAddVO;
-import com.andy.feign.pojo.UserEditVO;
-import com.andy.feign.pojo.UserVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
