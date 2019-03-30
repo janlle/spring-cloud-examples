@@ -16,7 +16,7 @@ import java.util.Random;
 @Service
 public class HystrixService {
 
-    private Random random = new Random();
+    private Random random;
 
     /**
      * @param userId

@@ -13,13 +13,13 @@ public class CircuitBreakerTest {
 
     public static int num = 0;
 
-    //
     static HystrixCommand.Setter setter = HystrixCommand.Setter
             .withGroupKey(HystrixCommandGroupKey.Factory.asKey("circuitBreakerTestGroup"))
             .andCommandKey(HystrixCommandKey.Factory.asKey("circuitBreakerTestCommand"))
             .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("circuitBreakerTestPool"))
             .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
-                    .withCoreSize(10)) // 配置线程池
+                    // 配置线程池
+                    .withCoreSize(10))
             .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
                     .withCircuitBreakerEnabled(true)
                     .withCircuitBreakerRequestVolumeThreshold(10)
@@ -40,7 +40,6 @@ public class CircuitBreakerTest {
             }
         }
 
-
         @Override
         protected Object getFallback() {
             return "CircuitBreaker fallback: " + num;
@@ -50,7 +49,6 @@ public class CircuitBreakerTest {
 
     @Test
     public void circuitBreakerTest() throws Exception {
-
         for (int i = 0; i < 30; i++) {
             CircuitBreakerTest.num = i;
             CircuitBreakerTest circuitBreakerTest = new CircuitBreakerTest();
