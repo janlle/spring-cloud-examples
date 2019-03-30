@@ -1,5 +1,5 @@
 server:
-  port: 9111
+  port: 8080
 spring:
   application:
       name: mc-config-server
@@ -20,13 +20,19 @@ spring:
           clone-on-start: true
       # git 分支
       label: master
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: cloud
+    password: cloud
+    virtual-host: /mc
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
   instance:
-    appname: service-config
+    appname: service-config-server
     instance-id: ${spring.application.name}:${server.port}
 
 # spring boot 2.x actuator 的配置
@@ -37,4 +43,6 @@ management:
         include: "*"
       base-path: /actuator
     health:
-      show-details: always
+      showDetails: always
+
+
