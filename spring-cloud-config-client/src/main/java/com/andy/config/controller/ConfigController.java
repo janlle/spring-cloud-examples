@@ -25,6 +25,9 @@ public class ConfigController {
     @Value("${name}")
     private String name;
 
+    @Value("${filename}")
+    private String filename;
+
     @Value("${level}")
     private String level;
 
@@ -32,8 +35,9 @@ public class ConfigController {
     public Map<String, String> env() {
         Map<String, String> map = new HashMap<>();
         map.put("profile", profile);
-        map.put("name", name);
         map.put("level", level);
+        map.put("filename", filename);
+        map.put("name", name);
         return map;
     }
 

@@ -1,21 +1,29 @@
 spring:
   application:
-    name: spring-cloud-config-client
+    # 对应config server中配置文件的 {application}
+    name: mc-config-client
   cloud:
     config:
-      discovery:
-        enabled: true
-        service-id: spring-cloud-config-server-bus
-#        service-id: spring-cloud-config-server
-      profile: pro
+      # 对应config server中配置文件的 {label}
       label: dev
-#      uri: http://localhost:9000
-#      name:
-#      username: user
-#      password: password
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: cloud
-    password: cloud
-    virtual-host: /cloud
+      # 访问config server的地址
+      uri: http://localhost:9111
+      # 对应config server中配置文件的 {profile}
+      profile: test
+
+      # username: user
+      # password: password
+#      discovery:
+#        # 表示使用服务发现组件中提供的Config Server，默认是false
+#        # 开启通过服务发现组件访问Config Server的功能
+#        enabled: true
+#        #指定Config Server在服务发现组件中的serviceId 默认是configserver
+#        service-id: service-config
+
+
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: cloud
+#    password: cloud
+#    virtual-host: /cloud
