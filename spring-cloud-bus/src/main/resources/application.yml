@@ -8,8 +8,8 @@ spring:
   application:
     name: spring-cloud-bus
   rabbitmq:
-    host:
-    port:
-    username:
-    password:
+    host: localhost
+    port: 9021
+    username: cloud
+    password: cloud
 
