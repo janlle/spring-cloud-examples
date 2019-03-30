@@ -8,5 +8,5 @@ spring:
       server:
         git:
           uri: https://gitee.com/thethink/config_repo
-          username: thethink
-          password: rlgitee90
+          username: xxx
+          password: xxx

@@ -5,10 +5,10 @@ spring:
     config:
       server:
         git:
-          uri: https://gitee.com/thethink/config_repo
+          uri: https://gitee.com/janlle/config_repo
           repos:
-            simple: https://gitee.com/thethink/simple
+            simple: https://gitee.com/janlle/simple
             special:
               pattern: special*/dev*,*special*/test*
-              url:  https://gitee.com/thethink/special
+              url:  https://gitee.com/janlle/special
 

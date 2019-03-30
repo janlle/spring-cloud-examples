@@ -7,8 +7,8 @@ spring:
     config:
       server:
         git:
-          uri: https://gitee.com/thethink/config_repo
+          uri: https://gitee.com/janlle/config_repo
           search-paths:
-            - foo
-            - bar
+            - def
+            - test
           clone-on-start: true #在启动的时候就会下载

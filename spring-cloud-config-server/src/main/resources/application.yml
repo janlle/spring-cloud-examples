@@ -1,25 +1,40 @@
 server:
-  port: 9000
+  port: 9111
 spring:
   application:
-      name: spring-cloud-config-server
+      name: mc-config-server
   cloud:
     config:
       server:
         git:
           uri: https://gitee.com/janlle/config_repo.git
-#          username: thethink
-#          password: xxxyyy
+          # git配置文件保存的位置（启动时会拉取远程的配置）
           basedir: D:\tmp\config
-#          uri: ${user.dir}\spring-cloud-config-server\src\main\resources\configs
-#eureka:
-#  client:
-#    service-url:
-#      defaultZone: http://localhost:8761/eureka
+          # 访问git仓库的用户名（非私有库可以不用配置）
+          # username: janlle
+          # 访问git仓库的密码（非私有库可以不用配置）
+          # password: admin
+          # uri: ${user.dir}\spring-cloud-config-server\src\main\resources\configs
+          search-paths: /
+          # 在启动的时候就会下载
+          clone-on-start: true
+      # git 分支
+      label: master
 
-#encrypt:
-#  key: foo
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    appname: service-config
+    instance-id: ${spring.application.name}:${server.port}
+
+# spring boot 2.x actuator 的配置
 management:
   endpoints:
     web:
-      expose: "*"
+      exposure:
+        include: "*"
+      base-path: /actuator
+    health:
+      show-details: always
