@@ -1,6 +1,6 @@
 spring: 
   application:
-    name: spring-cloud-order-ribbon
+    name: mc-ribbon
     
 server:
   port: 8102
@@ -9,22 +9,24 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
   instance:
-    appname: ORDER-CONSUMER-RIBBON
-#    prefer-ip-address: true
+    appname: service-ribbon
 
-#脱离eureka使用
+# 脱离eureka使用
 ribbon:
   eureka:
-   enabled: false
+    enabled: false
 
-spring-cloud-provider:
-  ribbon:
-    listOfService: http://localhost:8001
 
-#配置负载均衡的规则
-spring-cloud-provider:
+# 配置负载均衡的规则
+mc-user:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
-
-
+    # 脱离eureka使用
+    listOfService: http://localhost:9001,http://localhost:9002
+    # 请求连接的超时时间。
+    ConnectTimeout: 1000
+    # 请求处理的超时时间
+    ReadTimeout: 1000
+    # 对所以操作请求都进行重试
+    OkToRetryOnAllOperations: true
 
