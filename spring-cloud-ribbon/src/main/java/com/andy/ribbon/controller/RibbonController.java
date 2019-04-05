@@ -5,10 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -17,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
  **/
 @Slf4j
 @RestController
-@RequestMapping("/ribbon")
+@RequestMapping("/api/ribbon")
 public class RibbonController {
 
     @Autowired
@@ -26,15 +23,21 @@ public class RibbonController {
     @Autowired
     private LoadBalancerClient loadBalancerClient;
 
-    @GetMapping("/user/{userId}")
+    @GetMapping("/{userId}")
     public User order(@PathVariable("userId") int userId) {
         return restTemplate.getForObject("http://mc-user/user/" + userId, User.class);
     }
 
     @GetMapping("/choose")
-    public String test() {
+    public String choose() {
         ServiceInstance choose = loadBalancerClient.choose("mc-user");
         return "host: " + choose.getHost() + " port: " + choose.getPort() + " serviceId: " + choose.getServiceId();
+    }
+
+    @GetMapping("/user")
+    public User withOutEureka(@RequestParam Long userId) {
+        ServiceInstance choose = loadBalancerClient.choose("mc-user");
+        return restTemplate.getForObject(String.format("http://%s:%s/user/%d", choose.getHost(), choose.getPort(), userId), User.class);
     }
 
 }

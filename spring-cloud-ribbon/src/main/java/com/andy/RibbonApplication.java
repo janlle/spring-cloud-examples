@@ -12,7 +12,7 @@ import org.springframework.cloud.netflix.ribbon.RibbonClients;
  **/
 @SpringBootApplication
 //@EnableDiscoveryClient
-//@RibbonClients({@RibbonClient(name = "mc-user")})
+@RibbonClients({@RibbonClient(name = "mc-user")})
 public class RibbonApplication {
     public static void main(String[] args) {
         SpringApplication.run(RibbonApplication.class, args);
