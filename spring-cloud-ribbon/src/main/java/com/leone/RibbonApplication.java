@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  **/
 @SpringBootApplication
 //@EnableDiscoveryClient
-//@RibbonClients({@RibbonClient(name = "mc-user")})
+@RibbonClients({@RibbonClient(name = "mc-user")})
 public class RibbonApplication {
     public static void main(String[] args) {
         SpringApplication.run(RibbonApplication.class, args);

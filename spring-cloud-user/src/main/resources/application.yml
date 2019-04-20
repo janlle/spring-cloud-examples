@@ -13,7 +13,7 @@ eureka:
       test: BBC
     lease-renewal-interval-in-seconds: 5
     prefer-ip-address: true
-    appname: user-service
+    appname: service-user
     hostname: localhost
     status-page-url-path: /health
     namespace: eureka

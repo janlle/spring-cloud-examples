@@ -11,7 +11,7 @@ eureka:
   instance:
     appname: service-ribbon
 
-# 脱离eureka使用
+# 脱离 eureka 使用(false)
 ribbon:
   eureka:
     enabled: false
