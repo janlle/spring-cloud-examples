@@ -24,7 +24,7 @@ spring:
     host: localhost
     port: 5672
     username: cloud
-    password: cloud
+    password: xxxx
     virtual-host: /mc
 
 eureka:

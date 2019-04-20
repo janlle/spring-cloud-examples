@@ -5,6 +5,7 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
     registry-fetch-interval-seconds: 10
+    fetch-registry: false
   instance:
     # 自定义元数据
     metadata-map:

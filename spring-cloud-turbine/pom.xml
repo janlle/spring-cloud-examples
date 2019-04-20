@@ -4,9 +4,9 @@
     <artifactId>spring-cloud-turbine</artifactId>
 
     <parent>
-        <groupId>com.andy</groupId>
+        <groupId>com.leone</groupId>
         <artifactId>spring-cloud-examples</artifactId>
-        <version>1.0.6.RELEASE</version>
+        <version>2.0.0.RELEASE</version>
     </parent>
 
     <dependencyManagement>

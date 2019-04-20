@@ -11,5 +11,5 @@ spring:
     host: localhost
     port: 9021
     username: cloud
-    password: cloud
+    password: xxxx
 

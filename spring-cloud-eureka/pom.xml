@@ -4,9 +4,9 @@
     <artifactId>spring-cloud-eureka</artifactId>
 
     <parent>
-        <groupId>com.andy</groupId>
+        <groupId>com.leone</groupId>
         <artifactId>spring-cloud-examples</artifactId>
-        <version>1.0.6.RELEASE</version>
+        <version>2.0.0.RELEASE</version>
     </parent>
 
     <dependencyManagement>
@@ -80,7 +80,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.0.6.RELEASE</version>
                 <configuration>
-                    <mainClass>com.andy.eureka.EurekaApplication</mainClass>
+                    <mainClass>com.leone.eureka.EurekaApplication</mainClass>
                     <layout>ZIP</layout>
                 </configuration>
                 <executions>
