@@ -4,7 +4,7 @@
     <artifactId>spring-cloud-dashboard</artifactId>
 
     <parent>
-        <groupId>com.leone</groupId>
+        <groupId>com.leone.cloud</groupId>
         <artifactId>spring-cloud-examples</artifactId>
         <version>2.0.0.RELEASE</version>
     </parent>
