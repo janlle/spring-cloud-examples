@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserService {
 
 
     public UserVO findOneFallback(Long userId) {
-        log.error("findOneFallback userId: ", userId);
+        log.error("findOneFallback userId: {}", userId);
         return new UserVO();
     }
 
