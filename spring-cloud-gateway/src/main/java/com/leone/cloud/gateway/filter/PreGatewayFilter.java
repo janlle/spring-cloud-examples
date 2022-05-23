@@ -6,5 +6,5 @@ package com.leone.cloud.gateway.filter;
  * @author leone
  * @since 2019-01-23
  **/
-public class PreGatewayFilter   {
+public class PreGatewayFilter {
 }
