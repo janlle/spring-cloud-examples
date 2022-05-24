@@ -1,20 +1,13 @@
-server:
-  port: 8081
 spring:
   cloud:
     zookeeper:
-      connect-string: 39.108.125.41:2181
+      connect-string: cloud.rm:2181
       discovery:
         enabled: true
+      config:
+        enable: true
+        root: conf
+        defaultContext: leone
+        profileSeparator: \-
   application:
     name: spring-cloud-zookeeper
-#  cloud:
-#    zookeeper:
-#      discovery:
-#        instancePort: ${server.port}    #端口号
-#        instanceHost: examples.com      #当前服务的初始化地址（可以不填）
-#        enabled: true
-#        register: true
-#        root: /spring-cloud-zookeeper
-#      connectString: 39.108.125.41:2181 # 多节点配置,通过逗号分割192.168.253.31:2181,192.168.253.32:2181
-
