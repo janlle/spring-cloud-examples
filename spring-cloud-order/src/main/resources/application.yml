@@ -7,7 +7,5 @@ spring:
 
 eureka:
   client:
-    service-url:
+    serviceUrl:
       defaultZone: http://localhost:8761/eureka
-    registry-fetch-interval-seconds: 10
-    fetch-registry: false

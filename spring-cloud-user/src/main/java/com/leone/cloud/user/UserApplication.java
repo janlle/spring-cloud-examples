@@ -5,8 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.netflix.ribbon.RibbonClients;
-
-import java.util.Arrays;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 
 /**
@@ -15,14 +14,12 @@ import java.util.Arrays;
  * @author Leone
  * @since 2018-03-10
  **/
+@EnableFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication
-@RibbonClients({@RibbonClient(name = "mc-user")})
+@RibbonClients({@RibbonClient(name = "mc-order")})
 public class UserApplication {
     public static void main(String[] args) {
-        if (args.length > 0) {
-            System.out.println(Arrays.toString(args));
-        }
         SpringApplication.run(UserApplication.class, args);
     }
 }

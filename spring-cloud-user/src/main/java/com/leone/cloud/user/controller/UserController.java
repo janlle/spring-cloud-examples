@@ -27,8 +27,8 @@ import java.util.List;
  * @since 2018-03-10
  **/
 @Slf4j
-@RestController
-@RequestMapping("/user")
+// @RestController
+// @RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -81,13 +81,13 @@ public class UserController {
         userService.delete(userId);
     }
 
-    @PutMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public UserVO update(@RequestBody UserEditVO user) {
         log.info("user service update port: {}", port);
         return userService.update(user);
     }
 
-    @PostMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public UserVO save(@RequestBody UserVO user) {
         log.info("user service save: {}", port);
         return userService.save(user);

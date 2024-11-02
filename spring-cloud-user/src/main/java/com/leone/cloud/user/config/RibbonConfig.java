@@ -2,6 +2,8 @@ package com.leone.cloud.user.config;
 
 import com.netflix.loadbalancer.AvailabilityFilteringRule;
 import com.netflix.loadbalancer.IRule;
+import com.netflix.loadbalancer.RandomRule;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
@@ -15,21 +17,19 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class RibbonConfig {
 
-    /**
+    /*
      * 实例化ribbon使用的RestTemplate
-     *
-     * @return
      */
     @Bean
-    // @LoadBalanced
+    @LoadBalanced
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
 
     /**
-     * 配置随机负载策略，需要配置属性mc-user.ribbon.NFLoadBalancerRuleClassName=com.netflix.loadbalancer.RandomRule
+     * 配置随机负载策略，需要配置属性 mc-order.ribbon.NFLoadBalancerRuleClassName=com.netflix.loadbalancer.RandomRule
      */
-    //@Bean
+    @Bean
     public IRule ribbonRule() {
         //  轮询
         // return new RoundRobinRule();
@@ -47,10 +47,10 @@ public class RibbonConfig {
         // return new ZoneAvoidanceRule();
 
         // 随机
-        // return new RandomRule();
+        return new RandomRule();
 
         // 过滤掉那些因为一直连接失败的被标记为circuit tripped的后端server，并过滤掉那些高并发的的后端server（active connections 超过配置的阈值）
-        return new AvailabilityFilteringRule();
+        // return new AvailabilityFilteringRule();
     }
 }
 

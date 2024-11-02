@@ -1,5 +1,5 @@
 server:
-  port: 9001
+  port: 9000
 
 spring:
   application:
@@ -11,35 +11,36 @@ spring:
 
 eureka:
   client:
-    service-url:
+    serviceUrl:
       defaultZone: http://localhost:8761/eureka
     registry-fetch-interval-seconds: 10
-    fetch-registry: false
-  instance:
+    # 是否从eureka中获取信息 注意！！！
+    fetch-registry: true
+#  instance:
     # 自定义元数据
-    metadata-map:
-      zone: ABC
-      test: BBC
-    lease-renewal-interval-in-seconds: 5
-    prefer-ip-address: true
-    appname: service-user
-    hostname: localhost
-    status-page-url-path: /health
-    namespace: eureka
+#    metadata-map:
+#      zone: ABC
+#      test: BBC
+#    lease-renewal-interval-in-seconds: 5
+#    prefer-ip-address: true
+#    appname: service-user
+#    hostname: localhost
+#    status-page-url-path: /health
+#    namespace: eureka
     # 此实例注册到eureka服务端的唯一的实例ID,其组成为${spring.application.name}:${spring.application.instance_id}:${random.value}
-    instance-id: ${spring.application.name}:${server.port}
+#    instance-id: ${spring.application.name}:${server.port}
     # 获取实例的ip地址
-    ip-address: 127.0.0.1
+#    ip-address: 127.0.0.1
 
 # 配置负载均衡的规则
-mc-user:
-  ribbon:
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
-    # 脱离eureka使用
-    listOfService: http://localhost:9001,http://localhost:9002
-    # 请求连接的超时时间。
-    ConnectTimeout: 1000
-    # 请求处理的超时时间
-    ReadTimeout: 1000
-    # 对所以操作请求都进行重试
-    OkToRetryOnAllOperations: true
+#mc-order:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+#    # 脱离eureka使用
+#    listOfService: http://localhost:9001,http://localhost:9002
+#    # 请求连接的超时时间。
+#    ConnectTimeout: 1000
+#    # 请求处理的超时时间
+#    ReadTimeout: 1000
+#    # 对所以操作请求都进行重试
+#    OkToRetryOnAllOperations: true

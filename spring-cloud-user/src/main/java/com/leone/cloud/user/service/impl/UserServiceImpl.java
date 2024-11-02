@@ -6,7 +6,6 @@ import com.leone.cloud.common.beans.user.UserVO;
 import com.leone.cloud.common.entity.User;
 import com.leone.cloud.common.utils.EntityFactory;
 import com.leone.cloud.user.service.UserService;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -47,7 +46,7 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-    @HystrixCommand(fallbackMethod = "findOneFallback")
+    // @HystrixCommand(fallbackMethod = "findOneFallback")
     @Override
     public UserVO findOne(Long userId) {
         if (random.nextInt(100) < 30) {

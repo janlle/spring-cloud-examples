@@ -3,6 +3,8 @@ server:
 
 eureka:
   client:
+    # 是否将自己注册到Eureka服务中，本身就是所有无需注册
     register-with-eureka: false
+    # 是否从Eureka中获取注册信息
     fetch-registry: false
 

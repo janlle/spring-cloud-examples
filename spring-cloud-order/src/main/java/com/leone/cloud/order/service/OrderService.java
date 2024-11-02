@@ -88,7 +88,7 @@ public class OrderService {
         }).getBody();*/
 
         UserVO user = restTemplate.getForObject(url, UserVO.class);
-        log.info("get: -> {} result: -> {}", url, user);
+        log.info("list: -> {} result: -> {}", url, user);
         if (ObjectUtils.isEmpty(user)) {
             return null;
         }
