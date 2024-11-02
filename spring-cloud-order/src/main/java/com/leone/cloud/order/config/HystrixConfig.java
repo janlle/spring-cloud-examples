@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * @author leone
  * @since 2018-12-22
  **/
-@Configuration
+// @Configuration
 public class HystrixConfig {
 
     @Bean
@@ -23,7 +23,7 @@ public class HystrixConfig {
     @Bean
     public ServletRegistrationBean registration(HystrixMetricsStreamServlet servlet) {
         ServletRegistrationBean registrationBean = new ServletRegistrationBean();
-        registrationBean.setServlet(servlet);
+        // registrationBean.setServlet(servlet);
         // 是否启用该registrationBean
         registrationBean.setEnabled(true);
         registrationBean.addUrlMappings("/hystrix.stream");

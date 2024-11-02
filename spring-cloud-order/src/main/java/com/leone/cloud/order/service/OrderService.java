@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
  * @since 2019-01-22
  **/
 @Slf4j
-@Service
+// @Service
 public class OrderService {
 
     private String userUrl = "http://localhost:9001/user/";

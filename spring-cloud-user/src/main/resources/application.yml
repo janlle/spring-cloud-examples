@@ -1,5 +1,14 @@
 server:
   port: 9001
+
+spring:
+  application:
+    name: mc-user
+  servlet:
+    multipart:
+      max-file-size: 120MB
+      max-request-size: 20MB
+
 eureka:
   client:
     service-url:
@@ -22,21 +31,15 @@ eureka:
     # 获取实例的ip地址
     ip-address: 127.0.0.1
 
-spring:
-  application:
-    name: mc-user
-  servlet:
-    multipart:
-      max-file-size: 120MB
-      max-request-size: 20MB
-
-# spring boot 2.x actuator 的配置
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-      base-path: /actuator
-    health:
-      show-details: always
-
+# 配置负载均衡的规则
+mc-user:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+    # 脱离eureka使用
+    listOfService: http://localhost:9001,http://localhost:9002
+    # 请求连接的超时时间。
+    ConnectTimeout: 1000
+    # 请求处理的超时时间
+    ReadTimeout: 1000
+    # 对所以操作请求都进行重试
+    OkToRetryOnAllOperations: true

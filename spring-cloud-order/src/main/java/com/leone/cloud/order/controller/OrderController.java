@@ -25,13 +25,13 @@ import java.util.List;
 @RequestMapping("/order")
 public class OrderController {
 
-    @Autowired
+    // @Autowired
     private OrderService orderService;
 
-    @Autowired
+    // @Autowired
     private RestTemplate restTemplate;
 
-    @Autowired
+    // @Autowired
     private LoadBalancerClient loadBalancerClient;
 
     @GetMapping(value = "/{orderId}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
