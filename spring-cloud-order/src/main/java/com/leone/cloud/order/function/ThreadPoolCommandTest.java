@@ -1,4 +1,4 @@
-package com.leone.cloud.hystrix.function;
+package com.leone.cloud.order.function;
 
 import com.netflix.hystrix.*;
 
@@ -16,12 +16,12 @@ public class ThreadPoolCommandTest extends HystrixCommand<String> {
 
     private final String name;
 
-    private int time = new Random().nextInt(1500);
+    private final int time = new Random().nextInt(1500);
 
     /**
      * 在继承hystrixCommand的构造函数中实现添加线程池参数记性资源隔离
      *
-     * @param name
+     * @param name name
      */
     public ThreadPoolCommandTest(String name) {
         super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("ExampleGroup"))
@@ -47,7 +47,7 @@ public class ThreadPoolCommandTest extends HystrixCommand<String> {
     /**
      * 依赖逻辑封装在run()方法中
      *
-     * @return
+     * @return string
      */
     @Override
     protected String run() throws InterruptedException {
@@ -58,7 +58,7 @@ public class ThreadPoolCommandTest extends HystrixCommand<String> {
     /**
      * 失败调用降级方法
      *
-     * @return
+     * @return str
      */
     @Override
     protected String getFallback() {

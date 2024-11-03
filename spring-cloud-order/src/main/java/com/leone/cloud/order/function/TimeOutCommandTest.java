@@ -1,4 +1,4 @@
-package com.leone.cloud.hystrix.function;
+package com.leone.cloud.order.function;
 
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
@@ -17,7 +17,7 @@ public class TimeOutCommandTest extends HystrixCommand<String> {
     private final String name;
 
     public TimeOutCommandTest(String name) {
-        super(HystrixCommand.Setter.withGroupKey(
+        super(Setter.withGroupKey(
                 HystrixCommandGroupKey.Factory.asKey("HelloWorldGroup"))
                 // 配置依赖超时时间,500毫秒
                 .andCommandPropertiesDefaults(HystrixCommandProperties.Setter().

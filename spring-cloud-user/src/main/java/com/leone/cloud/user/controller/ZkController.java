@@ -1,4 +1,4 @@
-package com.leone.cloud.zookeeper.controller;
+package com.leone.cloud.user.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,7 +19,7 @@ import java.util.List;
  **/
 @RefreshScope
 @RestController
-public class TestController {
+public class ZkController {
 
     @Autowired
     private DiscoveryClient discoveryClient;

@@ -1,4 +1,4 @@
-package com.leone.cloud.hystrix.function;
+package com.leone.cloud.order.function;
 
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
@@ -14,7 +14,7 @@ import java.util.Random;
  **/
 public class SemaphoreCommandTest extends HystrixCommand<String> {
 
-    private int time = new Random().nextInt(1500);
+    private final int time = new Random().nextInt(1500);
 
     private final int id;
 

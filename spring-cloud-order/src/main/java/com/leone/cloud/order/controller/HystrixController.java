@@ -1,8 +1,8 @@
-package com.leone.cloud.hystrix.controller;
+package com.leone.cloud.order.controller;
 
+import com.leone.cloud.common.entity.Order;
 import com.leone.cloud.common.entity.User;
-import com.leone.cloud.hystrix.service.HystrixService;
-import com.leone.cloud.hystrix.service.RibbonService;
+import com.leone.cloud.order.service.OrderService;
 import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Random;
 
 /**
- * @author Leone
+ * @author leone
  * @since 2017-12-22
  **/
 @Slf4j
@@ -26,25 +26,19 @@ public class HystrixController {
     private Random random;
 
     @Autowired
-    private RibbonService ribbonService;
+    private OrderService orderService;
 
-    @Autowired
-    private HystrixService hystrixService;
 
-    @GetMapping("/user/{userId}")
-    public User findOne(@PathVariable("userId") Long userId) {
-        return ribbonService.find(userId);
-    }
-
-    @GetMapping("/user")
-    public User user(@RequestParam Long userId) {
-        return hystrixService.find(userId);
+    @GetMapping("/order/{orderId}")
+    public Order findOne(@PathVariable("orderId") Long orderId) {
+        return orderService.findOne(orderId);
     }
 
     @HystrixCommand(
             fallbackMethod = "testFallback",
             threadPoolProperties = {
-                    @HystrixProperty(name = "coreSize", value = "10"),//10个核心线程池,超过20个的队列外的请求被拒绝; 当一切都是正常的时候，线程池一般仅会有1到2个线程激活来提供服务
+                    //10个核心线程池,超过20个的队列外的请求被拒绝; 当一切都是正常的时候，线程池一般仅会有1到2个线程激活来提供服务
+                    @HystrixProperty(name = "coreSize", value = "10"),
                     @HystrixProperty(name = "maxQueueSize", value = "100"),
                     @HystrixProperty(name = "queueSizeRejectionThreshold", value = "20")},
             commandProperties = {

@@ -44,3 +44,21 @@ eureka:
 #    ReadTimeout: 1000
 #    # 对所以操作请求都进行重试
 #    OkToRetryOnAllOperations: true
+
+# 整合 consul 配置
+#spring:
+#  cloud:
+#    consul:
+#      enabled: true
+#      host: localhost
+#      port: 8500
+#  discovery:
+#    # 配置服务注册到Consul上
+#    register: true # 是否开启在 consul 中注册服务
+#    health-check-path: /actuator/health   #定义 consul 健康检查路径
+#    health-check-interval: 10s # consul 健康检查频率
+#    instance-id: ${spring.application.name}:${server.port} # 配置注册到consul 服务的id
+#    enabled: true #启用 consul 服务发现
+#    service-name: ${spring.application.name} #设置 注册到 consul 的服务名称
+#    ip-address: localhost # 访问服务时使用的 ip地址 （还必须设置preferIpAddress才能使用）
+#    prefer-ip-address: true

@@ -1,0 +1,12 @@
+# zk 配置
+#spring:
+#  cloud:
+#    zookeeper:
+#      connect-string: cloud.rm:2181
+#      discovery:
+#        enabled: true
+#      config:
+#        enable: true
+#        root: conf
+#        defaultContext: leone
+#        profileSeparator: \-
