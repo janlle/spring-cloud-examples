@@ -1,12 +1,12 @@
 package com.leone.cloud.ribbon.entity;
 
-import io.swagger.annotations.ApiModel;
+//import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
-@ApiModel
+//@ApiModel
 public class User {
 
     private Integer userId;

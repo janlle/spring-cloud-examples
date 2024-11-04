@@ -1,6 +1,5 @@
 package com.leone.cloud.stream.message;
 
-import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.messaging.SubscribableChannel;
 
 
@@ -16,10 +15,10 @@ public interface Sink {
     String INPUT2 = "input2";
 
 
-    @Input(Sink.INPUT1)
+    //@Input(Sink.INPUT1)
     SubscribableChannel input1();
 
-    @Input(Sink.INPUT2)
+    //@Input(Sink.INPUT2)
     SubscribableChannel input2();
 
 

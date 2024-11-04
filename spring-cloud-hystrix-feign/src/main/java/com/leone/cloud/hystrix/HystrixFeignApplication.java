@@ -1,7 +1,7 @@
 package com.leone.cloud.hystrix;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +16,7 @@ import java.util.Random;
  **/
 @EnableHystrix
 @EnableFeignClients
-@SpringCloudApplication
+@EnableDiscoveryClient
 public class HystrixFeignApplication {
 
     public static void main(String[] args) {

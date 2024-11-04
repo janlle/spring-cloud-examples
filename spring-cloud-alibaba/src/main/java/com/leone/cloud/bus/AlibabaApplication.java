@@ -2,16 +2,16 @@ package com.leone.cloud.bus;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * @author Leone
  * @since 2018-04-07
  **/
-@EnableEurekaClient
+@EnableDiscoveryClient
 @SpringBootApplication
-public class BusApplication {
+public class AlibabaApplication {
     public static void main(String[] args) {
-        SpringApplication.run(BusApplication.class, args);
+        SpringApplication.run(AlibabaApplication.class, args);
     }
 }
