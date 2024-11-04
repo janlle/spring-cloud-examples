@@ -1,3 +1,7 @@
 alibaba:
   name: james
   age: 18
+
+spring:
+  profiles:
+    active: dev

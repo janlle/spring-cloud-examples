@@ -1,4 +1,4 @@
-package com.leone.cloud.bus.event;
+package com.leone.cloud.alibaba.event;
 
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationEventPublisher;

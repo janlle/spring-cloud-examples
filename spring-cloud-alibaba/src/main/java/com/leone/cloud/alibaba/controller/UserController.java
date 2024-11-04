@@ -1,4 +1,4 @@
-package com.leone.cloud.bus.controller;
+package com.leone.cloud.alibaba.controller;
 
 import com.leone.cloud.common.entity.User;
 import org.springframework.beans.factory.annotation.Value;
