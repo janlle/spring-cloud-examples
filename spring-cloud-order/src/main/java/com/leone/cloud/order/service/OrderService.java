@@ -42,7 +42,7 @@ public class OrderService {
     }
 
     public Order findOneFallback(Long orderId) {
-        log.error("findOneFallback orderId: {}", orderId);
+        //log.error("findOneFallback orderId: {}", orderId);
         return EntityFactory.getDefaultOrder();
     }
 

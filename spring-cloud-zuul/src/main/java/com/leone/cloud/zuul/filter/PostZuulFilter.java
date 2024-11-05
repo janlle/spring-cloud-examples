@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * @author Leone
  * @since 2018-02-09
  **/
-@Component
+//@Component
 public class PostZuulFilter extends ZuulFilter {
 
     private static final Logger log = LoggerFactory.getLogger(PostZuulFilter.class);

@@ -30,9 +30,6 @@ public class ZkController {
     @Autowired
     private Environment environment;
 
-    @Value("${name}")
-    private String name;
-
     @GetMapping("/instance")
     public String instance() {
         //获取实例化的注册节点

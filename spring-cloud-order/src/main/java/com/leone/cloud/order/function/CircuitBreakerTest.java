@@ -25,33 +25,33 @@ public class CircuitBreakerTest {
                     .withCircuitBreakerErrorThresholdPercentage(80));
 
     // 未配置的值均取系统默认值
-    HystrixCommand<Object> hystrixCommand = new HystrixCommand<>(setter) {
-        @Override
-        protected Object run() throws Exception {
-            if (num % 2 == 0) {
-                return String.valueOf(num);
-            } else {
-                int j = 0;
-                // 死循环模拟调用超时
-                while (true) {
-                    j++;
-                }
-            }
-        }
-
-        @Override
-        protected Object getFallback() {
-            return "CircuitBreaker fallback: " + num;
-        }
-
-    };
+    //HystrixCommand<Object> hystrixCommand = new HystrixCommand<>(setter) {
+    //    @Override
+    //    protected Object run() throws Exception {
+    //        if (num % 2 == 0) {
+    //            return String.valueOf(num);
+    //        } else {
+    //            int j = 0;
+    //            // 死循环模拟调用超时
+    //            while (true) {
+    //                j++;
+    //            }
+    //        }
+    //    }
+    //
+    //    @Override
+    //    protected Object getFallback() {
+    //        return "CircuitBreaker fallback: " + num;
+    //    }
+    //
+    //};
 
     public static void main(String[] args) {
         for (int i = 0; i < 30; i++) {
             CircuitBreakerTest.num = i;
-            CircuitBreakerTest circuitBreakerTest = new CircuitBreakerTest();
-            String result = (String) circuitBreakerTest.hystrixCommand.execute();
-            System.out.println(result);
+            //CircuitBreakerTest circuitBreakerTest = new CircuitBreakerTest();
+            //String result = (String) circuitBreakerTest.hystrixCommand.execute();
+            //System.out.println(result);
         }
     }
 

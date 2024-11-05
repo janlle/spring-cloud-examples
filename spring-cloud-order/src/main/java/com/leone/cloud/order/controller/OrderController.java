@@ -21,7 +21,6 @@ import java.util.List;
  **/
 @Slf4j
 @RestController
-@RequestMapping("/order")
 public class OrderController {
 
     // @Autowired
@@ -36,8 +35,13 @@ public class OrderController {
     @Value("${server.port}")
     private Integer port;
 
+    @GetMapping("/order")
+    public String hello() {
+        log.info("hello mc-order {}", port);
+        return "hello mc-order " + port;
+    }
 
-    @GetMapping(value = "/{orderId}")
+    @GetMapping(value = "/order/{orderId}")
     public Order findOne(@PathVariable("orderId") Long orderId) {
         Order order = new Order();
         order.setOrderId(orderId);
@@ -45,12 +49,12 @@ public class OrderController {
         return order;
     }
 
-    @GetMapping(value = "/list")
+    @GetMapping(value = "/order/list")
     public List<OrderVO> list(@RequestParam Long userId) {
         return orderService.list(userId);
     }
 
-    @GetMapping(value = "/load", produces = {MediaType.APPLICATION_JSON_VALUE})
+    @GetMapping(value = "/order/load", produces = {MediaType.APPLICATION_JSON_VALUE})
     public String loadBalancer() {
         String url = "http://localhost:8001/info";
         String result = restTemplate.getForObject("http://localhost:8001/info", String.class);

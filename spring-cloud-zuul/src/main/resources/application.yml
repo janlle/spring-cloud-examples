@@ -7,38 +7,30 @@ spring:
 
 eureka:
   client:
-    service-url:
+    serviceUrl:
       defaultZone: http://localhost:8761/eureka
-  instance:
-    appname: zuul-service
-    instance-id: ${spring.application.name}:${server.port}
-    ip-address: 127.0.0.1
 
 zuul:
-   ignored-patterns:
-   - /**/page/**
+#   ignored-patterns:
+#   - /**/page/**
    # 访问 zuul 的前缀
-   prefix: /api
+   # prefix: /api
    # 去掉前缀为 false 默认 true
-   strip-prefix: true
+   # strip-prefix: true
    # 忽略那些服务
-   ignored-services: mc-user
+   # ignored-services: mc-user
    routes:
-     user:
-       path: /api-user/**
-       url: http://127.0.0.1:9001
-       sensitiveHeaders: Cookie,Set-Cookie,Authorization
-     mc-order:
-       path: /api-order/**
+     user-service:
+       path: /user/**
+       serviceId: mc-user
+       # sensitiveHeaders: Cookie,Set-Cookie,Authorization
+     order-service:
+       path: /order/**
        serviceId: mc-order
-     goods:
-       path: /api-goods/**
-       serviceId: mc-goods
 
-
-ribbon:
-  eureka:
-    enabled: true
+#ribbon:
+#  eureka:
+#    enabled: true
 
 #mc-user:
 #  ribbon:

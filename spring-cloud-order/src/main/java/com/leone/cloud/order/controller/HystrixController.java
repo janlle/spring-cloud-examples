@@ -22,8 +22,7 @@ import java.util.Random;
 @DefaultProperties(defaultFallback = "defaultFallback")
 public class HystrixController {
 
-    @Autowired
-    private Random random;
+    private final Random random = new Random();
 
     @Autowired
     private OrderService orderService;

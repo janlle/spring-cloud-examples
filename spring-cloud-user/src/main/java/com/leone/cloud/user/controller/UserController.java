@@ -27,8 +27,7 @@ import java.util.List;
  * @since 2018-03-10
  **/
 @Slf4j
-// @RestController
-// @RequestMapping("/user")
+@RestController
 public class UserController {
 
     @Autowired
@@ -43,19 +42,25 @@ public class UserController {
     @Value("${server.port}")
     private String port;
 
-//    @GetMapping("/instance")
-//    public String serviceUrl() {
-//        InstanceInfo instance = eurekaClient.getNextServerFromEureka("USER-SERVICE", false);
-//        return instance.getHomePageUrl();
-//    }
+    @GetMapping("/user")
+    public String hello() {
+        log.info("hello mc-user {}", port);
+        return "hello mc-user " + port;
+    }
 
-    @GetMapping("/info")
+    //    @GetMapping("/instance")
+    //    public String serviceUrl() {
+    //        InstanceInfo instance = eurekaClient.getNextServerFromEureka("USER-SERVICE", false);
+    //        return instance.getHomePageUrl();
+    //    }
+
+    @GetMapping("/user/info")
     public List<String> serviceInfo() {
         log.info("user service port: {}", port);
         return discoveryClient.getServices();
     }
 
-    @GetMapping("/list")
+    @GetMapping("/user/list")
     public List<UserVO> list(@RequestHeader HttpHeaders headers) {
         log.info("request header:{}", headers.get("name-Type"));
         log.info("request header:{}", headers.get("User-Agent"));
@@ -65,7 +70,7 @@ public class UserController {
         return userService.list();
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping("/user/{userId}")
     public UserVO findOne(@PathVariable("userId") Long userId, @RequestHeader HttpHeaders headers) {
         //log.info("request header:{}", headers.get("name-Type"));
         //log.info("request header:{}", headers.get("a"));
@@ -75,24 +80,17 @@ public class UserController {
         return userService.findOne(userId);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/user")
     public void delete(@RequestParam("userId") Long userId) {
         log.info("user service delete port: {}", port);
         userService.delete(userId);
     }
 
-    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(path = "/user", produces = MediaType.APPLICATION_JSON_VALUE)
     public UserVO update(@RequestBody UserEditVO user) {
         log.info("user service update port: {}", port);
         return userService.update(user);
     }
-
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public UserVO save(@RequestBody UserVO user) {
-        log.info("user service save: {}", port);
-        return userService.save(user);
-    }
-
 
     /**
      * 上传文件
@@ -103,7 +101,7 @@ public class UserController {
      * @return 文件在服务器上的绝对路径
      * @throws IOException IO异常
      */
-    @PostMapping("/upload")
+    @PostMapping("/user/upload")
     public String upload(MultipartFile file) throws IOException {
         if (null != file) {
             String fileName = file.getOriginalFilename();

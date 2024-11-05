@@ -2,6 +2,7 @@ package com.leone.cloud.zuul.filter;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
+import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
@@ -9,13 +10,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author Leone
  * @since 2018-02-07
  **/
-@Component
+//@Component
 public class PreZuulFilter extends ZuulFilter {
 
     private static final Logger log = LoggerFactory.getLogger(PostZuulFilter.class);
@@ -58,15 +58,15 @@ public class PreZuulFilter extends ZuulFilter {
     @Override
     public Object run() {
         RequestContext requestContext = RequestContext.getCurrentContext();
-        HttpServletRequest request = RequestContext.getCurrentContext().getRequest();
-        String token = request.getParameter("token");
-        String host = request.getRemoteHost();
-        log.info("pre filter run...  token: {} host: {}", token, host);
-        if (StringUtils.isEmpty(token)) {
-            // 不响应 request
-            requestContext.setSendZuulResponse(false);
-            requestContext.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value());
-        }
+        //HttpServletRequest request = RequestContext.getCurrentContext().getRequest();
+        //String token = request.getParameter("token");
+        //String host = request.getRemoteHost();
+        //log.info("pre filter run...  token: {} host: {}", token, host);
+        //if (StringUtils.isEmpty(token)) {
+        //     不响应 request
+            //requestContext.setSendZuulResponse(false);
+            //requestContext.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value());
+        //}
         return null;
     }
 

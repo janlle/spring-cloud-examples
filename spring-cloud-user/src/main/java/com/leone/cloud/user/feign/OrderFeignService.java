@@ -2,9 +2,12 @@ package com.leone.cloud.user.feign;
 
 import com.leone.cloud.common.entity.Order;
 import com.leone.cloud.user.config.FeignConfig;
+import feign.HeaderMap;
+import feign.Headers;
+import feign.Param;
+import feign.RequestLine;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
-import feign.*;
 
 import java.util.List;
 import java.util.Map;
