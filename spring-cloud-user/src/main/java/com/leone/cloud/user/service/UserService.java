@@ -1,7 +1,6 @@
 package com.leone.cloud.user.service;
 
-import com.leone.cloud.common.beans.user.UserEditVO;
-import com.leone.cloud.common.beans.user.UserVO;
+import com.leone.cloud.common.entity.User;
 
 import java.util.List;
 
@@ -13,13 +12,7 @@ import java.util.List;
  **/
 public interface UserService {
 
-    Integer delete(Long userId);
+    User findOne(Long userId);
 
-    UserVO update(UserEditVO user);
-
-    UserVO save(UserVO user);
-
-    UserVO findOne(Long userId);
-
-    List<UserVO> list();
+    List<User> list();
 }

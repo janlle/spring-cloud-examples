@@ -2,7 +2,9 @@ package com.leone.cloud.user.controller;
 
 import com.leone.cloud.common.beans.user.UserEditVO;
 import com.leone.cloud.common.beans.user.UserVO;
+import com.leone.cloud.common.entity.User;
 import com.leone.cloud.user.service.UserService;
+import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,61 +42,29 @@ public class UserController {
     private UserService userService;
 
     @Value("${server.port}")
-    private String port;
+    private Integer port;
 
     @GetMapping("/user")
-    public String hello() {
-        log.info("hello mc-user {}", port);
+    public String user(@RequestHeader HttpHeaders headers) {
+        log.info("mc-user service port: {} info: {}", port, discoveryClient.getServices());
+        log.info("header InstanceId: {}", headers.get("X-InstanceId"));
+        //log.info("request header:{}", headers.get("User-Agent"));
+        //headers.getAccessControlAllowHeaders().forEach(System.out::println);
+        InstanceInfo instance = eurekaClient.getNextServerFromEureka("mc-user", false);
+        log.info("instance: {}", instance);
         return "hello mc-user " + port;
     }
 
-    //    @GetMapping("/instance")
-    //    public String serviceUrl() {
-    //        InstanceInfo instance = eurekaClient.getNextServerFromEureka("USER-SERVICE", false);
-    //        return instance.getHomePageUrl();
-    //    }
-
-    @GetMapping("/user/info")
-    public List<String> serviceInfo() {
-        log.info("user service port: {}", port);
-        return discoveryClient.getServices();
-    }
-
-    @GetMapping("/user/list")
-    public List<UserVO> list(@RequestHeader HttpHeaders headers) {
-        log.info("request header:{}", headers.get("name-Type"));
-        log.info("request header:{}", headers.get("User-Agent"));
-        log.info("request header:{}", headers.get("Accept"));
-        headers.getAccessControlAllowHeaders().forEach(System.out::println);
-        log.info("user service list port: {}", port);
-        return userService.list();
-    }
-
-    @GetMapping("/user/{userId}")
-    public UserVO findOne(@PathVariable("userId") Long userId, @RequestHeader HttpHeaders headers) {
-        //log.info("request header:{}", headers.get("name-Type"));
-        //log.info("request header:{}", headers.get("a"));
-        //log.info("request header:{}", headers.get("b"));
-        //log.info("request header:{}", headers.get("c"));
-        log.info("user service findOne port: {}", port);
-        return userService.findOne(userId);
-    }
-
-    @DeleteMapping("/user")
-    public void delete(@RequestParam("userId") Long userId) {
-        log.info("user service delete port: {}", port);
-        userService.delete(userId);
-    }
-
-    @PutMapping(path = "/user", produces = MediaType.APPLICATION_JSON_VALUE)
-    public UserVO update(@RequestBody UserEditVO user) {
-        log.info("user service update port: {}", port);
-        return userService.update(user);
+    @GetMapping("/user-def")
+    public Object userDef(@RequestHeader HttpHeaders headers) {
+        User user = userService.findOne(1L);
+        user.setAge(port);
+        return user;
     }
 
     /**
      * 上传文件
-     * 有界面的测试：http://localhost:9001/index.html
+     * 有界面的测试：<a href="http://localhost:9001/index.html">...</a>
      * 使用命令：curl -F "file=@文件全名" localhost:9001/user/upload
      *
      * @param file 待上传的文件

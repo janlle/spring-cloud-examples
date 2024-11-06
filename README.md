@@ -8,4 +8,4 @@ user -> gateway -> order
 整合了ribbon feign zookeeper consul
 
 ## cloud-order
-整合了hystrix nacos
+整合了hystrix nacos loadbalancer httpExchange

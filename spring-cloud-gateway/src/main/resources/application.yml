@@ -1,28 +1,26 @@
 server:
   port: 9999
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
 spring:
   application:
     name: mc-gateway
   cloud:
     gateway:
+      locator:
+        # 是否从注册中心读取服务
+        enabled: true
       routes:
-      - id: header_route
-        uri: http://baidu.com
-        predicates:
-        - Header=X-Request-Id, \d+
-        - Path=/spring-cloud/**
-      - id: user
-        uri: http://localhost:9001
-        predicates:
-        - Path=/user/**
-
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-  instance:
-    prefer-ip-address: true
-    appname: gateway-service
-    status-page-url-path: /health
+        - id: mc-order
+          uri: http://mc-order
+          predicates:
+          - Header=X-Request-Id, \d+
+          - Path=/spring-cloud/**
+        - id: mc-user
+          uri: http://mc-user
+          predicates:
+            - Path=/user/**

@@ -26,36 +26,14 @@ public class UserServiceImpl implements UserService {
 
     private Random random = new Random();
 
-    @Override
-    public Integer delete(Long userId) {
-        EntityFactory.remove(userId);
-        return 1;
-    }
-
-    @Override
-    public UserVO update(UserEditVO editVO) {
-        User user = EntityFactory.getUser(editVO.getUserId());
-        BeanUtils.copyProperties(editVO, user);
-        UserVO vo = new UserVO();
-        BeanUtils.copyProperties(user, vo);
-        return vo;
-    }
-
-    @Override
-    public UserVO save(UserVO user) {
-        return user;
-    }
 
     // @HystrixCommand(fallbackMethod = "findOneFallback")
     @Override
-    public UserVO findOne(Long userId) {
+    public User findOne(Long userId) {
         if (random.nextInt(100) < 30) {
             int i = 10 / 0;
         }
-        User user = EntityFactory.getUser(userId);
-        UserVO vo = new UserVO();
-        BeanUtils.copyProperties(user, vo);
-        return vo;
+        return EntityFactory.getUser(userId);
     }
 
 
@@ -65,12 +43,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserVO> list() {
-        return EntityFactory.getUsers(10).stream().map(e -> {
-                    UserVO vo = new UserVO();
-                    BeanUtils.copyProperties(e, vo);
-                    return vo;
-                }
-        ).collect(Collectors.toList());
+    public List<User> list() {
+        return EntityFactory.getUsers(10);
     }
 }

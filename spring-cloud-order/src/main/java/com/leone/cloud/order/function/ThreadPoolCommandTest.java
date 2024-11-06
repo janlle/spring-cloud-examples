@@ -16,7 +16,7 @@ public class ThreadPoolCommandTest extends HystrixCommand<String> {
 
     private final String name;
 
-    private final int time = new Random().nextInt(1500);
+    private final int time = new Random().nextInt(999);
 
     /**
      * 在继承hystrixCommand的构造函数中实现添加线程池参数记性资源隔离
@@ -25,21 +25,21 @@ public class ThreadPoolCommandTest extends HystrixCommand<String> {
      */
     public ThreadPoolCommandTest(String name) {
         super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("ExampleGroup"))
-                .andCommandKey(HystrixCommandKey.Factory.asKey("ExampleCommand"))
-                .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("ExampleThreadPool"))
-                .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
-                        // hystrix核心线程数默认10个
-                        .withCoreSize(5)
-                        // 最大排队长度。默认-1
-                        .withMaxQueueSize(10)
-                        // 排队线程数量阈值，默认为5，达到时拒绝，如果配置了该选项，队列的大小是该队列 如果maxQueueSize=-1的话，则该选项不起作用
-                        .withQueueSizeRejectionThreshold(7))
-                .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
-                        // 打开timeout开关
-                        .withExecutionTimeoutEnabled(true)
-                        // 设置超时时间
-                        .withExecutionTimeoutInMilliseconds(1000)
-                )
+          .andCommandKey(HystrixCommandKey.Factory.asKey("ExampleCommand"))
+          .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("ExampleThreadPool"))
+          .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
+            // hystrix核心线程数默认10个
+            .withCoreSize(5)
+            // 最大排队长度。默认-1
+            .withMaxQueueSize(10)
+            // 排队线程数量阈值，默认为5，达到时拒绝，如果配置了该选项，队列的大小是该队列 如果maxQueueSize=-1的话，则该选项不起作用
+            .withQueueSizeRejectionThreshold(7))
+          .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
+            // 打开timeout开关
+            .withExecutionTimeoutEnabled(true)
+            // 设置超时时间
+            .withExecutionTimeoutInMilliseconds(1000)
+          )
         );
         this.name = name;
     }
