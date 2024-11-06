@@ -18,9 +18,10 @@ spring:
         - id: mc-order
           uri: http://mc-order
           predicates:
-          - Header=X-Request-Id, \d+
-          - Path=/spring-cloud/**
+            - Header=X-Request-Id, \d+
+            - Path=/order/**
         - id: mc-user
-          uri: http://mc-user
+          uri: lb://mc-user
+#          uri: http://localhost:9000
           predicates:
             - Path=/user/**

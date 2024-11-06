@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     // @HystrixCommand(fallbackMethod = "findOneFallback")
     @Override
     public User findOne(Long userId) {
-        if (random.nextInt(100) < 30) {
+        if (random.nextInt(100) < 1) {
             int i = 10 / 0;
         }
         return EntityFactory.getUser(userId);

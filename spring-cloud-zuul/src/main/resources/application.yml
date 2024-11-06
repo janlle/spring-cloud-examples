@@ -11,22 +11,23 @@ eureka:
       defaultZone: http://localhost:8761/eureka
 
 zuul:
-#   ignored-patterns:
-#   - /**/page/**
-   # 访问 zuul 的前缀
-   # prefix: /api
-   # 去掉前缀为 false 默认 true
-   # strip-prefix: true
-   # 忽略那些服务
-   # ignored-services: mc-user
-   routes:
-     user-service:
-       path: /user/**
-       serviceId: mc-user
-       # sensitiveHeaders: Cookie,Set-Cookie,Authorization
-     order-service:
-       path: /order/**
-       serviceId: mc-order
+  #   ignored-patterns:
+  #   - /**/page/**
+  # 访问 zuul 的前缀
+  # prefix: /api
+  # 去掉前缀为 false 默认 true
+  # strip-prefix: true
+  # 忽略那些服务
+  # ignored-services: mc-user
+  routes:
+    mc-user:
+      path: /user/**
+      serviceId: mc-user
+#      url: http://localhost:9000
+      # sensitiveHeaders: Cookie,Set-Cookie,Authorization
+    order-service:
+      path: /order/**
+      serviceId: mc-order
 
 #ribbon:
 #  eureka:

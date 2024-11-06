@@ -1,7 +1,5 @@
 package com.leone.cloud.user.controller;
 
-import com.leone.cloud.common.beans.user.UserEditVO;
-import com.leone.cloud.common.beans.user.UserVO;
 import com.leone.cloud.common.entity.User;
 import com.leone.cloud.user.service.UserService;
 import com.netflix.appinfo.InstanceInfo;
@@ -11,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,7 +16,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.List;
 
 
 /**
@@ -45,21 +41,22 @@ public class UserController {
     private Integer port;
 
     @GetMapping("/user")
-    public String user(@RequestHeader HttpHeaders headers) {
+    public Object user(@RequestHeader HttpHeaders headers) {
         log.info("mc-user service port: {} info: {}", port, discoveryClient.getServices());
         log.info("header InstanceId: {}", headers.get("X-InstanceId"));
         //log.info("request header:{}", headers.get("User-Agent"));
         //headers.getAccessControlAllowHeaders().forEach(System.out::println);
         InstanceInfo instance = eurekaClient.getNextServerFromEureka("mc-user", false);
         log.info("instance: {}", instance);
-        return "hello mc-user " + port;
-    }
-
-    @GetMapping("/user-def")
-    public Object userDef(@RequestHeader HttpHeaders headers) {
         User user = userService.findOne(1L);
         user.setAge(port);
         return user;
+    }
+
+    // @RequestParam(defaultValue = "1", required = false, name = "userId") Long userId
+    @GetMapping("/user/list")
+    public Object userList() {
+        return userService.list();
     }
 
     /**

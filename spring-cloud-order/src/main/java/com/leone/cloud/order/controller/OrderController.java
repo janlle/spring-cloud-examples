@@ -23,34 +23,29 @@ import java.util.List;
 @RestController
 public class OrderController {
 
-    // @Autowired
+    @Autowired
     private OrderService orderService;
 
-    // @Autowired
+    @Autowired
     private RestTemplate restTemplate;
 
-    // @Autowired
+    @Autowired
     private LoadBalancerClient loadBalancerClient;
 
     @Value("${server.port}")
     private Integer port;
-
-    @GetMapping("/order")
-    public String hello() {
-        log.info("hello mc-order {}", port);
-        return "hello mc-order " + port;
-    }
 
     @GetMapping(value = "/order/{orderId}")
     public Order findOne(@PathVariable("orderId") Long orderId) {
         Order order = new Order();
         order.setOrderId(orderId);
         order.setTotalAmount(port);
+        log.info("findOne {}", port);
         return order;
     }
 
-    @GetMapping(value = "/order/list")
-    public List<OrderVO> list(@RequestParam Long userId) {
+    @GetMapping(value = "/order-list")
+    public List<Order> list(@RequestParam(defaultValue = "1L") Long userId) {
         return orderService.list(userId);
     }
 
