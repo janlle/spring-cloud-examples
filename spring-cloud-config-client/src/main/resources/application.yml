@@ -1,16 +1,25 @@
 server:
   port: 9100
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+spring:
+  application:
+    name: mc-config-client
+
 # 自定义默认属性
 # name: defaultName
 # profile: defaultProfile
 # level: defaultLevel
 
-spring:
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: cloud
-    password: xxxx
-    virtual-host: /mc
-    publisher-confirms: true
+#spring:
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: cloud
+#    password: xxxx
+#    virtual-host: /mc
+#    publisher-confirms: true
