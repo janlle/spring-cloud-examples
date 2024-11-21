@@ -1,10 +1,35 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health
+
 spring:
   application:
     name: cloud-alibaba
+  profiles:
+    active: test
   cloud:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+        namespace: 8578b490-d369-4c39-b45e-ef3788e5b473
+        username: nacos
+        password: nacos
       config:
         server-addr: 127.0.0.1:8848
+        namespace: 8578b490-d369-4c39-b45e-ef3788e5b473
+        username: nacos
+        password: nacos
+        group: common
         file-extension: yaml
+        #自定义配置,比shared-configs优先级高
+        extension-configs:
+            # - data-id: ${spring.application.name}-${spring.profiles.active}.yaml
+          - data-id: cloud-alibaba-test.yaml
+            group: common
+            refresh: true
+        shared-configs:
+          - data-id: redis-test.yaml
+            group: common
+            refresh: true

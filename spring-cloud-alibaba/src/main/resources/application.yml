@@ -1,7 +1,10 @@
 alibaba:
-  name: james
-  age: 18
+  name: ${alibaba.name}
+  age: ${alibaba.age}
 
-spring:
-  profiles:
-    active: dev
+
+nacos:
+  server-addr: 127.0.0.1:8848
+  namespace: 8578b490-d369-4c39-b45e-ef3788e5b473
+  username: nacos
+  password: nacos
