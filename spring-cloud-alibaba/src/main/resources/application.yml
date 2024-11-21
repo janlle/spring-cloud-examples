@@ -1,10 +1,45 @@
+#alibaba:
+#  name: ${alibaba.name}
+
 alibaba:
-  name: ${alibaba.name}
-  age: ${alibaba.age}
+  name: 'def-name'
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+spring:
+  application:
+    name: nacos-config-example
+  cloud:
+    nacos:
+      config:
+        serverAddr: 127.0.0.1:8848
+      username: nacos
+      password: nacos
+  config:
+    import:
+      # 导入nacos中的配置
+      - nacos:nacos-config-example.properties?refresh=true
+      # 导入classpath下default目录下的default.properties配置文件
+      - classpath:/default/default.properties
+      # 导入classpath下service目录下的service.yml配置文件
+      - classpath:/service/service.yml
+      - optional:/Users/leone/Downloads/test.yml
+
+logging:
+  level:
+    com.alibaba.cloud.nacos.configdata: debug
 
 
-nacos:
-  server-addr: 127.0.0.1:8848
-  namespace: 8578b490-d369-4c39-b45e-ef3788e5b473
-  username: nacos
-  password: nacos
+
+#nacos:
+#  server-addr: 127.0.0.1:8848
+#  namespace: 8578b490-d369-4c39-b45e-ef3788e5b473
+#  username: nacos
+#  password: nacos

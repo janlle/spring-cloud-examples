@@ -1,0 +1,8 @@
+1.spring-boot2.4新增spring.config.import
+spring:
+  config:
+    import:
+      # 导入classpath下default目录下的default.properties配置文件
+      - classpath:/default/default.properties
+      # 导入classpath下service目录下的service.yml配置文件
+      - classpath:/service/service.yml
