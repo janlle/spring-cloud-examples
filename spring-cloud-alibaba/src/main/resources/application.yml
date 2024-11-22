@@ -32,9 +32,18 @@ spring:
       - classpath:/service/service.yml
       - optional:/Users/leone/Downloads/test.yml
 
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/boot?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+    driver-class: com.mysql.cj.jdbc.Driver
+
+
 logging:
   level:
     com.alibaba.cloud.nacos.configdata: debug
+
+
 
 
 

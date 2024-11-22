@@ -15,10 +15,10 @@ import java.util.Map;
 @RestController
 public class UserController {
 
-    @Value("${alibaba.name}")
+    @Value("${alibaba.name:def-name}")
     private String name;
 
-    @Value("${alibaba.age}")
+    @Value("${alibaba.age:1}")
     private Integer age;
 
     //	@Autowired
