@@ -31,6 +31,7 @@
         <module>spring-cloud-sleuth</module>
         <module>spring-cloud-common</module>
         <module>spring-cloud-hystrix-feign</module>
+        <module>spring-cloud-config-apollo</module>
     </modules>
 
 </project>
